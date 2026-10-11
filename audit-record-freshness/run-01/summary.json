@@ -1,0 +1,156 @@
+{
+  "clock": {
+    "assumedSkewMs": 0,
+    "epoch": "2026-10-11T00:00:00.000Z",
+    "id": "urn:example:r8:elapsed-milliseconds:zero-skew"
+  },
+  "files": [
+    {
+      "bytes": 4931,
+      "file": "R8-F1.json",
+      "sha256": "d360736c31bfac05629ac759c5b8f94ecdf3cf5fe98ea815c37f254dccbc6d95"
+    },
+    {
+      "bytes": 4980,
+      "file": "R8-F2.json",
+      "sha256": "ac79b19f8cbdda468352e8386ed94e77e860e206f4b682cec3b2cb155a8f03b4"
+    },
+    {
+      "bytes": 4898,
+      "file": "R8-F3.json",
+      "sha256": "b2f5f36da9e3b29795d1203d5f2bb54fc79fcd80f6ddf0a7845863e3bfdb03de"
+    },
+    {
+      "bytes": 4941,
+      "file": "R8-F4-inclusive.json",
+      "sha256": "6ca939a158e62003389a411bb214da84dd9a8b33ed7cd4891d065e38084efcfd"
+    },
+    {
+      "bytes": 4980,
+      "file": "R8-F4-strict.json",
+      "sha256": "c5cea5ab781344fe62b7e5b87d9752f42b26427eb93b070be801042b4070050e"
+    },
+    {
+      "bytes": 5732,
+      "file": "R8-F5.json",
+      "sha256": "6e426f753e4d669d9022ce3880e95db7ecd141ee8b8e2b8736fc935c686c72a5"
+    },
+    {
+      "bytes": 5650,
+      "file": "R8-F6.json",
+      "sha256": "8daf7581d32567968e60d7a1a34818b56f1e8decc73a7a18b3d0f1589ef2bdda"
+    }
+  ],
+  "reports": [
+    {
+      "auditCodes": [],
+      "auditDerivedTier": "voluntary",
+      "auditVerdict": "valid",
+      "comparator": "inclusive",
+      "id": "R8-F1",
+      "metadataReader": "local experimental mapper, not the Gilda reader",
+      "originAgeMs": 119999,
+      "originComparator": "inclusive",
+      "originState": "within-bound",
+      "receiverAgeMs": 119999,
+      "receiverState": "within-bound",
+      "reportedDecision": "deny"
+    },
+    {
+      "auditCodes": [],
+      "auditDerivedTier": "voluntary",
+      "auditVerdict": "valid",
+      "comparator": "inclusive",
+      "id": "R8-F2",
+      "metadataReader": "local experimental mapper, not the Gilda reader",
+      "originAgeMs": 120001,
+      "originComparator": "inclusive",
+      "originState": "stale",
+      "receiverAgeMs": 120001,
+      "receiverState": "stale",
+      "reportedDecision": "deny"
+    },
+    {
+      "auditCodes": [],
+      "auditDerivedTier": "voluntary",
+      "auditVerdict": "valid",
+      "comparator": "inclusive",
+      "id": "R8-F3",
+      "metadataReader": "local experimental mapper, not the Gilda reader",
+      "originAgeMs": null,
+      "originComparator": "inclusive",
+      "originState": "not-established",
+      "receiverAgeMs": null,
+      "receiverState": "not-established",
+      "reportedDecision": "deny"
+    },
+    {
+      "auditCodes": [],
+      "auditDerivedTier": "voluntary",
+      "auditVerdict": "valid",
+      "comparator": "inclusive",
+      "id": "R8-F4-inclusive",
+      "metadataReader": "local experimental mapper, not the Gilda reader",
+      "originAgeMs": 120000,
+      "originComparator": "inclusive",
+      "originState": "within-bound",
+      "receiverAgeMs": 120000,
+      "receiverState": "within-bound",
+      "reportedDecision": "deny"
+    },
+    {
+      "auditCodes": [],
+      "auditDerivedTier": "voluntary",
+      "auditVerdict": "valid",
+      "comparator": "strict",
+      "id": "R8-F4-strict",
+      "metadataReader": "local experimental mapper, not the Gilda reader",
+      "originAgeMs": 120000,
+      "originComparator": "strict",
+      "originState": "stale",
+      "receiverAgeMs": 120000,
+      "receiverState": "stale",
+      "reportedDecision": "deny"
+    },
+    {
+      "auditCodes": [],
+      "auditDerivedTier": "voluntary",
+      "auditVerdict": "valid",
+      "comparator": "inclusive",
+      "id": "R8-F5",
+      "metadataReader": "local experimental mapper, not the Gilda reader",
+      "originAgeMs": 120001,
+      "originComparator": "inclusive",
+      "originState": "stale",
+      "receiverAgeMs": 130000,
+      "receiverState": "stale",
+      "reportedDecision": "deny"
+    },
+    {
+      "auditCodes": [],
+      "auditDerivedTier": "voluntary",
+      "auditVerdict": "valid",
+      "comparator": "inclusive",
+      "id": "R8-F6",
+      "metadataReader": "local experimental mapper, not the Gilda reader",
+      "originAgeMs": null,
+      "originComparator": "inclusive",
+      "originState": "not-established",
+      "receiverAgeMs": null,
+      "receiverState": "not-established",
+      "reportedDecision": "deny"
+    }
+  ],
+  "scope": "Experimental local mapping; no agreed Gilda extension or runtime result",
+  "sixScenariosSevenVariants": true,
+  "sources": {
+    "packaging/agent_evidence_vectors/auditrecord.py": "b6ecb45e11c92387d23d4d2ead951b31c7616160d090854d902ea517631146cc",
+    "packaging/run_vectors.py": "ef9e2a875a37eecc878bb0d1c106a119a807243cef958d66e2b9e79de64fac2e",
+    "vectors-agent-audit-record/canonical.py": "ced55cfb183bebd53e2f7223b7279e230ceb84a042bd113b1dcc33948ac84c74",
+    "vectors-agent-audit-record/gen_vectors.py": "37732e08afd1ea69086f000b4dce000758f27325a487a544c0133b370ae5c328"
+  },
+  "staleAndNoResultHaveIdenticalAuditEnvelope": true,
+  "testKeysOnly": true,
+  "upstreamCommit": "8c153446b697ad2fa68abac2b2e56a6cadffd865",
+  "upstreamPullRequest": "https://github.com/probityai/agent-evidence-vectors/pull/85"
+}

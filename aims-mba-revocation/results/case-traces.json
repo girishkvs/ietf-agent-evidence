@@ -1,0 +1,800 @@
+[
+  {
+    "caseId": "C1-control",
+    "outcome": {
+      "ok": false,
+      "denial_reason": "mission_inactive"
+    },
+    "trace": [
+      {
+        "order": 1,
+        "stage": "mission_approved",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "version": 1
+      },
+      {
+        "order": 2,
+        "stage": "receiver_verified_and_applied",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "outcome": {
+          "status": "applied",
+          "state": "active",
+          "version": 1,
+          "rematerialize": false
+        },
+        "cachedState": "active"
+      },
+      {
+        "order": 3,
+        "stage": "pdp_decision",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "permit": true,
+        "conditions": {
+          "valid_until": "2026-10-10T04:05:00.000Z",
+          "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+        },
+        "observation": {
+          "state": "active",
+          "version": 1,
+          "mode": "event_driven",
+          "freshness_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_issued_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_expires_at": "2027-01-01T00:00:00Z"
+        }
+      },
+      {
+        "order": 4,
+        "stage": "tool_call_returned",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "result": {
+          "ok": true,
+          "result": {
+            "id": "inv-w7",
+            "vendor_id": "acme",
+            "amount": "1.00",
+            "currency": "USD",
+            "payee_account": "fixture-only",
+            "status": "payable",
+            "version": 1
+          }
+        }
+      },
+      {
+        "order": 5,
+        "stage": "issuer_revocation_committed",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "state": "terminated",
+        "version": 2
+      },
+      {
+        "order": 6,
+        "stage": "receiver_verified_and_applied",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "outcome": {
+          "status": "applied",
+          "state": "terminated",
+          "termination": {
+            "reason": "revoked",
+            "terminated_at": "2026-10-10T04:00:00.000Z",
+            "version": 2
+          },
+          "version": 2,
+          "rematerialize": false
+        },
+        "cachedState": "terminated"
+      },
+      {
+        "order": 7,
+        "stage": "pdp_decision",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "permit": false,
+        "reason": "mission_inactive",
+        "observation": {
+          "state": "terminated",
+          "version": 2,
+          "mode": "event_driven",
+          "freshness_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_issued_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_expires_at": "2027-01-01T00:00:00Z"
+        }
+      },
+      {
+        "order": 8,
+        "stage": "tool_call_returned",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "result": {
+          "ok": false,
+          "denial_reason": "mission_inactive"
+        }
+      }
+    ]
+  },
+  {
+    "caseId": "C1-in-flight",
+    "heldCall": {
+      "ok": true,
+      "result": {
+        "id": "inv-w7",
+        "vendor_id": "acme",
+        "amount": "1.00",
+        "currency": "USD",
+        "payee_account": "fixture-only",
+        "status": "payable",
+        "version": 1
+      }
+    },
+    "nextCall": {
+      "ok": false,
+      "denial_reason": "mission_inactive"
+    },
+    "cancellationClaim": "not demonstrated",
+    "trace": [
+      {
+        "order": 1,
+        "stage": "mission_approved",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "version": 1
+      },
+      {
+        "order": 2,
+        "stage": "receiver_verified_and_applied",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "outcome": {
+          "status": "applied",
+          "state": "active",
+          "version": 1,
+          "rematerialize": false
+        },
+        "cachedState": "active"
+      },
+      {
+        "order": 3,
+        "stage": "pdp_decision",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "permit": true,
+        "conditions": {
+          "valid_until": "2026-10-10T04:05:00.000Z",
+          "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+        },
+        "observation": {
+          "state": "active",
+          "version": 1,
+          "mode": "event_driven",
+          "freshness_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_issued_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_expires_at": "2027-01-01T00:00:00Z"
+        }
+      },
+      {
+        "order": 4,
+        "stage": "issuer_revocation_committed",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "state": "terminated",
+        "version": 2
+      },
+      {
+        "order": 5,
+        "stage": "receiver_verified_and_applied",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "outcome": {
+          "status": "applied",
+          "state": "terminated",
+          "termination": {
+            "reason": "revoked",
+            "terminated_at": "2026-10-10T04:00:00.000Z",
+            "version": 2
+          },
+          "version": 2,
+          "rematerialize": false
+        },
+        "cachedState": "terminated"
+      },
+      {
+        "order": 6,
+        "stage": "held_decision_released",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A"
+      },
+      {
+        "order": 7,
+        "stage": "tool_call_returned",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "result": {
+          "ok": true,
+          "result": {
+            "id": "inv-w7",
+            "vendor_id": "acme",
+            "amount": "1.00",
+            "currency": "USD",
+            "payee_account": "fixture-only",
+            "status": "payable",
+            "version": 1
+          }
+        }
+      },
+      {
+        "order": 8,
+        "stage": "pdp_decision",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "permit": false,
+        "reason": "mission_inactive",
+        "observation": {
+          "state": "terminated",
+          "version": 2,
+          "mode": "event_driven",
+          "freshness_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_issued_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_expires_at": "2027-01-01T00:00:00Z"
+        }
+      },
+      {
+        "order": 9,
+        "stage": "tool_call_returned",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "result": {
+          "ok": false,
+          "denial_reason": "mission_inactive"
+        }
+      }
+    ]
+  },
+  {
+    "caseId": "C1-expiry-control",
+    "outcome": {
+      "ok": false,
+      "refusal_reason": "permit_expired"
+    },
+    "elapsedLogicalSeconds": 301,
+    "trace": [
+      {
+        "order": 1,
+        "stage": "mission_approved",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "version": 1
+      },
+      {
+        "order": 2,
+        "stage": "receiver_verified_and_applied",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "outcome": {
+          "status": "applied",
+          "state": "active",
+          "version": 1,
+          "rematerialize": false
+        },
+        "cachedState": "active"
+      },
+      {
+        "order": 3,
+        "stage": "pdp_decision",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "permit": true,
+        "conditions": {
+          "valid_until": "2026-10-10T04:05:00.000Z",
+          "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+        },
+        "observation": {
+          "state": "active",
+          "version": 1,
+          "mode": "event_driven",
+          "freshness_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_issued_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_expires_at": "2027-01-01T00:00:00Z"
+        }
+      },
+      {
+        "order": 4,
+        "stage": "issuer_revocation_committed",
+        "logicalTime": "2026-10-10T04:05:01.000Z",
+        "state": "terminated",
+        "version": 2
+      },
+      {
+        "order": 5,
+        "stage": "receiver_verified_and_applied",
+        "logicalTime": "2026-10-10T04:05:01.000Z",
+        "worker": "A",
+        "outcome": {
+          "status": "applied",
+          "state": "terminated",
+          "termination": {
+            "reason": "revoked",
+            "terminated_at": "2026-10-10T04:05:01.000Z",
+            "version": 2
+          },
+          "version": 2,
+          "rematerialize": false
+        },
+        "cachedState": "terminated"
+      },
+      {
+        "order": 6,
+        "stage": "held_decision_released",
+        "logicalTime": "2026-10-10T04:05:01.000Z",
+        "worker": "A"
+      },
+      {
+        "order": 7,
+        "stage": "tool_call_returned",
+        "logicalTime": "2026-10-10T04:05:01.000Z",
+        "worker": "A",
+        "result": {
+          "ok": false,
+          "refusal_reason": "permit_expired"
+        }
+      }
+    ]
+  },
+  {
+    "caseId": "C2-workers",
+    "aAfterReceipt": {
+      "ok": false,
+      "denial_reason": "mission_inactive"
+    },
+    "bBeforeReceipt": {
+      "ok": true,
+      "result": {
+        "id": "inv-w7",
+        "vendor_id": "acme",
+        "amount": "1.00",
+        "currency": "USD",
+        "payee_account": "fixture-only",
+        "status": "payable",
+        "version": 1
+      }
+    },
+    "bAfter301Seconds": {
+      "ok": false,
+      "denial_reason": "stale_state"
+    },
+    "bAfterReceipt": {
+      "ok": false,
+      "denial_reason": "mission_inactive"
+    },
+    "topology": "two receiver and PEP instances in one process; not distributed worker conformance",
+    "trace": [
+      {
+        "order": 1,
+        "stage": "mission_approved",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "version": 1
+      },
+      {
+        "order": 2,
+        "stage": "receiver_verified_and_applied",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "outcome": {
+          "status": "applied",
+          "state": "active",
+          "version": 1,
+          "rematerialize": false
+        },
+        "cachedState": "active"
+      },
+      {
+        "order": 3,
+        "stage": "receiver_verified_and_applied",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "B",
+        "outcome": {
+          "status": "applied",
+          "state": "active",
+          "version": 1,
+          "rematerialize": false
+        },
+        "cachedState": "active"
+      },
+      {
+        "order": 4,
+        "stage": "pdp_decision",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "permit": true,
+        "conditions": {
+          "valid_until": "2026-10-10T04:05:00.000Z",
+          "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+        },
+        "observation": {
+          "state": "active",
+          "version": 1,
+          "mode": "event_driven",
+          "freshness_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_issued_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_expires_at": "2027-01-01T00:00:00Z"
+        }
+      },
+      {
+        "order": 5,
+        "stage": "tool_call_returned",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "result": {
+          "ok": true,
+          "result": {
+            "id": "inv-w7",
+            "vendor_id": "acme",
+            "amount": "1.00",
+            "currency": "USD",
+            "payee_account": "fixture-only",
+            "status": "payable",
+            "version": 1
+          }
+        }
+      },
+      {
+        "order": 6,
+        "stage": "pdp_decision",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "B",
+        "permit": true,
+        "conditions": {
+          "valid_until": "2026-10-10T04:05:00.000Z",
+          "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+        },
+        "observation": {
+          "state": "active",
+          "version": 1,
+          "mode": "event_driven",
+          "freshness_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_issued_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_expires_at": "2027-01-01T00:00:00Z"
+        }
+      },
+      {
+        "order": 7,
+        "stage": "tool_call_returned",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "B",
+        "result": {
+          "ok": true,
+          "result": {
+            "id": "inv-w7",
+            "vendor_id": "acme",
+            "amount": "1.00",
+            "currency": "USD",
+            "payee_account": "fixture-only",
+            "status": "payable",
+            "version": 1
+          }
+        }
+      },
+      {
+        "order": 8,
+        "stage": "issuer_revocation_committed",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "state": "terminated",
+        "version": 2
+      },
+      {
+        "order": 9,
+        "stage": "receiver_verified_and_applied",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "outcome": {
+          "status": "applied",
+          "state": "terminated",
+          "termination": {
+            "reason": "revoked",
+            "terminated_at": "2026-10-10T04:00:00.000Z",
+            "version": 2
+          },
+          "version": 2,
+          "rematerialize": false
+        },
+        "cachedState": "terminated"
+      },
+      {
+        "order": 10,
+        "stage": "pdp_decision",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "permit": false,
+        "reason": "mission_inactive",
+        "observation": {
+          "state": "terminated",
+          "version": 2,
+          "mode": "event_driven",
+          "freshness_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_issued_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_expires_at": "2027-01-01T00:00:00Z"
+        }
+      },
+      {
+        "order": 11,
+        "stage": "tool_call_returned",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "result": {
+          "ok": false,
+          "denial_reason": "mission_inactive"
+        }
+      },
+      {
+        "order": 12,
+        "stage": "pdp_decision",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "B",
+        "permit": true,
+        "conditions": {
+          "valid_until": "2026-10-10T04:05:00.000Z",
+          "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+        },
+        "observation": {
+          "state": "active",
+          "version": 1,
+          "mode": "event_driven",
+          "freshness_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_issued_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_expires_at": "2027-01-01T00:00:00Z"
+        }
+      },
+      {
+        "order": 13,
+        "stage": "tool_call_returned",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "B",
+        "result": {
+          "ok": true,
+          "result": {
+            "id": "inv-w7",
+            "vendor_id": "acme",
+            "amount": "1.00",
+            "currency": "USD",
+            "payee_account": "fixture-only",
+            "status": "payable",
+            "version": 1
+          }
+        }
+      },
+      {
+        "order": 14,
+        "stage": "pdp_decision",
+        "logicalTime": "2026-10-10T04:05:01.000Z",
+        "worker": "B",
+        "permit": false,
+        "reason": "stale_state",
+        "observation": {
+          "state": "active",
+          "version": 1,
+          "mode": "event_driven",
+          "freshness_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_issued_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_expires_at": "2027-01-01T00:00:00Z"
+        }
+      },
+      {
+        "order": 15,
+        "stage": "tool_call_returned",
+        "logicalTime": "2026-10-10T04:05:01.000Z",
+        "worker": "B",
+        "result": {
+          "ok": false,
+          "denial_reason": "stale_state"
+        }
+      },
+      {
+        "order": 16,
+        "stage": "receiver_verified_and_applied",
+        "logicalTime": "2026-10-10T04:05:01.000Z",
+        "worker": "B",
+        "outcome": {
+          "status": "applied",
+          "state": "terminated",
+          "termination": {
+            "reason": "revoked",
+            "terminated_at": "2026-10-10T04:00:00.000Z",
+            "version": 2
+          },
+          "version": 2,
+          "rematerialize": false
+        },
+        "cachedState": "terminated"
+      },
+      {
+        "order": 17,
+        "stage": "pdp_decision",
+        "logicalTime": "2026-10-10T04:05:01.000Z",
+        "worker": "B",
+        "permit": false,
+        "reason": "mission_inactive",
+        "observation": {
+          "state": "terminated",
+          "version": 2,
+          "mode": "event_driven",
+          "freshness_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_issued_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_expires_at": "2027-01-01T00:00:00Z"
+        }
+      },
+      {
+        "order": 18,
+        "stage": "tool_call_returned",
+        "logicalTime": "2026-10-10T04:05:01.000Z",
+        "worker": "B",
+        "result": {
+          "ok": false,
+          "denial_reason": "mission_inactive"
+        }
+      }
+    ]
+  },
+  {
+    "caseId": "C2-missing",
+    "outcome": {
+      "ok": false,
+      "refusal_reason": "unknown_mission"
+    },
+    "pdpObservation": "none: the PEP did not establish a view",
+    "trace": [
+      {
+        "order": 1,
+        "stage": "mission_approved",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "version": 1
+      },
+      {
+        "order": 2,
+        "stage": "tool_call_returned",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "result": {
+          "ok": false,
+          "refusal_reason": "unknown_mission"
+        }
+      }
+    ]
+  },
+  {
+    "caseId": "C2-issuer",
+    "localRefusal": {
+      "status": "refused",
+      "reason": "issuer"
+    },
+    "localState": {
+      "state": "active",
+      "version": 1,
+      "expires_at": "2027-01-01T00:00:00Z"
+    },
+    "foreignState": {
+      "state": "terminated",
+      "termination": {
+        "reason": "revoked",
+        "terminated_at": "2026-10-10T04:00:00.000Z",
+        "version": 2
+      },
+      "version": 2,
+      "expires_at": "2027-01-01T00:00:00Z"
+    },
+    "tenantClaim": "none: different issuer namespaces are not same-issuer tenant isolation",
+    "trace": [
+      {
+        "order": 1,
+        "stage": "mission_approved",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "version": 1
+      },
+      {
+        "order": 2,
+        "stage": "receiver_verified_and_applied",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "outcome": {
+          "status": "applied",
+          "state": "active",
+          "version": 1,
+          "rematerialize": false
+        },
+        "cachedState": "active"
+      },
+      {
+        "order": 3,
+        "stage": "issuer_revocation_committed",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "state": "terminated",
+        "version": 2
+      }
+    ]
+  },
+  {
+    "caseId": "C2-receipt",
+    "receiverResult": {
+      "status": "refused",
+      "reason": "signature"
+    },
+    "pendingDeliveryJobs": 0,
+    "appliedState": "none",
+    "trace": [
+      {
+        "order": 1,
+        "stage": "mission_approved",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "version": 1
+      }
+    ]
+  },
+  {
+    "caseId": "C2-cache-key",
+    "keys": {
+      "original": "sha-256:bBkFTW0OrwVSxglmyoIEAaF7oGzUT7U6CANX5sUogiI",
+      "timeOnly": "sha-256:bBkFTW0OrwVSxglmyoIEAaF7oGzUT7U6CANX5sUogiI",
+      "otherIssuer": "sha-256:uOSp8ifOqsiOspI103Ke38b6-l9nAZOi2i-iZa_GRr4",
+      "otherAudience": "sha-256:6KaEuU_qZt--g-d_aGYeSF_d7XKcZFIDcqmPPeYx3I8",
+      "otherActor": "sha-256:gyWz9bmUdsXk3ZX97j1gMg26V6Mvkc7CF2VK04SAQ0o",
+      "newerGeneration": "sha-256:OUMDCtAH9NV52czqls0D9dnUIrI5ytOLVEUSUxBZIFM"
+    },
+    "freshnessLimit": "key equality is not permission to bypass freshness checks",
+    "trace": [
+      {
+        "order": 1,
+        "stage": "mission_approved",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "version": 1
+      },
+      {
+        "order": 2,
+        "stage": "receiver_verified_and_applied",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "outcome": {
+          "status": "applied",
+          "state": "active",
+          "version": 1,
+          "rematerialize": false
+        },
+        "cachedState": "active"
+      },
+      {
+        "order": 3,
+        "stage": "pdp_decision",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "permit": true,
+        "conditions": {
+          "valid_until": "2026-10-10T04:05:00.000Z",
+          "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+        },
+        "observation": {
+          "state": "active",
+          "version": 1,
+          "mode": "event_driven",
+          "freshness_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_issued_at": "2026-10-10T04:00:00.000Z",
+          "mission_status_expires_at": "2027-01-01T00:00:00Z"
+        }
+      },
+      {
+        "order": 4,
+        "stage": "tool_call_returned",
+        "logicalTime": "2026-10-10T04:00:00.000Z",
+        "worker": "A",
+        "result": {
+          "ok": true,
+          "result": {
+            "id": "inv-w7",
+            "vendor_id": "acme",
+            "amount": "1.00",
+            "currency": "USD",
+            "payee_account": "fixture-only",
+            "status": "payable",
+            "version": 1
+          }
+        }
+      }
+    ]
+  }
+]
