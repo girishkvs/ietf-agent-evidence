@@ -1,0 +1,612 @@
+{
+  "boundaryRule": "age-equal-is-within",
+  "counts": {
+    "cases": 15,
+    "evaluations": 27,
+    "mismatches": 0,
+    "vectors": 24
+  },
+  "draft": "draft-konda-agentproto-evaluation-state-02",
+  "draftSection": "7.1",
+  "reports": [
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": 3599,
+          "asOf": "2026-10-19T10:00:01Z",
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "permit"
+          },
+          "decision": "permit",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "standing-source",
+          "reason": "within-bound",
+          "state": "established-positive"
+        }
+      ],
+      "id": "TC-1/positive",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": 3599,
+          "asOf": "2026-10-19T10:00:01Z",
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "denied"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "standing-source",
+          "reason": "within-bound",
+          "refusal": "permanent",
+          "state": "established-negative"
+        }
+      ],
+      "id": "TC-1/negative",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": 3599,
+          "asOf": "2026-10-19T10:00:01Z",
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "permit"
+          },
+          "decision": "permit",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "standing-source",
+          "reason": "within-bound",
+          "state": "established-positive",
+          "stateUnderRule": {
+            "age-equal-is-past": "established-positive"
+          }
+        }
+      ],
+      "id": "TC-2/one-second-less",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": 3600,
+          "asOf": "2026-10-19T10:00:00Z",
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "permit"
+          },
+          "decision": "permit",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "standing-source",
+          "reason": "within-bound",
+          "state": "established-positive",
+          "stateUnderRule": {
+            "age-equal-is-past": "stale"
+          }
+        }
+      ],
+      "id": "TC-2/equal",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": 3601,
+          "asOf": "2026-10-19T09:59:59Z",
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "evaluation-incomplete"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "standing-source",
+          "reason": "older-than-bound",
+          "refusal": "transient",
+          "state": "stale",
+          "stateUnderRule": {
+            "age-equal-is-past": "stale"
+          }
+        }
+      ],
+      "id": "TC-2/one-second-more",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": 3601,
+          "asOf": "2026-10-19T09:59:59Z",
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "evaluation-incomplete"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "standing-source",
+          "reason": "older-than-bound",
+          "refusal": "transient",
+          "state": "stale"
+        }
+      ],
+      "id": "TC-3/stale",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": null,
+          "asOf": null,
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "evaluation-incomplete"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "standing-source",
+          "reason": "no-value",
+          "refusal": "transient",
+          "state": "not-established"
+        }
+      ],
+      "id": "TC-4/never-held",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": null,
+          "asOf": null,
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "evaluation-incomplete"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "key-source",
+          "reason": "unreachable",
+          "refusal": "transient",
+          "state": "not-established"
+        }
+      ],
+      "id": "TC-5/unreachable",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": null,
+          "asOf": null,
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "evaluation-incomplete"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "key-source",
+          "reason": "blocked-by-own-policy",
+          "refusal": "transient",
+          "state": "not-established"
+        }
+      ],
+      "id": "TC-5/blocked-by-own-policy",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": 60,
+          "asOf": "2026-10-19T10:59:00Z",
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "denied"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "discovering-agent",
+          "input": "capability-description",
+          "reason": "within-bound",
+          "refusal": "permanent",
+          "state": "established-negative"
+        }
+      ],
+      "id": "TC-6/absent-where-required",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": 60,
+          "asOf": "2026-10-19T10:59:00Z",
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "permit"
+          },
+          "decision": "permit",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "revocation-status",
+          "reason": "within-bound",
+          "state": "established-positive"
+        }
+      ],
+      "id": "TC-6/absent-from-revocation-list",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": null,
+          "asOf": null,
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "evaluation-incomplete"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "revocation-status",
+          "reason": "lookup-incomplete",
+          "refusal": "transient",
+          "state": "not-established"
+        }
+      ],
+      "id": "TC-6/lookup-incomplete",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": null,
+          "asOf": null,
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "evaluation-incomplete"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "receiving-domain",
+          "input": "policy-source",
+          "profile": "urn:example:profile:transfer-limits:3",
+          "reason": "profile-not-held",
+          "refusal": "transient",
+          "state": "not-established"
+        }
+      ],
+      "id": "TC-7/profile-not-held",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": null,
+          "asOf": null,
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "evaluation-incomplete"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "consumption-state",
+          "reason": "unreachable",
+          "refusal": "transient",
+          "state": "not-established"
+        }
+      ],
+      "id": "TC-8/consumption-state-unreadable",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": null,
+          "asOf": null,
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "evaluation-incomplete"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "revocation-status",
+          "reason": "unreachable",
+          "refusal": "transient",
+          "state": "not-established"
+        }
+      ],
+      "id": "TC-9/list-not-fetched",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": 5400,
+          "asOf": "2026-10-19T09:30:00Z",
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "evaluation-incomplete"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "revocation-status",
+          "reason": "older-than-bound",
+          "refusal": "transient",
+          "state": "stale"
+        }
+      ],
+      "id": "TC-9/cached-answer-expired",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": 3000,
+          "asOf": "2026-10-19T10:10:00Z",
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "permit"
+          },
+          "decision": "permit",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "hop-2",
+          "input": "standing-source",
+          "reason": "within-bound",
+          "state": "established-positive",
+          "stateIfAgeFromReceipt": "established-positive"
+        }
+      ],
+      "id": "TC-10/fresh",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": 3601,
+          "asOf": "2026-10-19T09:59:59Z",
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "evaluation-incomplete"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "hop-2",
+          "input": "standing-source",
+          "reason": "older-than-bound",
+          "refusal": "transient",
+          "state": "stale",
+          "stateIfAgeFromReceipt": "established-positive"
+        }
+      ],
+      "id": "TC-10/stale-from-source",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": 3840,
+          "asOf": "2026-10-19T10:00:00Z",
+          "boundSeconds": 7200,
+          "callerView": {
+            "decision": "permit"
+          },
+          "decision": "permit",
+          "decisionAt": "2026-10-19T11:04:00Z",
+          "hop": "hop-1",
+          "input": "standing-source",
+          "reason": "within-bound",
+          "state": "established-positive"
+        },
+        {
+          "ageSeconds": 3842,
+          "asOf": "2026-10-19T10:00:00Z",
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "evaluation-incomplete"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:04:02Z",
+          "hop": "hop-2",
+          "input": "standing-source",
+          "reason": "older-than-bound",
+          "refusal": "transient",
+          "state": "stale"
+        }
+      ],
+      "id": "TC-11/two-bounds",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": null,
+          "asOf": null,
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "evaluation-incomplete"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "hop-1",
+          "input": "key-source",
+          "reason": "unreachable",
+          "refusal": "transient",
+          "state": "not-established"
+        },
+        {
+          "ageSeconds": 30,
+          "asOf": "2026-10-19T11:04:30Z",
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "permit"
+          },
+          "decision": "permit",
+          "decisionAt": "2026-10-19T11:05:00Z",
+          "hop": "hop-2",
+          "input": "key-source",
+          "reason": "within-bound",
+          "state": "established-positive"
+        }
+      ],
+      "id": "TC-12/later-hop",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": -301,
+          "asOf": "2026-10-19T11:05:01Z",
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "evaluation-incomplete"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "key-source",
+          "reason": "as-of-after-decision",
+          "refusal": "transient",
+          "state": "not-established"
+        }
+      ],
+      "id": "TC-13/beyond-tolerance",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": -300,
+          "asOf": "2026-10-19T11:05:00Z",
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "permit"
+          },
+          "decision": "permit",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "key-source",
+          "reason": "within-bound",
+          "state": "established-positive"
+        }
+      ],
+      "id": "TC-13/at-tolerance",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": null,
+          "asOf": null,
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "evaluation-incomplete"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "standing-source",
+          "reason": "not-available-at-decision",
+          "refusal": "transient",
+          "state": "not-established"
+        },
+        {
+          "ageSeconds": 80,
+          "asOf": "2026-10-19T10:59:00Z",
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "permit"
+          },
+          "decision": "permit",
+          "decisionAt": "2026-10-19T11:00:20Z",
+          "hop": "verifier",
+          "input": "standing-source",
+          "reason": "within-bound",
+          "state": "established-positive"
+        }
+      ],
+      "id": "TC-14/state-arrives-late",
+      "mismatches": []
+    },
+    {
+      "earlierRecordsUnchanged": true,
+      "evaluations": [
+        {
+          "ageSeconds": null,
+          "asOf": null,
+          "boundSeconds": 3600,
+          "callerView": {
+            "decision": "refuse",
+            "reason": "evaluation-incomplete"
+          },
+          "decision": "refuse",
+          "decisionAt": "2026-10-19T11:00:00Z",
+          "hop": "verifier",
+          "input": "key-source",
+          "reason": "unreachable",
+          "refusal": "transient",
+          "state": "not-established"
+        }
+      ],
+      "id": "TC-15/coarse-caller-reason",
+      "mismatches": []
+    }
+  ],
+  "skewToleranceSeconds": 300,
+  "sources": {
+    "cases.json": "83397745c738ad0a16004e9675aef84fc11dd5d912986298210085bf9bd059aa",
+    "check_cases.py": "1c5e80ee8c3160199778498e1d3e82c85b387ad296e16a0eb07811b2c3560b1f"
+  }
+}

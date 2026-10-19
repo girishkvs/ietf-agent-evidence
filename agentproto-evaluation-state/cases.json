@@ -1,0 +1,576 @@
+{
+  "title": "Evaluation-state test cases",
+  "draft": "draft-konda-agentproto-evaluation-state-02",
+  "draftSection": "7.1",
+  "boundaryRule": "age-equal-is-within",
+  "skewToleranceSeconds": 300,
+  "fieldNames": "Fixture names for this folder only. They are not proposed standard field names.",
+  "cases": [
+    {
+      "id": "TC-1",
+      "summary": "Age below the freshness bound",
+      "requirements": ["REQ-4"],
+      "related": [
+        {"document": "draft-jackson-wimse-evaluation-04", "item": "Appendix A.3 case G1, standing held", "relation": "same-result"},
+        {"document": "draft-jackson-wimse-evaluation-04", "item": "Appendix A.3 case G4, standing withdrawn", "relation": "same-result"}
+      ],
+      "vectors": [
+        {
+          "id": "TC-1/positive",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "standing-source",
+              "predicate": "issuer standing held",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T10:00:01Z", "satisfies": true}
+            }
+          ],
+          "expected": [
+            {"state": "established-positive", "reason": "within-bound", "asOf": "2026-10-19T10:00:01Z", "ageSeconds": 3599, "decision": "permit"}
+          ]
+        },
+        {
+          "id": "TC-1/negative",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "standing-source",
+              "predicate": "issuer standing held",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T10:00:01Z", "satisfies": false}
+            }
+          ],
+          "expected": [
+            {"state": "established-negative", "reason": "within-bound", "asOf": "2026-10-19T10:00:01Z", "ageSeconds": 3599, "decision": "refuse", "refusal": "permanent"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TC-2",
+      "summary": "Age equal to the freshness bound",
+      "requirements": [],
+      "related": [
+        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Appendix B vector FR2", "relation": "same-result"},
+        {"document": "draft-jackson-wimse-evaluation-04", "item": "Section 3 and Appendix A.3 cases G2 and G3", "relation": "different-result", "note": "A fetched input may not be used at or past its horizon, so an age equal to the maximum is already outside the bound."}
+      ],
+      "vectors": [
+        {
+          "id": "TC-2/one-second-less",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "standing-source",
+              "predicate": "issuer standing held",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T10:00:01Z", "satisfies": true}
+            }
+          ],
+          "expected": [
+            {"state": "established-positive", "ageSeconds": 3599, "stateUnderRule": {"age-equal-is-past": "established-positive"}}
+          ]
+        },
+        {
+          "id": "TC-2/equal",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "standing-source",
+              "predicate": "issuer standing held",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T10:00:00Z", "satisfies": true}
+            }
+          ],
+          "expected": [
+            {"state": "established-positive", "reason": "within-bound", "ageSeconds": 3600, "decision": "permit", "stateUnderRule": {"age-equal-is-past": "stale"}}
+          ]
+        },
+        {
+          "id": "TC-2/one-second-more",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "standing-source",
+              "predicate": "issuer standing held",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T09:59:59Z", "satisfies": true}
+            }
+          ],
+          "expected": [
+            {"state": "stale", "ageSeconds": 3601, "stateUnderRule": {"age-equal-is-past": "stale"}}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TC-3",
+      "summary": "Age greater than the freshness bound",
+      "requirements": ["REQ-1", "REQ-2"],
+      "related": [
+        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Appendix B vector FR3", "relation": "same-result"},
+        {"document": "draft-jackson-wimse-evaluation-04", "item": "Appendix A.3 case G3", "relation": "same-result", "note": "Past the horizon with no new answer from the source: a transient refusal recorded as not evaluated."}
+      ],
+      "vectors": [
+        {
+          "id": "TC-3/stale",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "standing-source",
+              "predicate": "issuer standing held",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T09:59:59Z", "satisfies": true}
+            }
+          ],
+          "expected": [
+            {"state": "stale", "reason": "older-than-bound", "asOf": "2026-10-19T09:59:59Z", "ageSeconds": 3601, "decision": "refuse", "refusal": "transient"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TC-4",
+      "summary": "Input never obtained",
+      "requirements": [],
+      "related": [
+        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Appendix B vectors A10 and FR4", "relation": "same-result"}
+      ],
+      "vectors": [
+        {
+          "id": "TC-4/never-held",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "standing-source",
+              "predicate": "issuer standing held",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "no-value"}
+            }
+          ],
+          "expected": [
+            {"state": "not-established", "reason": "no-value", "asOf": null, "ageSeconds": null, "decision": "refuse", "refusal": "transient"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TC-5",
+      "summary": "Source unreachable, or blocked by the decision point's own retrieval policy",
+      "requirements": ["REQ-1", "REQ-3"],
+      "related": [
+        {"document": "draft-king-dawn-requirements-02", "item": "REQ-PROP-3", "relation": "same-rule"}
+      ],
+      "vectors": [
+        {
+          "id": "TC-5/unreachable",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "key-source",
+              "predicate": "issuer key available",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "unreachable"}
+            }
+          ],
+          "expected": [
+            {"state": "not-established", "reason": "unreachable", "asOf": null, "decision": "refuse", "refusal": "transient"}
+          ]
+        },
+        {
+          "id": "TC-5/blocked-by-own-policy",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "key-source",
+              "predicate": "issuer key available",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "blocked-by-own-policy"}
+            }
+          ],
+          "expected": [
+            {"state": "not-established", "reason": "blocked-by-own-policy", "asOf": null, "decision": "refuse", "refusal": "transient"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TC-6",
+      "summary": "Absence found by a complete lookup, and a lookup that did not complete",
+      "requirements": [],
+      "related": [
+        {"document": "draft-king-dawn-requirements-02", "item": "REQ-PROP-3", "relation": "same-rule"}
+      ],
+      "vectors": [
+        {
+          "id": "TC-6/absent-where-required",
+          "evaluations": [
+            {
+              "hop": "discovering-agent",
+              "input": "capability-description",
+              "predicate": "capability description present",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T10:59:00Z", "found": false, "satisfies": false}
+            }
+          ],
+          "expected": [
+            {"state": "established-negative", "reason": "within-bound", "decision": "refuse", "refusal": "permanent"}
+          ]
+        },
+        {
+          "id": "TC-6/absent-from-revocation-list",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "revocation-status",
+              "predicate": "not revoked",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T10:59:00Z", "found": false, "satisfies": true}
+            }
+          ],
+          "expected": [
+            {"state": "established-positive", "reason": "within-bound", "decision": "permit"}
+          ]
+        },
+        {
+          "id": "TC-6/lookup-incomplete",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "revocation-status",
+              "predicate": "not revoked",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "lookup-incomplete"}
+            }
+          ],
+          "expected": [
+            {"state": "not-established", "reason": "lookup-incomplete", "decision": "refuse", "refusal": "transient"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TC-7",
+      "summary": "Cross-domain policy profile not held",
+      "requirements": ["REQ-3"],
+      "related": [
+        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Appendix B vector A20", "relation": "same-result"}
+      ],
+      "vectors": [
+        {
+          "id": "TC-7/profile-not-held",
+          "evaluations": [
+            {
+              "hop": "receiving-domain",
+              "input": "policy-source",
+              "predicate": "request within the named profile",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "profile-not-held", "profile": "urn:example:profile:transfer-limits:3"}
+            }
+          ],
+          "expected": [
+            {"state": "not-established", "reason": "profile-not-held", "profile": "urn:example:profile:transfer-limits:3", "decision": "refuse", "refusal": "transient"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TC-8",
+      "summary": "Consumption state cannot be read",
+      "requirements": [],
+      "related": [
+        {"document": "draft-jackson-wimse-evaluation-04", "item": "Appendix A.1 case E7", "relation": "same-result"}
+      ],
+      "vectors": [
+        {
+          "id": "TC-8/consumption-state-unreadable",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "consumption-state",
+              "predicate": "approval not consumed",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "unreachable"}
+            }
+          ],
+          "expected": [
+            {"state": "not-established", "reason": "unreachable", "decision": "refuse", "refusal": "transient"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TC-9",
+      "summary": "Status list cannot be fetched, or its cached answer has expired",
+      "requirements": [],
+      "related": [
+        {"document": "draft-asor-wimse-agent-delegation-chain-02", "item": "Section 6 step 7", "relation": "same-rule", "note": "Both are UNKNOWN there, the verifier denies, and unknown is not read as not revoked."}
+      ],
+      "vectors": [
+        {
+          "id": "TC-9/list-not-fetched",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "revocation-status",
+              "predicate": "not revoked",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "unreachable"}
+            }
+          ],
+          "expected": [
+            {"state": "not-established", "reason": "unreachable", "decision": "refuse", "refusal": "transient"}
+          ]
+        },
+        {
+          "id": "TC-9/cached-answer-expired",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "revocation-status",
+              "predicate": "not revoked",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T09:30:00Z", "satisfies": true, "refresh": "failed"}
+            }
+          ],
+          "expected": [
+            {"state": "stale", "reason": "older-than-bound", "ageSeconds": 5400, "decision": "refuse", "refusal": "transient"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TC-10",
+      "summary": "Value received from another hop",
+      "requirements": ["REQ-6"],
+      "related": [
+        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Appendix B vector FR1, forwarded and fresh", "relation": "same-result"},
+        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Appendix B vector FR3, forwarded and stale", "relation": "same-result"}
+      ],
+      "vectors": [
+        {
+          "id": "TC-10/fresh",
+          "evaluations": [
+            {
+              "hop": "hop-2",
+              "input": "standing-source",
+              "predicate": "issuer standing held",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T10:10:00Z", "satisfies": true, "receivedFrom": "hop-1", "receivedAt": "2026-10-19T10:59:50Z"}
+            }
+          ],
+          "expected": [
+            {"state": "established-positive", "ageSeconds": 3000, "stateIfAgeFromReceipt": "established-positive"}
+          ]
+        },
+        {
+          "id": "TC-10/stale-from-source",
+          "evaluations": [
+            {
+              "hop": "hop-2",
+              "input": "standing-source",
+              "predicate": "issuer standing held",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T09:59:59Z", "satisfies": true, "receivedFrom": "hop-1", "receivedAt": "2026-10-19T10:59:50Z"}
+            }
+          ],
+          "expected": [
+            {"state": "stale", "reason": "older-than-bound", "ageSeconds": 3601, "decision": "refuse", "refusal": "transient", "stateIfAgeFromReceipt": "established-positive"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TC-11",
+      "summary": "One forwarded value judged at two hops with different bounds",
+      "requirements": ["REQ-6"],
+      "related": [
+        {"document": "probityai/agent-evidence-vectors pull request 185", "item": "vectors FR15a and FR15b", "relation": "same-result", "status": "open pull request", "commit": "c11b55d7ea26ce580c63dd6324f0dbb643b07fc7"}
+      ],
+      "vectors": [
+        {
+          "id": "TC-11/two-bounds",
+          "evaluations": [
+            {
+              "hop": "hop-1",
+              "input": "standing-source",
+              "predicate": "issuer standing held",
+              "decisionAt": "2026-10-19T11:04:00Z",
+              "boundSeconds": 7200,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T10:00:00Z", "satisfies": true}
+            },
+            {
+              "hop": "hop-2",
+              "input": "standing-source",
+              "predicate": "issuer standing held",
+              "decisionAt": "2026-10-19T11:04:02Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T10:00:00Z", "satisfies": true, "receivedFrom": "hop-1", "receivedAt": "2026-10-19T11:04:01Z"}
+            }
+          ],
+          "expected": [
+            {"state": "established-positive", "reason": "within-bound", "ageSeconds": 3840, "decision": "permit"},
+            {"state": "stale", "reason": "older-than-bound", "ageSeconds": 3842, "decision": "refuse", "refusal": "transient"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TC-12",
+      "summary": "A later hop establishes an input an earlier hop could not",
+      "requirements": ["REQ-10"],
+      "related": [
+        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Section 5.4, a later hop writes a new record and never amends the earlier one", "relation": "same-rule"}
+      ],
+      "vectors": [
+        {
+          "id": "TC-12/later-hop",
+          "evaluations": [
+            {
+              "hop": "hop-1",
+              "input": "key-source",
+              "predicate": "issuer key available",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "unreachable"}
+            },
+            {
+              "hop": "hop-2",
+              "input": "key-source",
+              "predicate": "issuer key available",
+              "decisionAt": "2026-10-19T11:05:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T11:04:30Z", "satisfies": true}
+            }
+          ],
+          "expected": [
+            {"state": "not-established", "reason": "unreachable", "decision": "refuse", "refusal": "transient"},
+            {"state": "established-positive", "reason": "within-bound", "ageSeconds": 30, "decision": "permit"}
+          ],
+          "earlierRecordsUnchanged": true
+        }
+      ]
+    },
+    {
+      "id": "TC-13",
+      "summary": "\"As of\" time later than the decision",
+      "requirements": [],
+      "related": [
+        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Appendix B vector FR9", "relation": "same-rule", "note": "That format treats a record carrying such a value as malformed."},
+        {"document": "probityai/agent-evidence-vectors pull request 185", "item": "vector FR16, exactly at the tolerance", "relation": "same-result", "status": "open pull request", "commit": "c11b55d7ea26ce580c63dd6324f0dbb643b07fc7"}
+      ],
+      "vectors": [
+        {
+          "id": "TC-13/beyond-tolerance",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "key-source",
+              "predicate": "issuer key available",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T11:05:01Z", "satisfies": true}
+            }
+          ],
+          "expected": [
+            {"state": "not-established", "reason": "as-of-after-decision", "ageSeconds": -301, "decision": "refuse", "refusal": "transient"}
+          ]
+        },
+        {
+          "id": "TC-13/at-tolerance",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "key-source",
+              "predicate": "issuer key available",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T11:05:00Z", "satisfies": true}
+            }
+          ],
+          "expected": [
+            {"state": "established-positive", "reason": "within-bound", "ageSeconds": -300, "decision": "permit"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TC-14",
+      "summary": "Evaluation state reaches the deciding participant only after the decision",
+      "requirements": ["REQ-9"],
+      "related": [],
+      "vectors": [
+        {
+          "id": "TC-14/state-arrives-late",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "standing-source",
+              "predicate": "issuer standing held",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T10:59:00Z", "satisfies": true, "establishedBy": "issuer-domain", "availableAt": "2026-10-19T11:00:10Z"}
+            },
+            {
+              "hop": "verifier",
+              "input": "standing-source",
+              "predicate": "issuer standing held",
+              "decisionAt": "2026-10-19T11:00:20Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "value", "asOf": "2026-10-19T10:59:00Z", "satisfies": true, "establishedBy": "issuer-domain", "availableAt": "2026-10-19T11:00:10Z"}
+            }
+          ],
+          "expected": [
+            {"state": "not-established", "reason": "not-available-at-decision", "asOf": null, "ageSeconds": null, "decision": "refuse", "refusal": "transient"},
+            {"state": "established-positive", "reason": "within-bound", "ageSeconds": 80, "decision": "permit"}
+          ],
+          "earlierRecordsUnchanged": true
+        }
+      ]
+    },
+    {
+      "id": "TC-15",
+      "summary": "Coarse reason for the caller, detail for the operator",
+      "requirements": ["REQ-5", "REQ-8"],
+      "related": [
+        {"document": "draft-agentic-ai-usecases-requirements-04", "item": "Section 7, signaled error reasons", "relation": "same-rule", "note": "Reasons precise enough to act on, without revealing information an attacker could use."}
+      ],
+      "vectors": [
+        {
+          "id": "TC-15/coarse-caller-reason",
+          "evaluations": [
+            {
+              "hop": "verifier",
+              "input": "key-source",
+              "predicate": "issuer key available",
+              "decisionAt": "2026-10-19T11:00:00Z",
+              "boundSeconds": 3600,
+              "observation": {"outcome": "unreachable"}
+            }
+          ],
+          "expected": [
+            {"state": "not-established", "reason": "unreachable", "decision": "refuse", "refusal": "transient", "callerView": {"decision": "refuse", "reason": "evaluation-incomplete"}}
+          ]
+        }
+      ]
+    }
+  ]
+}
