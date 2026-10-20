@@ -297,11 +297,12 @@
             "decision": "refuse",
             "reason": "evaluation-incomplete"
           },
+          "component": "max-amount",
           "decision": "refuse",
           "decisionAt": "2026-10-19T11:00:00Z",
           "hop": "receiving-domain",
           "input": "policy-source",
-          "profile": "urn:example:profile:transfer-limits:3",
+          "profile": "sha-256:c0ba0cb4444f18e63f8b869ea10da1e4a707edf09519c8d0bd5efa55d107b8fb",
           "reason": "profile-not-held",
           "refusal": "transient",
           "state": "not-established"
@@ -606,7 +607,7 @@
   ],
   "skewToleranceSeconds": 300,
   "sources": {
-    "cases.json": "83397745c738ad0a16004e9675aef84fc11dd5d912986298210085bf9bd059aa",
-    "check_cases.py": "1c5e80ee8c3160199778498e1d3e82c85b387ad296e16a0eb07811b2c3560b1f"
+    "cases.json": "577318fc2a803acc3ebf97fa24268a39dabe519b37398d1dbb3355bdaeee1852",
+    "check_cases.py": "2c113e80eec4724dfc93c9a32c660590a73a16d9b99b0e23fecabf5fb028d861"
   }
 }

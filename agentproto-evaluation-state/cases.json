@@ -266,7 +266,9 @@
       "summary": "Cross-domain policy profile not held",
       "requirements": ["REQ-3"],
       "related": [
-        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Appendix B vector A20", "relation": "same-result"}
+        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Appendix B vector A20", "relation": "same-result"},
+        {"document": "draft-schrock-ep-bounded-capability-receipts-06", "item": "Section 7, a report records the reason, the profile identity and each component", "relation": "same-rule"},
+        {"document": "draft-ahuja-agent-routing-policy-02", "item": "Section 4, no other cause is reported as PROFILE_NOT_HELD; Section 6, the identifier names immutable semantics", "relation": "same-rule"}
       ],
       "vectors": [
         {
@@ -278,11 +280,11 @@
               "predicate": "request within the named profile",
               "decisionAt": "2026-10-19T11:00:00Z",
               "boundSeconds": 3600,
-              "observation": {"outcome": "profile-not-held", "profile": "urn:example:profile:transfer-limits:3"}
+              "observation": {"outcome": "profile-not-held", "profile": "sha-256:c0ba0cb4444f18e63f8b869ea10da1e4a707edf09519c8d0bd5efa55d107b8fb", "component": "max-amount"}
             }
           ],
           "expected": [
-            {"state": "not-established", "reason": "profile-not-held", "profile": "urn:example:profile:transfer-limits:3", "decision": "refuse", "refusal": "transient"}
+            {"state": "not-established", "reason": "profile-not-held", "profile": "sha-256:c0ba0cb4444f18e63f8b869ea10da1e4a707edf09519c8d0bd5efa55d107b8fb", "component": "max-amount", "decision": "refuse", "refusal": "transient"}
           ]
         }
       ]

@@ -107,10 +107,12 @@ class EvaluationStateCaseTests(unittest.TestCase):
         records[0]["state"] = records[1]["state"]
         self.assertEqual(self.cases.changed_records(records, digests), [0])
 
-    def test_profile_is_named_in_the_record(self) -> None:
+    def test_profile_report_carries_reason_profile_and_component(self) -> None:
         record = self.cases.evaluate(self.evaluation("TC-7/profile-not-held"))
-        self.assertEqual(record["profile"], "urn:example:profile:transfer-limits:3")
         self.assertEqual(record["state"], "not-established")
+        self.assertEqual(record["reason"], "profile-not-held")
+        self.assertTrue(record["profile"].startswith("sha-256:"))
+        self.assertEqual(record["component"], "max-amount")
 
     def test_unknown_outcome_is_rejected(self) -> None:
         self.cases.document["cases"][0]["vectors"][0]["evaluations"][0]["observation"]["outcome"] = "maybe"

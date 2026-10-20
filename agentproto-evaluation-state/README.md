@@ -3,8 +3,8 @@
 Test vectors for the test cases in Section 7.1 of
 [`draft-konda-agentproto-evaluation-state-02`](https://datatracker.ietf.org/doc/draft-konda-agentproto-evaluation-state/),
 with a small checker that applies the draft's rules to each vector and compares the result with the
-expected state. This is discussion evidence for the draft. It is not a conformance suite, and the
-field names are not proposed standard field names.
+expected state. This is discussion evidence for the draft, not a conformance suite. [Names](#names)
+says which names are candidates and which are fixture names.
 
 The point it shows: the same refusal can come from an established negative input, a stale input,
 an input that was never obtained, or one whose state arrived after the decision. The rules that
@@ -38,6 +38,16 @@ To show where two drafts differ, TC-2 is also evaluated under the rule in Sectio
 `draft-jackson-wimse-evaluation-04`. Under that rule a fetched input may not be used at or past its
 horizon, so an age equal to the maximum is already outside the bound.
 
+## Names
+
+The states are the ones in Section 6 of the draft: `established-positive`, `established-negative`,
+`stale` and `not-established`. The reasons are candidate names for why an input reached its state:
+`within-bound`, `older-than-bound`, `no-value`, `unreachable`, `blocked-by-own-policy`,
+`profile-not-held`, `lookup-incomplete`, `as-of-after-decision` and `not-available-at-decision`.
+A caller sees only `denied` or `evaluation-incomplete`. A `profile-not-held` record also carries the
+exact profile identifier and the compared component, as Section 4.2 of the draft describes. All
+other JSON field names are fixture names, not proposed protocol fields.
+
 ## Cases
 
 | Case | Condition | Expected | Matching public vector or case |
@@ -48,7 +58,7 @@ horizon, so an age equal to the maximum is already outside the bound.
 | TC-4 | Never obtained | Not-established; no "as of" time | Gilda `-00` A10, FR4 |
 | TC-5 | Source unreachable, or blocked by own retrieval policy | Not-established, with two different reasons | DAWN `-02` REQ-PROP-3 |
 | TC-6 | Complete lookup finds absence; lookup did not complete | Established, positive or negative by predicate; not-established | DAWN `-02` REQ-PROP-3 |
-| TC-7 | Policy profile not held | Not-established; the record names the profile | Gilda `-00` A20 |
+| TC-7 | Policy profile not held | Not-established; the record carries the reason, the exact profile identifier and the compared component | Gilda `-00` A20; Schrock `-06` Section 7; Ahuja `-02` Sections 4 and 6 |
 | TC-8 | Consumption state cannot be read | Not-established; transient refusal | Jackson `-04` A.1 E7 |
 | TC-9 | Status list not fetched; cached answer expired | Not-established; stale; never "not revoked" | Asor `-02` Section 6 step 7 |
 | TC-10 | Value received from another hop | Age runs from the source | Gilda `-00` FR1, FR3 |
@@ -62,8 +72,10 @@ There are 24 vectors and 27 evaluations. Times are UTC with whole seconds.
 
 Gilda `-00` is `draft-gilda-audit-agent-audit-record-00` (vectors in its Appendix B), Jackson `-04`
 is `draft-jackson-wimse-evaluation-04` (cases in its Appendix A), Asor `-02` is
-`draft-asor-wimse-agent-delegation-chain-02`, DAWN `-02` is `draft-king-dawn-requirements-02`, and
-UC&R `-04` is `draft-agentic-ai-usecases-requirements-04`. PR 185 is
+`draft-asor-wimse-agent-delegation-chain-02`, DAWN `-02` is `draft-king-dawn-requirements-02`,
+Schrock `-06` is `draft-schrock-ep-bounded-capability-receipts-06`, Ahuja `-02` is
+`draft-ahuja-agent-routing-policy-02`, and UC&R `-04` is
+`draft-agentic-ai-usecases-requirements-04`. PR 185 is
 [`probityai/agent-evidence-vectors#185`](https://github.com/probityai/agent-evidence-vectors/pull/185),
 compared at commit `c11b55d`.
 
@@ -94,5 +106,5 @@ Expected: 14 tests pass, all 24 vectors match, and `replay.json` is byte-identic
 |---|---|
 | `cases.json` | The 15 cases: conditions, expected states and records, and the matching public vectors |
 | `check_cases.py` | Reference checker |
-| `test_check_cases.py` | 14 focused checks: both boundary rules, source time versus receipt time, per-hop bounds, skew, absence, late state, the caller view, unchanged earlier records and replay |
+| `test_check_cases.py` | 14 focused checks: both boundary rules, source time versus receipt time, per-hop bounds, skew, absence, late state, the profile-not-held record, the caller view, unchanged earlier records and replay |
 | `results.json` | The recorded run |

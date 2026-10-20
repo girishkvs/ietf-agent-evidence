@@ -14,4 +14,10 @@ recorded results, and what it does not show.
 These are discussion evidence. They are not conformance results, interoperability tests, measured
 production behavior or proposed standard field names. Each README states its own limits.
 
+## License
+
+[BSD 3-Clause](LICENSE): the Revised BSD terms that the IETF Trust Legal Provisions (Section 4.e)
+apply to code components in Internet-Drafts. It covers this repository's own code, data and
+documentation. Upstream projects that the cases run against keep their own licenses.
+
 Girish Konda
