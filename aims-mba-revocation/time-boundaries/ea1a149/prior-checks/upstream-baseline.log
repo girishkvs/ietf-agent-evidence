@@ -1,0 +1,12 @@
+$ vitest run
+
+ RUN  v4.1.10 /workspace/scratch/853bf746f5d4/mba-checkout/src
+
+(node:81) [DEP0204] DeprecationWarning: Passing a non-extractable CryptoKey to KeyObject.from() is deprecated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+ Test Files  175 passed | 14 skipped (189)
+      Tests  2703 passed | 152 skipped (2855)
+   Start at  10:09:34
+   Duration  34.99s (transform 11.47s, setup 0ms, import 119.09s, tests 84.88s, environment 21ms)
+

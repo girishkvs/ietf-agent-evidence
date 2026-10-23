@@ -1,0 +1,187 @@
+{
+  "kind": "expected-results-not-run-evidence",
+  "targetMbaCommit": "ea1a1490716f045d9fda42d73b1a7b891dea5fb9",
+  "epsilonMs": 1,
+  "sMs": 300000,
+  "lMs": 300000,
+  "cases": [
+    {
+      "caseId": "B1-issue--1",
+      "stage": "issuance-explicit-expiry",
+      "ok": true,
+      "reason": null,
+      "ageMs": 299999,
+      "validUntilOffsetFromAsOfMs": 599999
+    },
+    {
+      "caseId": "B1-issue-0",
+      "stage": "issuance-explicit-expiry",
+      "ok": true,
+      "reason": null,
+      "ageMs": 300000,
+      "validUntilOffsetFromAsOfMs": 600000
+    },
+    {
+      "caseId": "B1-issue-1",
+      "stage": "issuance-explicit-expiry",
+      "ok": false,
+      "reason": "stale_state",
+      "ageMs": 300001,
+      "validUntilOffsetFromAsOfMs": null
+    },
+    {
+      "caseId": "B2-observation-only--1",
+      "stage": "issuance-observation-only",
+      "ok": true,
+      "reason": null,
+      "ageMs": 299999,
+      "validUntilOffsetFromAsOfMs": 300000
+    },
+    {
+      "caseId": "B2-observation-only-0",
+      "stage": "issuance-observation-only",
+      "ok": false,
+      "reason": "stale_state",
+      "ageMs": 300000,
+      "validUntilOffsetFromAsOfMs": null
+    },
+    {
+      "caseId": "B2-observation-only-1",
+      "stage": "issuance-observation-only",
+      "ok": false,
+      "reason": "stale_state",
+      "ageMs": 300001,
+      "validUntilOffsetFromAsOfMs": null
+    },
+    {
+      "caseId": "B3-use--1",
+      "stage": "permit-admission",
+      "ok": true,
+      "reason": null,
+      "admissionOffsetFromDeadlineMs": -1
+    },
+    {
+      "caseId": "B3-use-0",
+      "stage": "permit-admission",
+      "ok": true,
+      "reason": null,
+      "admissionOffsetFromDeadlineMs": 0
+    },
+    {
+      "caseId": "B3-use-1",
+      "stage": "permit-admission",
+      "ok": false,
+      "reason": "permit_expired",
+      "admissionOffsetFromDeadlineMs": 1
+    },
+    {
+      "caseId": "B4-combined--1--1",
+      "stage": "combined-asof-envelope",
+      "ok": true,
+      "reason": null,
+      "issueOffsetFromAsOfMs": 299999,
+      "admissionOffsetFromAsOfMs": 599999,
+      "revocationOffsetFromAsOfMs": 1,
+      "validUntilOffsetFromAsOfMs": 599999
+    },
+    {
+      "caseId": "B4-combined--1-0",
+      "stage": "combined-asof-envelope",
+      "ok": false,
+      "reason": "permit_expired",
+      "issueOffsetFromAsOfMs": 299999,
+      "admissionOffsetFromAsOfMs": 600000,
+      "revocationOffsetFromAsOfMs": 1,
+      "validUntilOffsetFromAsOfMs": 599999
+    },
+    {
+      "caseId": "B4-combined--1-1",
+      "stage": "combined-asof-envelope",
+      "ok": false,
+      "reason": "permit_expired",
+      "issueOffsetFromAsOfMs": 299999,
+      "admissionOffsetFromAsOfMs": 600001,
+      "revocationOffsetFromAsOfMs": 1,
+      "validUntilOffsetFromAsOfMs": 599999
+    },
+    {
+      "caseId": "B4-combined-0--1",
+      "stage": "combined-asof-envelope",
+      "ok": true,
+      "reason": null,
+      "issueOffsetFromAsOfMs": 300000,
+      "admissionOffsetFromAsOfMs": 599999,
+      "revocationOffsetFromAsOfMs": 1,
+      "validUntilOffsetFromAsOfMs": 600000
+    },
+    {
+      "caseId": "B4-combined-0-0",
+      "stage": "combined-asof-envelope",
+      "ok": true,
+      "reason": null,
+      "issueOffsetFromAsOfMs": 300000,
+      "admissionOffsetFromAsOfMs": 600000,
+      "revocationOffsetFromAsOfMs": 1,
+      "validUntilOffsetFromAsOfMs": 600000
+    },
+    {
+      "caseId": "B4-combined-0-1",
+      "stage": "combined-asof-envelope",
+      "ok": false,
+      "reason": "permit_expired",
+      "issueOffsetFromAsOfMs": 300000,
+      "admissionOffsetFromAsOfMs": 600001,
+      "revocationOffsetFromAsOfMs": 1,
+      "validUntilOffsetFromAsOfMs": 600000
+    },
+    {
+      "caseId": "B5-cache-revalidate",
+      "stage": "adapter-current-versus-cache",
+      "ok": true,
+      "reason": null,
+      "originalAsOfRetained": true,
+      "checkedState": "active"
+    },
+    {
+      "caseId": "B5-source-revalidate",
+      "stage": "adapter-current-versus-cache",
+      "ok": false,
+      "reason": "mission_inactive",
+      "checkedState": "terminated"
+    },
+    {
+      "caseId": "B6-cache-read-only",
+      "stage": "adapter-age-enforcement",
+      "ok": true,
+      "reason": null,
+      "admissionOffsetFromAsOfMs": 300001,
+      "originalAsOfRetained": true
+    },
+    {
+      "caseId": "B6-cache-revalidate",
+      "stage": "adapter-age-enforcement",
+      "ok": false,
+      "reason": "stale_state",
+      "admissionOffsetFromAsOfMs": 300001,
+      "originalAsOfRetained": true
+    },
+    {
+      "caseId": "B7-observation-only-delay-control",
+      "stage": "evaluation-delay-characterization",
+      "ok": false,
+      "reason": "stale_state",
+      "evaluationStartOffsetFromAsOfMs": 299999,
+      "decisionCompletionOffsetFromAsOfMs": 300001
+    },
+    {
+      "caseId": "B7-age-check-to-issuance-gap",
+      "stage": "evaluation-delay-characterization",
+      "ok": true,
+      "reason": null,
+      "evaluationStartOffsetFromAsOfMs": 299999,
+      "decisionCompletionOffsetFromAsOfMs": 300001,
+      "validUntilOffsetFromAsOfMs": 600001,
+      "supportsSAtFinalIssuance": false
+    }
+  ]
+}

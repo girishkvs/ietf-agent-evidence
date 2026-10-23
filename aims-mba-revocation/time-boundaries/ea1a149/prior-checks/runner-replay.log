@@ -1,0 +1,31 @@
+
+ RUN  v4.1.10 /workspace/scratch/853bf746f5d4/mba-checkout/src
+
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B1 state-age issuance, explicit state expiry: S-1ms 33ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B1 state-age issuance, explicit state expiry: S+0ms 11ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B1 state-age issuance, explicit state expiry: S+1ms 10ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B2 observation-only issuance and deadline: S-1ms 11ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B2 observation-only issuance and deadline: S+0ms 10ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B2 observation-only issuance and deadline: S+1ms 9ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B3 permit admission: valid_until-1ms 20ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B3 permit admission: valid_until+0ms 11ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B3 permit admission: valid_until+1ms 13ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B4 combined original as-of + S + L: issue S-1, admit S+L-1 12ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B4 combined original as-of + S + L: issue S-1, admit S+L0 11ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B4 combined original as-of + S + L: issue S-1, admit S+L1 11ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B4 combined original as-of + S + L: issue S0, admit S+L-1 10ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B4 combined original as-of + S + L: issue S0, admit S+L0 11ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B4 combined original as-of + S + L: issue S0, admit S+L1 11ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B5 admission recheck within S distinguishes source from cache: cache-revalidate 12ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B5 admission recheck within S distinguishes source from cache: source-revalidate 12ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B6 admission past S with an unexpired permit: cache-read-only 10ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B6 admission past S with an unexpired permit: cache-revalidate 9ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B7 observation-only control: the final state deadline refuses an FGA crossing of S 9ms
+ ✓ packages/mission-signals/test/w7-time-boundaries.test.ts > W7 extension: exact time boundaries of the pinned MBA components > B7 characterization: an awaited FGA step can cross S after the age check 9ms
+
+ Test Files  1 passed (1)
+      Tests  21 passed (21)
+   Start at  10:14:11
+   Duration  2.18s (transform 1.10s, setup 0ms, import 1.75s, tests 259ms, environment 0ms)
+
+JSON report written to /workspace/scratch/853bf746f5d4/runner-check/vitest.json
