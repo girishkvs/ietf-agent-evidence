@@ -1,0 +1,27 @@
+{
+  "kind": "expected-results-not-run-evidence",
+  "targetMbaCommit": "c941a738f11ea66ace2af4be5932477b21b4fce1",
+  "epsilonMs": 1,
+  "sMs": 300000,
+  "lMs": 300000,
+  "cases": [
+    {
+      "caseId": "B7-observation-only-delay-control",
+      "stage": "evaluation-delay-characterization",
+      "ok": false,
+      "reason": "stale_state",
+      "evaluationStartOffsetFromAsOfMs": 299999,
+      "decisionCompletionOffsetFromAsOfMs": 300001
+    },
+    {
+      "caseId": "B7-age-check-to-issuance-gap",
+      "stage": "evaluation-delay-characterization",
+      "ok": true,
+      "reason": null,
+      "evaluationStartOffsetFromAsOfMs": 299999,
+      "decisionCompletionOffsetFromAsOfMs": 300001,
+      "validUntilOffsetFromAsOfMs": 600001,
+      "supportsSAtFinalIssuance": false
+    }
+  ]
+}

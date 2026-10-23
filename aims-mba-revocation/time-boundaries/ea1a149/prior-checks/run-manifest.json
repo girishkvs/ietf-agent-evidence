@@ -1,0 +1,79 @@
+{
+  "kind": "observed-local-component-run",
+  "dateEuropeMoscow": "2026-10-23",
+  "actualMbaCommit": "ea1a1490716f045d9fda42d73b1a7b891dea5fb9",
+  "trackedMbaSourceModified": false,
+  "gitStatus": "?? src/packages/mission-signals/test/w7-time-boundaries.test.ts",
+  "environment": {
+    "node": "v24.19.0",
+    "pnpm": "11.25.0",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "architecture": "x86_64",
+    "vitest": "4.1.10",
+    "typescript": "5.9.3",
+    "betterSqlite3": "12.11.1"
+  },
+  "upstreamDeclaredPnpm": "11.15.1",
+  "lockfileSha256": "51b2bd0cd6f807969c1be94775578d021bb579e61da46e55bcf1561b092d789e",
+  "betterSqliteBinarySha256": "45cb92a176fb758533db6d9a343acdfc73e4de27ac4c20a0cb2a6fb5be3e84f2",
+  "testFileSha256": "350fd59b21225a6e1951ca2eec51b60fbd7655888a7bb041f4a900d6fb2ab23b",
+  "expectedResultsSha256": "34ecb2c6b73619c4ae6ebad29c8e1fbb0a231a4bb4eaa842e02a8071cfc5eba0",
+  "results": {
+    "passed": 21,
+    "failed": 0,
+    "skipped": 0
+  },
+  "upstreamBaseline": {
+    "passed": 2703,
+    "skipped": 152,
+    "passedFiles": 175,
+    "skippedFiles": 14,
+    "timing": "before adding extension",
+    "log": "upstream-baseline.log"
+  },
+  "checks": {
+    "workspaceTypecheck": {
+      "exitCode": 0,
+      "scope": "upstream src, tests excluded"
+    },
+    "workspaceLint": {
+      "exitCode": 0,
+      "scope": "upstream baseline"
+    },
+    "extensionTypecheck": {
+      "exitCode": 0,
+      "command": "pnpm exec tsc --noEmit --module nodenext --moduleResolution nodenext --target es2023 --lib es2024,dom --strict --skipLibCheck --noUncheckedIndexedAccess --exactOptionalPropertyTypes packages/mission-signals/test/w7-time-boundaries.test.ts"
+    },
+    "extensionLint": {
+      "exitCode": 0,
+      "command": "pnpm exec biome check packages/mission-signals/test/w7-time-boundaries.test.ts"
+    },
+    "runnerReplay": {
+      "exitCode": 0,
+      "passed": 21
+    },
+    "expectedOutcomeComparison": {
+      "matched": 21
+    }
+  },
+  "scope": "Pinned MBA components and test-only adapters in one process. No arithmetic reference model used as replacement; no distributed deployment validation.",
+  "clock": {
+    "unit": "integer epoch milliseconds",
+    "epsilonMs": 1,
+    "injectedClockSkewMs": 0,
+    "freshnessFutureSkewToleranceMs": 0,
+    "ageOrPermitExpiryGraceMs": 0,
+    "measuredWallClockAccuracy": "not measured"
+  },
+  "evidenceSha256": {
+    "boundary-run.log": "759dee60ff73226bdc3ff9fcc63c461eac8a1af019d82df108c58d62a622f781",
+    "boundary-traces.json": "9e4b9a77e368afd8098536a541c5de2ee168574c28eb934b62789c8f713fc1b3",
+    "extension-lint.log": "69f194727da43cc6a463e6d0d05b764b64b63443a79688b0efdee53ab030c136",
+    "extension-typecheck.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runner-replay.log": "4ff7326ce63ca8930315d5d0228912d3ed74b855e5885577c0caecc37bdd2475",
+    "upstream-baseline.log": "610e8e3b6af4d0433dec5832e8e2e732ca43a570a982211581485f23635ddce1",
+    "vitest.json": "4ec282f95fbf97eb91fb2414e11f766c28e79f8c194c17312f8d017ce6b637fe",
+    "workspace-lint.log": "3ee231cc90c361cf242f72fe171d3324541c9f0b950bd06e7ef389874cc2ebf0",
+    "workspace-typecheck.log": "1a9d0ae645dd7a140cca346d6aff986ea7da3ce5c5da91377facf5cc18c34127"
+  }
+}

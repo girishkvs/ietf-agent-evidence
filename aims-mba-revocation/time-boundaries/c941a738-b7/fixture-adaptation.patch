@@ -1,0 +1,22 @@
+--- ea1a149/w7-time-boundaries.test.ts
++++ c941a738-b7/w7-time-boundaries.test.ts
+@@ -36,0 +37 @@
++import { RESOURCE_POLICY_PERMITS_ALL_FIXTURE } from "@mission/pdp/test-support";
+@@ -65 +66 @@
+-const MBA_COMMIT = "ea1a1490716f045d9fda42d73b1a7b891dea5fb9";
++const MBA_COMMIT = "c941a738f11ea66ace2af4be5932477b21b4fce1";
+@@ -181,0 +183 @@
++      worker.receiver.close();
+@@ -215,0 +218 @@
++      resourcePolicy: RESOURCE_POLICY_PERMITS_ALL_FIXTURE,
+@@ -423 +426,9 @@
+-  for (const fixture of fixtures.splice(0)) fixture.close();
++  for (const fixture of fixtures.splice(0)) {
++    if (!reports.some((r) => r.caseId === fixture.caseId)) {
++      fixture.finish({
++        caseIncomplete: true,
++        lastDecisions: fixture.workers.map((w) => w.lastDecision),
++      });
++    }
++    fixture.close();
++  }

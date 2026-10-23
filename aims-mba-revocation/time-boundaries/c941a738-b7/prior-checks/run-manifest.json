@@ -1,0 +1,53 @@
+{
+  "recordedAtUtc": "2026-10-23T01:44:46.519050+00:00",
+  "mbaCommit": "c941a738f11ea66ace2af4be5932477b21b4fce1",
+  "upstreamTrackedSourceChanged": false,
+  "selectedCases": 2,
+  "passed": 2,
+  "unselectedCases": 19,
+  "testCommand": "W7_BOUNDARY_RESULT_DIRECTORY=<results> pnpm exec vitest run packages/mission-signals/test/w7-time-boundaries.test.ts -t B7 --reporter=verbose --reporter=json --outputFile=<results>/vitest.json",
+  "testCommandCwd": "<MBA>/src",
+  "checks": {
+    "componentTests": {
+      "exitCode": 0,
+      "log": "test.log"
+    },
+    "workspaceTypecheck": {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "workspace-typecheck.log"
+    },
+    "workspaceLint": {
+      "command": "pnpm lint",
+      "exitCode": 0,
+      "log": "workspace-lint.log"
+    },
+    "testTypecheck": {
+      "command": "pnpm exec tsc --noEmit --module nodenext --moduleResolution nodenext --target es2023 --lib es2024,dom --strict --skipLibCheck --noUncheckedIndexedAccess --exactOptionalPropertyTypes services/authorization-server/src/adapters/oidc-provider-internals.d.ts packages/mission-signals/test/w7-time-boundaries.test.ts",
+      "exitCode": 0,
+      "log": "test-typecheck.log"
+    },
+    "testBiome": {
+      "command": "pnpm exec biome check packages/mission-signals/test/w7-time-boundaries.test.ts",
+      "exitCode": 0,
+      "log": "test-biome.log"
+    },
+    "runnerSyntax": {
+      "command": "bash -n run-current-b7.sh",
+      "exitCode": 0
+    }
+  },
+  "fullCurrentUpstreamSuite": "not run",
+  "initialUnadaptedRun": "failed before FGA; pdp_unreachable; retained separately",
+  "hashesSha256": {
+    "src/packages/mission-signals/test/w7-time-boundaries.test.ts": "9215af9a4a599bce2c33b3a835e30058864d38d5d975b668761f28a937011c1f",
+    "src/services/pdp/src/evaluate.ts": "1676b0102adad7b959e22d2ce217c16076d1c5e1a83dbf7957303e140ff0972d",
+    "src/services/pdp/src/permit-deadline.ts": "aa4d3ea2020decc060252bb0d20445cd236327fea515dfeb18f3af06e51dbd8e",
+    "src/services/mcp-payments/src/pep.ts": "b2e6619c5f9ea165c5ce3e8d5e7a6b69f2c3ed6662fcd9907a1396e1fd44154e",
+    "src/pnpm-lock.yaml": "2b1e65c5d2625e209f26a36cafe1d45fdc6f8f4861f1ed469175976974d13fd9"
+  },
+  "node": "v24.19.0",
+  "pnpm": "11.25.0",
+  "platform": "{\"platform\":\"linux\",\"arch\":\"x64\"}",
+  "vitest": "vitest/4.1.10 linux-x64 node-v24.19.0"
+}
