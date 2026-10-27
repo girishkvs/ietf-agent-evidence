@@ -1,6 +1,6 @@
 {
   "title": "Evaluation-state test cases",
-  "draft": "draft-konda-agentproto-evaluation-state-02",
+  "draft": "draft-konda-agentproto-evaluation-state-03",
   "draftSection": "7.1",
   "boundaryRule": "age-equal-is-within",
   "skewToleranceSeconds": 300,
@@ -54,7 +54,7 @@
       "summary": "Age equal to the freshness bound",
       "requirements": [],
       "related": [
-        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Appendix B vector FR2", "relation": "same-result"},
+        {"document": "draft-gilda-audit-agent-audit-record-01", "item": "Appendix B vector FR2", "relation": "same-result"},
         {"document": "draft-jackson-wimse-evaluation-04", "item": "Section 3 and Appendix A.3 cases G2 and G3", "relation": "different-result", "note": "A fetched input may not be used at or past its horizon, so an age equal to the maximum is already outside the bound."}
       ],
       "vectors": [
@@ -113,7 +113,7 @@
       "summary": "Age greater than the freshness bound",
       "requirements": ["REQ-1", "REQ-2"],
       "related": [
-        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Appendix B vector FR3", "relation": "same-result"},
+        {"document": "draft-gilda-audit-agent-audit-record-01", "item": "Appendix B vector FR3", "relation": "same-result"},
         {"document": "draft-jackson-wimse-evaluation-04", "item": "Appendix A.3 case G3", "relation": "same-result", "note": "Past the horizon with no new answer from the source: a transient refusal recorded as not evaluated."}
       ],
       "vectors": [
@@ -140,7 +140,7 @@
       "summary": "Input never obtained",
       "requirements": [],
       "related": [
-        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Appendix B vectors A10 and FR4", "relation": "same-result"}
+        {"document": "draft-gilda-audit-agent-audit-record-01", "item": "Appendix B vectors A10 and FR4", "relation": "same-result"}
       ],
       "vectors": [
         {
@@ -266,9 +266,9 @@
       "summary": "Cross-domain policy profile not held",
       "requirements": ["REQ-3"],
       "related": [
-        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Appendix B vector A20", "relation": "same-result"},
+        {"document": "draft-gilda-audit-agent-audit-record-01", "item": "Appendix B vector A20", "relation": "same-result"},
         {"document": "draft-schrock-ep-bounded-capability-receipts-06", "item": "Section 7, a report records the reason, the profile identity and each component", "relation": "same-rule"},
-        {"document": "draft-ahuja-agent-routing-policy-02", "item": "Section 4, no other cause is reported as PROFILE_NOT_HELD; Section 6, the identifier names immutable semantics", "relation": "same-rule"}
+        {"document": "draft-ahuja-agent-routing-policy-03", "item": "Section 4, no other cause is reported as PROFILE_NOT_HELD; Section 6, the identifier names immutable semantics", "relation": "same-rule"}
       ],
       "vectors": [
         {
@@ -284,7 +284,7 @@
             }
           ],
           "expected": [
-            {"state": "not-established", "reason": "profile-not-held", "profile": "sha-256:c0ba0cb4444f18e63f8b869ea10da1e4a707edf09519c8d0bd5efa55d107b8fb", "component": "max-amount", "decision": "refuse", "refusal": "transient"}
+            {"state": "not-established", "reason": "profile-not-held", "profile": "sha-256:c0ba0cb4444f18e63f8b869ea10da1e4a707edf09519c8d0bd5efa55d107b8fb", "component": "max-amount", "verifier": "receiving-domain", "decision": "refuse", "refusal": "transient"}
           ]
         }
       ]
@@ -362,8 +362,8 @@
       "summary": "Value received from another hop",
       "requirements": ["REQ-6"],
       "related": [
-        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Appendix B vector FR1, forwarded and fresh", "relation": "same-result"},
-        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Appendix B vector FR3, forwarded and stale", "relation": "same-result"}
+        {"document": "draft-gilda-audit-agent-audit-record-01", "item": "Appendix B vector FR1, forwarded and fresh", "relation": "same-result"},
+        {"document": "draft-gilda-audit-agent-audit-record-01", "item": "Appendix B vector FR3, forwarded and stale", "relation": "same-result"}
       ],
       "vectors": [
         {
@@ -440,7 +440,7 @@
       "summary": "A later hop establishes an input an earlier hop could not",
       "requirements": ["REQ-10"],
       "related": [
-        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Section 5.4, a later hop writes a new record and never amends the earlier one", "relation": "same-rule"}
+        {"document": "draft-gilda-audit-agent-audit-record-01", "item": "Section 5.4, a later hop writes a new record and never amends the earlier one", "relation": "same-rule"}
       ],
       "vectors": [
         {
@@ -476,7 +476,7 @@
       "summary": "\"As of\" time later than the decision",
       "requirements": [],
       "related": [
-        {"document": "draft-gilda-audit-agent-audit-record-00", "item": "Appendix B vector FR9", "relation": "same-rule", "note": "That format treats a record carrying such a value as malformed."},
+        {"document": "draft-gilda-audit-agent-audit-record-01", "item": "Appendix B vector FR9", "relation": "same-rule", "note": "That format treats a record carrying such a value as malformed."},
         {"document": "probityai/agent-evidence-vectors pull request 185", "item": "vector FR16, exactly at the tolerance", "relation": "same-result", "status": "open pull request", "commit": "c11b55d7ea26ce580c63dd6324f0dbb643b07fc7"}
       ],
       "vectors": [
@@ -553,7 +553,7 @@
       "summary": "Coarse reason for the caller, detail for the operator",
       "requirements": ["REQ-5", "REQ-8"],
       "related": [
-        {"document": "draft-agentic-ai-usecases-requirements-04", "item": "Section 7, signaled error reasons", "relation": "same-rule", "note": "Reasons precise enough to act on, without revealing information an attacker could use."}
+        {"document": "draft-agentic-ai-usecases-requirements-05", "item": "Section 8, signaled error reasons", "relation": "same-rule", "note": "Reasons precise enough to act on, without revealing information an attacker could use."}
       ],
       "vectors": [
         {

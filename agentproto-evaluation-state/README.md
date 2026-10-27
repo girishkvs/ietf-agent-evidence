@@ -1,7 +1,7 @@
 # Evaluation-state test vectors
 
 Test vectors for the test cases in Section 7.1 of
-[`draft-konda-agentproto-evaluation-state-02`](https://datatracker.ietf.org/doc/draft-konda-agentproto-evaluation-state/),
+[`draft-konda-agentproto-evaluation-state-03`](https://datatracker.ietf.org/doc/draft-konda-agentproto-evaluation-state/),
 with a small checker that applies the draft's rules to each vector and compares the result with the
 expected state. This is discussion evidence for the draft, not a conformance suite. [Names](#names)
 says which names are candidates and which are fixture names.
@@ -45,7 +45,8 @@ The states are the ones in Section 6 of the draft: `established-positive`, `esta
 `within-bound`, `older-than-bound`, `no-value`, `unreachable`, `blocked-by-own-policy`,
 `profile-not-held`, `lookup-incomplete`, `as-of-after-decision` and `not-available-at-decision`.
 A caller sees only `denied` or `evaluation-incomplete`. A `profile-not-held` record also carries the
-exact profile identifier and the compared component, as Section 4.2 of the draft describes. All
+exact profile identifier, the compared component and the verifier that reported it, and never names
+a party that holds the definition, as Section 4.2 of the draft describes. All
 other JSON field names are fixture names, not proposed protocol fields.
 
 ## Cases
@@ -53,29 +54,29 @@ other JSON field names are fixture names, not proposed protocol fields.
 | Case | Condition | Expected | Matching public vector or case |
 |---|---|---|---|
 | TC-1 | Age below the bound | Established; the record keeps the "as of" time and bound | Jackson `-04` A.3 G1, G4 |
-| TC-2 | Age equal to the bound | Within the bound; stale under Jackson's rule | Gilda `-00` FR2 (same); Jackson `-04` A.3 G2, G3 (different) |
-| TC-3 | Age above the bound | Stale; transient refusal | Gilda `-00` FR3; Jackson `-04` A.3 G3 |
-| TC-4 | Never obtained | Not-established; no "as of" time | Gilda `-00` A10, FR4 |
+| TC-2 | Age equal to the bound | Within the bound; stale under Jackson's rule | Gilda `-01` FR2 (same); Jackson `-04` A.3 G2, G3 (different) |
+| TC-3 | Age above the bound | Stale; transient refusal | Gilda `-01` FR3; Jackson `-04` A.3 G3 |
+| TC-4 | Never obtained | Not-established; no "as of" time | Gilda `-01` A10, FR4 |
 | TC-5 | Source unreachable, or blocked by own retrieval policy | Not-established, with two different reasons | DAWN `-02` REQ-PROP-3 |
 | TC-6 | Complete lookup finds absence; lookup did not complete | Established, positive or negative by predicate; not-established | DAWN `-02` REQ-PROP-3 |
-| TC-7 | Policy profile not held | Not-established; the record carries the reason, the exact profile identifier and the compared component | Gilda `-00` A20; Schrock `-06` Section 7; Ahuja `-02` Sections 4 and 6 |
+| TC-7 | Policy profile not held | Not-established; the record carries the reason, the exact profile identifier, the compared component and the reporting verifier | Gilda `-01` A20; Schrock `-06` Section 7; Ahuja `-03` Sections 4 and 6 |
 | TC-8 | Consumption state cannot be read | Not-established; transient refusal | Jackson `-04` A.1 E7 |
 | TC-9 | Status list not fetched; cached answer expired | Not-established; stale; never "not revoked" | Asor `-02` Section 6 step 7 |
-| TC-10 | Value received from another hop | Age runs from the source | Gilda `-00` FR1, FR3 |
+| TC-10 | Value received from another hop | Age runs from the source | Gilda `-01` FR1, FR3 |
 | TC-11 | One value at two hops, bounds 7200 and 3600 seconds | Within at the first hop, stale at the second | PR 185 FR15a, FR15b (open) |
-| TC-12 | A later hop obtains the input | New record; earlier record unchanged | Gilda `-00` Section 5.4 |
-| TC-13 | "As of" time after the decision | Beyond tolerance: not-established; at tolerance: within | Gilda `-00` FR9; PR 185 FR16 (open) |
+| TC-12 | A later hop obtains the input | New record; earlier record unchanged | Gilda `-01` Section 5.4 |
+| TC-13 | "As of" time after the decision | Beyond tolerance: not-established; at tolerance: within | Gilda `-01` FR9; PR 185 FR16 (open) |
 | TC-14 | State reaches the deciding participant after the decision | Not-established for that decision; the later record is separate | - |
-| TC-15 | Coarse reason for the caller | Caller: `evaluation-incomplete`; record: input and state | UC&R `-04` Section 7 |
+| TC-15 | Coarse reason for the caller | Caller: `evaluation-incomplete`; record: input and state | UC&R `-05` Section 8 |
 
 There are 24 vectors and 27 evaluations. Times are UTC with whole seconds.
 
-Gilda `-00` is `draft-gilda-audit-agent-audit-record-00` (vectors in its Appendix B), Jackson `-04`
+Gilda `-01` is `draft-gilda-audit-agent-audit-record-01` (vectors in its Appendix B), Jackson `-04`
 is `draft-jackson-wimse-evaluation-04` (cases in its Appendix A), Asor `-02` is
 `draft-asor-wimse-agent-delegation-chain-02`, DAWN `-02` is `draft-king-dawn-requirements-02`,
-Schrock `-06` is `draft-schrock-ep-bounded-capability-receipts-06`, Ahuja `-02` is
-`draft-ahuja-agent-routing-policy-02`, and UC&R `-04` is
-`draft-agentic-ai-usecases-requirements-04`. PR 185 is
+Schrock `-06` is `draft-schrock-ep-bounded-capability-receipts-06`, Ahuja `-03` is
+`draft-ahuja-agent-routing-policy-03`, and UC&R `-05` is
+`draft-agentic-ai-usecases-requirements-05`. PR 185 is
 [`probityai/agent-evidence-vectors#185`](https://github.com/probityai/agent-evidence-vectors/pull/185),
 compared at commit `c11b55d`.
 

@@ -107,12 +107,16 @@ class EvaluationStateCaseTests(unittest.TestCase):
         records[0]["state"] = records[1]["state"]
         self.assertEqual(self.cases.changed_records(records, digests), [0])
 
-    def test_profile_report_carries_reason_profile_and_component(self) -> None:
-        record = self.cases.evaluate(self.evaluation("TC-7/profile-not-held"))
+    def test_profile_report_carries_reason_profile_component_and_verifier(self) -> None:
+        evaluation = self.evaluation("TC-7/profile-not-held")
+        evaluation["observation"]["holder"] = "another-domain"
+        record = self.cases.evaluate(evaluation)
         self.assertEqual(record["state"], "not-established")
         self.assertEqual(record["reason"], "profile-not-held")
         self.assertTrue(record["profile"].startswith("sha-256:"))
         self.assertEqual(record["component"], "max-amount")
+        self.assertEqual(record["verifier"], "receiving-domain")
+        self.assertNotIn("holder", record)
 
     def test_unknown_outcome_is_rejected(self) -> None:
         self.cases.document["cases"][0]["vectors"][0]["evaluations"][0]["observation"]["outcome"] = "maybe"

@@ -23,7 +23,7 @@ class EvaluationStateCases:
         "lookup-incomplete",
     )
     COMPARED = (
-        "state", "reason", "asOf", "ageSeconds", "profile", "component", "decision", "refusal",
+        "state", "reason", "asOf", "ageSeconds", "profile", "component", "verifier", "decision", "refusal",
         "callerView",
     )
     SOURCES = ("cases.json", "check_cases.py")
@@ -102,6 +102,9 @@ class EvaluationStateCases:
         for key in ("profile", "component"):
             if key in observation:
                 record[key] = observation[key]
+        if observation["outcome"] == "profile-not-held":
+            # The result is relative to the verifier that reported it; never name a holder.
+            record["verifier"] = evaluation["hop"]
         if observation["outcome"] in self.NOT_ESTABLISHED:
             return self.settle(record, "not-established", observation["outcome"])
         if self.arrived_after_decision(evaluation):
