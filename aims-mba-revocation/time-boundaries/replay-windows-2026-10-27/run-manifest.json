@@ -1,0 +1,66 @@
+{
+ "replayedBy": "Girish Konda",
+ "date": "2026-10-27",
+ "platform": "Windows x64",
+ "node": "v24.22.1",
+ "pnpm": "11.15.1",
+ "vitest": "4.1.10",
+ "timezone": "UTC",
+ "install": "pnpm install --frozen-lockfile --ignore-scripts (upstream lockfile, unchanged)",
+ "betterSqlite3": {
+  "version": "12.11.1",
+  "prebuilt": "better-sqlite3-v12.11.1-node-v137-win32-x64",
+  "sha256": "e75b8c024a85179d8e0e51203a8b8867916e9a51327ce3953db5f8483cc9a91e"
+ },
+ "runs": [
+  {
+   "mbaCommit": "ea1a1490716f045d9fda42d73b1a7b891dea5fb9",
+   "testFile": "../ea1a149/w7-time-boundaries.test.ts",
+   "testSha256": "350fd59b21225a6e1951ca2eec51b60fbd7655888a7bb041f4a900d6fb2ab23b",
+   "filter": null,
+   "passed": 21,
+   "failed": 0,
+   "notSelected": 0,
+   "results": "ea1a149/"
+  },
+  {
+   "mbaCommit": "ea1a1490716f045d9fda42d73b1a7b891dea5fb9",
+   "testFile": "../../w7-cases.test.ts",
+   "testSha256": "6547d081b2c548f6dbd450843dd01e84253eb1cf16602c82575c63c0440a9237",
+   "filter": null,
+   "passed": 8,
+   "failed": 0,
+   "notSelected": 0,
+   "results": "ea1a149-original-w7/"
+  },
+  {
+   "mbaCommit": "c941a738f11ea66ace2af4be5932477b21b4fce1",
+   "testFile": "../c941a738-b7/w7-time-boundaries.test.ts",
+   "testSha256": "9215af9a4a599bce2c33b3a835e30058864d38d5d975b668761f28a937011c1f",
+   "filter": "-t B7",
+   "passed": 2,
+   "failed": 0,
+   "notSelected": 19,
+   "results": "c941a738-b7/"
+  },
+  {
+   "mbaCommit": "ef8568a1705bdb048103e40815a36a260d19aa3e",
+   "testFile": "../c941a738-b7/w7-time-boundaries.test.ts with MBA_COMMIT set to this commit",
+   "testSha256": "e206b5aed8c72046dbffadbd2ee07fb500887161cd527aed2e9968b3653470c4",
+   "filter": null,
+   "passed": 21,
+   "failed": 0,
+   "notSelected": 0,
+   "results": "main-ef8568a/"
+  }
+ ],
+ "resultFiles": {
+  "c941a738-b7/boundary-traces.json": "5e211b1d8ed7b8a01a2a48f1006f65a0a95fc94040aa0d940234ff650ddc9085",
+  "c941a738-b7/vitest.json": "e47562bb700d86a5c436ba33764241bf5126320c96dec35a83d9d2013688ad60",
+  "ea1a149/boundary-traces.json": "e83d2f54b6f08c2d07761491ba31c973419d7b36803ebff9e1d806b0ee2fade8",
+  "ea1a149/vitest.json": "79d3ed78244b8110e355f2e383fe3e60a6828018f1cdd2aa94e1a665c7103966",
+  "ea1a149-original-w7/case-traces.json": "09134733d14fed21db1db2dd1899a6779844434dea8e4983f8d3f8db6a306a4e",
+  "main-ef8568a/boundary-traces.json": "2be96edf147337ebeb61bd5b3c588caba1aa04523078a70ad6f557597876971d",
+  "main-ef8568a/vitest.json": "da5d56b35191576aa42de1150b6c5026f754fc90f0669bd6de18988980761d49"
+ }
+}
