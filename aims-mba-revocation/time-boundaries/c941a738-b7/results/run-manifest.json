@@ -1,0 +1,19 @@
+{
+  "kind": "publication-replay",
+  "mbaCommit": "c941a738f11ea66ace2af4be5932477b21b4fce1",
+  "passed": 2,
+  "failed": 0,
+  "unselected": 19,
+  "sourceUnchanged": true,
+  "testSha256": "9215af9a4a599bce2c33b3a835e30058864d38d5d975b668761f28a937011c1f",
+  "clock": {
+    "unit": "integer epoch milliseconds",
+    "epsilonMs": 1,
+    "injectedClockSkewMs": 0,
+    "freshnessFutureSkewToleranceMs": 0,
+    "ageOrPermitExpiryGraceMs": 0,
+    "measuredWallClockAccuracy": "not measured"
+  },
+  "scope": "real MBA components in one process; synthetic adapters; not a distributed deployment",
+  "priorChecks": "../prior-checks/run-manifest.json"
+}
