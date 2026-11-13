@@ -1,0 +1,169 @@
+{
+ "kind": "expected-results-exclusive-rule-not-run-evidence",
+ "rule": "at-or-past: state whose age equals S is stale; a permit is not usable at or after its expiry; issuance requires a deadline later than the issuance time; S is applied at final issuance",
+ "targetMbaCommit": "ea1a1490716f045d9fda42d73b1a7b891dea5fb9",
+ "epsilonMs": 1,
+ "sMs": 300000,
+ "lMs": 300000,
+ "cases": [
+  {
+   "caseId": "B1-issue--1",
+   "stage": "issuance",
+   "ok": true,
+   "reason": null,
+   "ageMs": 299999
+  },
+  {
+   "caseId": "B1-issue-0",
+   "stage": "issuance",
+   "ok": false,
+   "reason": "stale_state",
+   "ageMs": 300000
+  },
+  {
+   "caseId": "B1-issue-1",
+   "stage": "issuance",
+   "ok": false,
+   "reason": "stale_state",
+   "ageMs": 300001
+  },
+  {
+   "caseId": "B2-observation-only--1",
+   "stage": "issuance",
+   "ok": true,
+   "reason": null,
+   "ageMs": 299999
+  },
+  {
+   "caseId": "B2-observation-only-0",
+   "stage": "issuance",
+   "ok": false,
+   "reason": "stale_state",
+   "ageMs": 300000
+  },
+  {
+   "caseId": "B2-observation-only-1",
+   "stage": "issuance",
+   "ok": false,
+   "reason": "stale_state",
+   "ageMs": 300001
+  },
+  {
+   "caseId": "B3-use--1",
+   "stage": "permit_admission",
+   "ok": true,
+   "reason": null,
+   "admissionOffsetFromDeadlineMs": -1
+  },
+  {
+   "caseId": "B3-use-0",
+   "stage": "permit_admission",
+   "ok": false,
+   "reason": "permit_expired",
+   "admissionOffsetFromDeadlineMs": 0
+  },
+  {
+   "caseId": "B3-use-1",
+   "stage": "permit_admission",
+   "ok": false,
+   "reason": "permit_expired",
+   "admissionOffsetFromDeadlineMs": 1
+  },
+  {
+   "caseId": "B4-combined--1--2",
+   "stage": "combined",
+   "ok": true,
+   "reason": null,
+   "issueOffsetFromAsOfMs": 299999,
+   "admissionOffsetFromAsOfMs": 599998
+  },
+  {
+   "caseId": "B4-combined--1--1",
+   "stage": "combined",
+   "ok": false,
+   "reason": "permit_expired",
+   "issueOffsetFromAsOfMs": 299999,
+   "admissionOffsetFromAsOfMs": 599999
+  },
+  {
+   "caseId": "B4-combined--1-0",
+   "stage": "combined",
+   "ok": false,
+   "reason": "permit_expired",
+   "issueOffsetFromAsOfMs": 299999,
+   "admissionOffsetFromAsOfMs": 600000
+  },
+  {
+   "caseId": "B4-combined--1-1",
+   "stage": "combined",
+   "ok": false,
+   "reason": "permit_expired",
+   "issueOffsetFromAsOfMs": 299999,
+   "admissionOffsetFromAsOfMs": 600001
+  },
+  {
+   "caseId": "B4-combined-0--1",
+   "stage": "issuance",
+   "ok": false,
+   "reason": "stale_state",
+   "issueOffsetFromAsOfMs": 300000,
+   "admissionOffsetFromAsOfMs": 599999,
+   "note": "state aged exactly S is stale: no permit is issued"
+  },
+  {
+   "caseId": "B4-combined-0-0",
+   "stage": "issuance",
+   "ok": false,
+   "reason": "stale_state",
+   "issueOffsetFromAsOfMs": 300000,
+   "admissionOffsetFromAsOfMs": 600000,
+   "note": "state aged exactly S is stale: no permit is issued"
+  },
+  {
+   "caseId": "B4-combined-0-1",
+   "stage": "issuance",
+   "ok": false,
+   "reason": "stale_state",
+   "issueOffsetFromAsOfMs": 300000,
+   "admissionOffsetFromAsOfMs": 600001,
+   "note": "state aged exactly S is stale: no permit is issued"
+  },
+  {
+   "caseId": "B5-cache-revalidate",
+   "stage": "adapter",
+   "ok": true,
+   "reason": null
+  },
+  {
+   "caseId": "B5-source-revalidate",
+   "stage": "adapter",
+   "ok": false,
+   "reason": "mission_inactive"
+  },
+  {
+   "caseId": "B6-cache-read-only",
+   "stage": "adapter",
+   "ok": true,
+   "reason": null
+  },
+  {
+   "caseId": "B6-cache-revalidate",
+   "stage": "adapter",
+   "ok": false,
+   "reason": "stale_state"
+  },
+  {
+   "caseId": "B7-observation-only-delay-control",
+   "stage": "issuance",
+   "ok": false,
+   "reason": "stale_state"
+  },
+  {
+   "caseId": "B7-age-check-to-issuance-gap",
+   "stage": "issuance",
+   "ok": false,
+   "reason": "stale_state",
+   "note": "rule applies S at final issuance; source age at issuance is S+1 ms (mission-bound-authorization issue #1564)"
+  }
+ ]
+}

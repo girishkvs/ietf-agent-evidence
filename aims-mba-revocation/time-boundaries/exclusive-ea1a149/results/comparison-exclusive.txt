@@ -1,0 +1,24 @@
+B1-issue--1 | agree | rule: admit | MBA: admit
+B1-issue-0 | DIFFERS | rule: refuse stale_state | MBA: admit
+B1-issue-1 | agree | rule: refuse stale_state | MBA: refuse stale_state
+B2-observation-only--1 | agree | rule: admit | MBA: admit
+B2-observation-only-0 | agree | rule: refuse stale_state | MBA: refuse stale_state
+B2-observation-only-1 | agree | rule: refuse stale_state | MBA: refuse stale_state
+B3-use--1 | agree | rule: admit | MBA: admit
+B3-use-0 | DIFFERS | rule: refuse permit_expired | MBA: admit
+B3-use-1 | agree | rule: refuse permit_expired | MBA: refuse permit_expired
+B4-combined--1--2 | agree | rule: admit | MBA: admit
+B4-combined--1--1 | DIFFERS | rule: refuse permit_expired | MBA: admit
+B4-combined--1-0 | agree | rule: refuse permit_expired | MBA: refuse permit_expired
+B4-combined--1-1 | agree | rule: refuse permit_expired | MBA: refuse permit_expired
+B4-combined-0--1 | DIFFERS | rule: refuse stale_state | MBA: admit
+B4-combined-0-0 | DIFFERS | rule: refuse stale_state | MBA: admit
+B4-combined-0-1 | DIFFERS | rule: refuse stale_state | MBA: refuse permit_expired
+B5-cache-revalidate | agree | rule: admit | MBA: admit
+B5-source-revalidate | agree | rule: refuse mission_inactive | MBA: refuse mission_inactive
+B6-cache-read-only | agree | rule: admit | MBA: admit
+B6-cache-revalidate | agree | rule: refuse stale_state | MBA: refuse stale_state
+B7-observation-only-delay-control | agree | rule: refuse stale_state | MBA: refuse stale_state
+B7-age-check-to-issuance-gap | DIFFERS | rule: refuse stale_state | MBA: admit
+
+22 cases, 15 agree, 7 differ

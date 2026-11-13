@@ -1,0 +1,12 @@
+{
+ "date": "2026-11-12",
+ "mbaCommit": "ea1a1490716f045d9fda42d73b1a7b891dea5fb9",
+ "node": "v24.22.2",
+ "pnpm": "11.15.1 (corepack, frozen lockfile)",
+ "vitest": "4.1.10",
+ "platform": "Linux x64",
+ "inclusiveReplay": "original w7-time-boundaries.test.ts from ../ea1a149, via ../ea1a149/run-boundaries.sh: 21/21 passed",
+ "exclusiveRun": "w7-time-boundaries-exclusive.test.ts (this directory): 22/22 passed as characterization of MBA behaviour",
+ "comparison": "compare.py expected-results-exclusive.json results/exclusive-run/boundary-traces.json: 15 agree, 7 differ",
+ "mbaMainAttempt": "e456a5fb (2026-11-10): harness incompatible, 0/22 for harness reasons (worker.lastDecision undefined; held-read gate not reached). Not adapted; not reported as a result."
+}

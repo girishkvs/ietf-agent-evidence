@@ -1,0 +1,2866 @@
+{
+  "targetMbaCommit": "ea1a1490716f045d9fda42d73b1a7b891dea5fb9",
+  "clock": {
+    "unit": "integer epoch milliseconds",
+    "epsilonMs": 1,
+    "injectedClockSkewMs": 0,
+    "freshnessFutureSkewToleranceMs": 0,
+    "ageOrPermitExpiryGraceMs": 0,
+    "measuredWallClockAccuracy": "not measured"
+  },
+  "sMs": 300000,
+  "lMs": 300000,
+  "scope": "real MBA components in one process; synthetic adapters; not a distributed deployment",
+  "cases": [
+    {
+      "caseId": "B1-issue--1",
+      "stage": "issuance",
+      "ageMs": 299999,
+      "stateExpiry": "2027-01-01T00:00:00Z",
+      "expectedPermit": true,
+      "decision": {
+        "decision": true,
+        "context": {
+          "decision_id": "dec_b0688def-04cc-4a8b-a86f-5a5a3a04c53a",
+          "evaluation_id": "dec_b0688def-04cc-4a8b-a86f-5a5a3a04c53a",
+          "policy_view_id": "sha-256:5hbtRi_gUw7ifa7qJ0tj8IeGNgz4iUb4KKNm35J0lpg",
+          "action_class": "consequential_read",
+          "class_source": "deployment",
+          "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+          "conditions": {
+            "valid_until": "2026-10-23T04:09:59.999Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "decision_evidence": {
+            "evidence_id": "evd_Wk1K9lONsVr5DiWn79989iiAx_g",
+            "evaluation_id": "dec_b0688def-04cc-4a8b-a86f-5a5a3a04c53a",
+            "mission": {
+              "id": "msn_GK88_VK6mIOBw4lQG3C2IBqy",
+              "issuer": "https://w7-issuer.test",
+              "policy_view_id": "sha-256:5hbtRi_gUw7ifa7qJ0tj8IeGNgz4iUb4KKNm35J0lpg",
+              "authority_hash": "sha-256:QddiC9Sl8du1vonHbOfLeVbToC3-n7JTWoIL-X8DcE0"
+            },
+            "subject": {
+              "id": "alice"
+            },
+            "resource": {
+              "type": "invoice",
+              "id": "inv-w7"
+            },
+            "action": {
+              "name": "payments:invoice.read"
+            },
+            "audience": "http://localhost:4403/mcp",
+            "action_class": "consequential_read",
+            "class_source": "deployment",
+            "capability_source": {
+              "tool_id": "mcp://payments.demo/tools/get_invoice",
+              "source_uri": "http://localhost:4403/.well-known/mcp",
+              "source_digest": "sha-256:ftWlgCR8ftgIfladSFUxiklpJSgxnWMxU8bPav7Emf0",
+              "operation_ref": "get_invoice"
+            },
+            "actor": {
+              "client_id": "ap-agent",
+              "client_instance_id": "w7-subagent",
+              "act": [
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-orchestrator",
+                  "sub_profile": "ai_agent client_instance"
+                },
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-subagent",
+                  "sub_profile": "ai_agent client_instance"
+                }
+              ]
+            },
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k",
+            "conditions": {
+              "valid_until": "2026-10-23T04:09:59.999Z"
+            },
+            "decision": "permit",
+            "contributing_constraints": [
+              "mission_resource_access"
+            ],
+            "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+            "sequence": 0,
+            "emitter": {
+              "id": "http://localhost:4403/mcp",
+              "role": "pdp"
+            },
+            "evaluated_at": "2026-10-23T04:04:59.999Z",
+            "evidence_envelope": {
+              "format": "jws-compact",
+              "value": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVwaGVtZXJhbC1wZHAiLCJ0eXAiOiJhcHBsaWNhdGlvbi9taXNzaW9uLXJ1bnRpbWUtZXZpZGVuY2UrandzIiwiY3R5IjoiYXBwbGljYXRpb24vbWlzc2lvbi1kZWNpc2lvbi1ldmlkZW5jZStqc29uIn0.eyJhY3Rpb24iOnsibmFtZSI6InBheW1lbnRzOmludm9pY2UucmVhZCJ9LCJhY3Rpb25fY2xhc3MiOiJjb25zZXF1ZW50aWFsX3JlYWQiLCJhY3RvciI6eyJhY3QiOlt7ImlzcyI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJzdWIiOiJ3Ny1vcmNoZXN0cmF0b3IiLCJzdWJfcHJvZmlsZSI6ImFpX2FnZW50IGNsaWVudF9pbnN0YW5jZSJ9LHsiaXNzIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInN1YiI6Inc3LXN1YmFnZW50Iiwic3ViX3Byb2ZpbGUiOiJhaV9hZ2VudCBjbGllbnRfaW5zdGFuY2UifV0sImNsaWVudF9pZCI6ImFwLWFnZW50IiwiY2xpZW50X2luc3RhbmNlX2lkIjoidzctc3ViYWdlbnQifSwiYXVkaWVuY2UiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwiY2FwYWJpbGl0eV9zb3VyY2UiOnsib3BlcmF0aW9uX3JlZiI6ImdldF9pbnZvaWNlIiwic291cmNlX2RpZ2VzdCI6InNoYS0yNTY6ZnRXbGdDUjhmdGdJZmxhZFNGVXhpa2xwSlNneG5XTXhVOGJQYXY3RW1mMCIsInNvdXJjZV91cmkiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvLndlbGwta25vd24vbWNwIiwidG9vbF9pZCI6Im1jcDovL3BheW1lbnRzLmRlbW8vdG9vbHMvZ2V0X2ludm9pY2UifSwiY2xhc3Nfc291cmNlIjoiZGVwbG95bWVudCIsImNvbmRpdGlvbnMiOnsidmFsaWRfdW50aWwiOiIyMDI2LTEwLTIzVDA0OjA5OjU5Ljk5OVoifSwiY29udHJpYnV0aW5nX2NvbnN0cmFpbnRzIjpbIm1pc3Npb25fcmVzb3VyY2VfYWNjZXNzIl0sImRlY2lzaW9uIjoicGVybWl0IiwiZW1pdHRlciI6eyJpZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDQwMy9tY3AiLCJyb2xlIjoicGRwIn0sImVudHJ5X2RpZ2VzdCI6InNoYS0yNTY6T1gwNGJQLWZTd25fMlNhSTROZWg0OHBRTUVnR0NOZzJ1UDdBVVNqNjB4TSIsImV2YWx1YXRlZF9hdCI6IjIwMjYtMTAtMjNUMDQ6MDQ6NTkuOTk5WiIsImV2YWx1YXRpb25faWQiOiJkZWNfYjA2ODhkZWYtMDRjYy00YThiLWE4NmYtNWE1YTNhMDRjNTNhIiwiZXZpZGVuY2VfaWQiOiJldmRfV2sxSzlsT05zVnI1RGlXbjc5OTg5aWlBeF9nIiwibWlzc2lvbiI6eyJhdXRob3JpdHlfaGFzaCI6InNoYS0yNTY6UWRkaUM5U2w4ZHUxdm9uSGJPZkxlVmJUb0MzLW43SlRXb0lMLVg4RGNFMCIsImlkIjoibXNuX0dLODhfVks2bUlPQnc0bFFHM0MySUJxeSIsImlzc3VlciI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJwb2xpY3lfdmlld19pZCI6InNoYS0yNTY6NWhidFJpX2dVdzdpZmE3cUowdGo4SWVHTmd6NGlVYjRLS05tMzVKMGxwZyJ9LCJwYXJhbWV0ZXJfZGlnZXN0Ijoic2hhLTI1NjpnLWg5Ym1BZGktci1GZTJmSzhOWmlaZWI4N05ia01UZE9vOHVBbmJoWjdrIiwicmVzb3VyY2UiOnsiaWQiOiJpbnYtdzciLCJ0eXBlIjoiaW52b2ljZSJ9LCJzZXF1ZW5jZSI6MCwic3ViamVjdCI6eyJpZCI6ImFsaWNlIn19.hLWk_SMkP4MyG15HSQYjPax7IVxiUctK4tyun6aiibU0aOJbA5MoQyDehAJIrKjCluX56QR2YZ0_h0mSYutqtg"
+            }
+          }
+        }
+      },
+      "outcome": {
+        "ok": true,
+        "result": {
+          "id": "inv-w7",
+          "vendor_id": "acme",
+          "amount": "1.00",
+          "currency": "USD",
+          "payee_account": "fixture-only",
+          "status": "payable",
+          "version": 1
+        }
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:04:59.999Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:09:59.999Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 4,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:04:59.999Z",
+          "worker": "A",
+          "result": {
+            "ok": true,
+            "result": {
+              "id": "inv-w7",
+              "vendor_id": "acme",
+              "amount": "1.00",
+              "currency": "USD",
+              "payee_account": "fixture-only",
+              "status": "payable",
+              "version": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B1-issue-0",
+      "stage": "issuance",
+      "ageMs": 300000,
+      "stateExpiry": "2027-01-01T00:00:00Z",
+      "expectedPermit": true,
+      "decision": {
+        "decision": true,
+        "context": {
+          "decision_id": "dec_7af3e953-1f53-468d-b9c4-dbc4c028f838",
+          "evaluation_id": "dec_7af3e953-1f53-468d-b9c4-dbc4c028f838",
+          "policy_view_id": "sha-256:V4lj8R_812sL501s-e2vPsW9AD6CAEHdG5dPpcsRf9M",
+          "action_class": "consequential_read",
+          "class_source": "deployment",
+          "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+          "conditions": {
+            "valid_until": "2026-10-23T04:10:00.000Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "decision_evidence": {
+            "evidence_id": "evd_M_-NPCpTmh4G07Zjf9ocUF4t-9Y",
+            "evaluation_id": "dec_7af3e953-1f53-468d-b9c4-dbc4c028f838",
+            "mission": {
+              "id": "msn_77tP-LK5GmXODHAat8GBDSaD",
+              "issuer": "https://w7-issuer.test",
+              "policy_view_id": "sha-256:V4lj8R_812sL501s-e2vPsW9AD6CAEHdG5dPpcsRf9M",
+              "authority_hash": "sha-256:QddiC9Sl8du1vonHbOfLeVbToC3-n7JTWoIL-X8DcE0"
+            },
+            "subject": {
+              "id": "alice"
+            },
+            "resource": {
+              "type": "invoice",
+              "id": "inv-w7"
+            },
+            "action": {
+              "name": "payments:invoice.read"
+            },
+            "audience": "http://localhost:4403/mcp",
+            "action_class": "consequential_read",
+            "class_source": "deployment",
+            "capability_source": {
+              "tool_id": "mcp://payments.demo/tools/get_invoice",
+              "source_uri": "http://localhost:4403/.well-known/mcp",
+              "source_digest": "sha-256:ftWlgCR8ftgIfladSFUxiklpJSgxnWMxU8bPav7Emf0",
+              "operation_ref": "get_invoice"
+            },
+            "actor": {
+              "client_id": "ap-agent",
+              "client_instance_id": "w7-subagent",
+              "act": [
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-orchestrator",
+                  "sub_profile": "ai_agent client_instance"
+                },
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-subagent",
+                  "sub_profile": "ai_agent client_instance"
+                }
+              ]
+            },
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k",
+            "conditions": {
+              "valid_until": "2026-10-23T04:10:00.000Z"
+            },
+            "decision": "permit",
+            "contributing_constraints": [
+              "mission_resource_access"
+            ],
+            "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+            "sequence": 0,
+            "emitter": {
+              "id": "http://localhost:4403/mcp",
+              "role": "pdp"
+            },
+            "evaluated_at": "2026-10-23T04:05:00.000Z",
+            "evidence_envelope": {
+              "format": "jws-compact",
+              "value": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVwaGVtZXJhbC1wZHAiLCJ0eXAiOiJhcHBsaWNhdGlvbi9taXNzaW9uLXJ1bnRpbWUtZXZpZGVuY2UrandzIiwiY3R5IjoiYXBwbGljYXRpb24vbWlzc2lvbi1kZWNpc2lvbi1ldmlkZW5jZStqc29uIn0.eyJhY3Rpb24iOnsibmFtZSI6InBheW1lbnRzOmludm9pY2UucmVhZCJ9LCJhY3Rpb25fY2xhc3MiOiJjb25zZXF1ZW50aWFsX3JlYWQiLCJhY3RvciI6eyJhY3QiOlt7ImlzcyI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJzdWIiOiJ3Ny1vcmNoZXN0cmF0b3IiLCJzdWJfcHJvZmlsZSI6ImFpX2FnZW50IGNsaWVudF9pbnN0YW5jZSJ9LHsiaXNzIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInN1YiI6Inc3LXN1YmFnZW50Iiwic3ViX3Byb2ZpbGUiOiJhaV9hZ2VudCBjbGllbnRfaW5zdGFuY2UifV0sImNsaWVudF9pZCI6ImFwLWFnZW50IiwiY2xpZW50X2luc3RhbmNlX2lkIjoidzctc3ViYWdlbnQifSwiYXVkaWVuY2UiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwiY2FwYWJpbGl0eV9zb3VyY2UiOnsib3BlcmF0aW9uX3JlZiI6ImdldF9pbnZvaWNlIiwic291cmNlX2RpZ2VzdCI6InNoYS0yNTY6ZnRXbGdDUjhmdGdJZmxhZFNGVXhpa2xwSlNneG5XTXhVOGJQYXY3RW1mMCIsInNvdXJjZV91cmkiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvLndlbGwta25vd24vbWNwIiwidG9vbF9pZCI6Im1jcDovL3BheW1lbnRzLmRlbW8vdG9vbHMvZ2V0X2ludm9pY2UifSwiY2xhc3Nfc291cmNlIjoiZGVwbG95bWVudCIsImNvbmRpdGlvbnMiOnsidmFsaWRfdW50aWwiOiIyMDI2LTEwLTIzVDA0OjEwOjAwLjAwMFoifSwiY29udHJpYnV0aW5nX2NvbnN0cmFpbnRzIjpbIm1pc3Npb25fcmVzb3VyY2VfYWNjZXNzIl0sImRlY2lzaW9uIjoicGVybWl0IiwiZW1pdHRlciI6eyJpZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDQwMy9tY3AiLCJyb2xlIjoicGRwIn0sImVudHJ5X2RpZ2VzdCI6InNoYS0yNTY6T1gwNGJQLWZTd25fMlNhSTROZWg0OHBRTUVnR0NOZzJ1UDdBVVNqNjB4TSIsImV2YWx1YXRlZF9hdCI6IjIwMjYtMTAtMjNUMDQ6MDU6MDAuMDAwWiIsImV2YWx1YXRpb25faWQiOiJkZWNfN2FmM2U5NTMtMWY1My00NjhkLWI5YzQtZGJjNGMwMjhmODM4IiwiZXZpZGVuY2VfaWQiOiJldmRfTV8tTlBDcFRtaDRHMDdaamY5b2NVRjR0LTlZIiwibWlzc2lvbiI6eyJhdXRob3JpdHlfaGFzaCI6InNoYS0yNTY6UWRkaUM5U2w4ZHUxdm9uSGJPZkxlVmJUb0MzLW43SlRXb0lMLVg4RGNFMCIsImlkIjoibXNuXzc3dFAtTEs1R21YT0RIQWF0OEdCRFNhRCIsImlzc3VlciI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJwb2xpY3lfdmlld19pZCI6InNoYS0yNTY6VjRsajhSXzgxMnNMNTAxcy1lMnZQc1c5QUQ2Q0FFSGRHNWRQcGNzUmY5TSJ9LCJwYXJhbWV0ZXJfZGlnZXN0Ijoic2hhLTI1NjpnLWg5Ym1BZGktci1GZTJmSzhOWmlaZWI4N05ia01UZE9vOHVBbmJoWjdrIiwicmVzb3VyY2UiOnsiaWQiOiJpbnYtdzciLCJ0eXBlIjoiaW52b2ljZSJ9LCJzZXF1ZW5jZSI6MCwic3ViamVjdCI6eyJpZCI6ImFsaWNlIn19.71zNaEXECOoa91gzLSyutJDFgRkmPn_86CdFwOZO-nuG2K3zVc-RYsIFuENfBk0GN7xa10V_tlfwn4VBVsET4Q"
+            }
+          }
+        }
+      },
+      "outcome": {
+        "ok": true,
+        "result": {
+          "id": "inv-w7",
+          "vendor_id": "acme",
+          "amount": "1.00",
+          "currency": "USD",
+          "payee_account": "fixture-only",
+          "status": "payable",
+          "version": 1
+        }
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:05:00.000Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:10:00.000Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 4,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:05:00.000Z",
+          "worker": "A",
+          "result": {
+            "ok": true,
+            "result": {
+              "id": "inv-w7",
+              "vendor_id": "acme",
+              "amount": "1.00",
+              "currency": "USD",
+              "payee_account": "fixture-only",
+              "status": "payable",
+              "version": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B1-issue-1",
+      "stage": "issuance",
+      "ageMs": 300001,
+      "stateExpiry": "2027-01-01T00:00:00Z",
+      "expectedPermit": false,
+      "decision": {
+        "decision": false,
+        "context": {
+          "decision_id": "dec_a10efc57-36af-4af6-968e-944d615a0416",
+          "evaluation_id": "dec_a10efc57-36af-4af6-968e-944d615a0416",
+          "policy_view_id": "sha-256:h36Rm-V9fEjguUsiLqlKyABuv2AKuEo7kf6nX5fJ4DU",
+          "action_class": "consequential_read",
+          "class_source": "deployment",
+          "denial_reason": "stale_state",
+          "reason": "stale_state",
+          "decision_evidence": {
+            "evidence_id": "evd_o5qygnvhVfiM5F8wSL9ilqgWwSg",
+            "evaluation_id": "dec_a10efc57-36af-4af6-968e-944d615a0416",
+            "mission": {
+              "id": "msn_v5VwrGrnOQIa0YeB2HYs5cRF",
+              "issuer": "https://w7-issuer.test",
+              "policy_view_id": "sha-256:h36Rm-V9fEjguUsiLqlKyABuv2AKuEo7kf6nX5fJ4DU",
+              "authority_hash": "sha-256:QddiC9Sl8du1vonHbOfLeVbToC3-n7JTWoIL-X8DcE0"
+            },
+            "subject": {
+              "id": "alice"
+            },
+            "resource": {
+              "type": "invoice",
+              "id": "inv-w7"
+            },
+            "action": {
+              "name": "payments:invoice.read"
+            },
+            "audience": "http://localhost:4403/mcp",
+            "action_class": "consequential_read",
+            "class_source": "deployment",
+            "capability_source": {
+              "tool_id": "mcp://payments.demo/tools/get_invoice",
+              "source_uri": "http://localhost:4403/.well-known/mcp",
+              "source_digest": "sha-256:ftWlgCR8ftgIfladSFUxiklpJSgxnWMxU8bPav7Emf0",
+              "operation_ref": "get_invoice"
+            },
+            "actor": {
+              "client_id": "ap-agent",
+              "client_instance_id": "w7-subagent",
+              "act": [
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-orchestrator",
+                  "sub_profile": "ai_agent client_instance"
+                },
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-subagent",
+                  "sub_profile": "ai_agent client_instance"
+                }
+              ]
+            },
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k",
+            "decision": "deny",
+            "denial_reason": "stale_state",
+            "sequence": 0,
+            "emitter": {
+              "id": "http://localhost:4403/mcp",
+              "role": "pdp"
+            },
+            "evaluated_at": "2026-10-23T04:05:00.001Z",
+            "evidence_envelope": {
+              "format": "jws-compact",
+              "value": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVwaGVtZXJhbC1wZHAiLCJ0eXAiOiJhcHBsaWNhdGlvbi9taXNzaW9uLXJ1bnRpbWUtZXZpZGVuY2UrandzIiwiY3R5IjoiYXBwbGljYXRpb24vbWlzc2lvbi1kZWNpc2lvbi1ldmlkZW5jZStqc29uIn0.eyJhY3Rpb24iOnsibmFtZSI6InBheW1lbnRzOmludm9pY2UucmVhZCJ9LCJhY3Rpb25fY2xhc3MiOiJjb25zZXF1ZW50aWFsX3JlYWQiLCJhY3RvciI6eyJhY3QiOlt7ImlzcyI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJzdWIiOiJ3Ny1vcmNoZXN0cmF0b3IiLCJzdWJfcHJvZmlsZSI6ImFpX2FnZW50IGNsaWVudF9pbnN0YW5jZSJ9LHsiaXNzIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInN1YiI6Inc3LXN1YmFnZW50Iiwic3ViX3Byb2ZpbGUiOiJhaV9hZ2VudCBjbGllbnRfaW5zdGFuY2UifV0sImNsaWVudF9pZCI6ImFwLWFnZW50IiwiY2xpZW50X2luc3RhbmNlX2lkIjoidzctc3ViYWdlbnQifSwiYXVkaWVuY2UiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwiY2FwYWJpbGl0eV9zb3VyY2UiOnsib3BlcmF0aW9uX3JlZiI6ImdldF9pbnZvaWNlIiwic291cmNlX2RpZ2VzdCI6InNoYS0yNTY6ZnRXbGdDUjhmdGdJZmxhZFNGVXhpa2xwSlNneG5XTXhVOGJQYXY3RW1mMCIsInNvdXJjZV91cmkiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvLndlbGwta25vd24vbWNwIiwidG9vbF9pZCI6Im1jcDovL3BheW1lbnRzLmRlbW8vdG9vbHMvZ2V0X2ludm9pY2UifSwiY2xhc3Nfc291cmNlIjoiZGVwbG95bWVudCIsImRlY2lzaW9uIjoiZGVueSIsImRlbmlhbF9yZWFzb24iOiJzdGFsZV9zdGF0ZSIsImVtaXR0ZXIiOnsiaWQiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwicm9sZSI6InBkcCJ9LCJldmFsdWF0ZWRfYXQiOiIyMDI2LTEwLTIzVDA0OjA1OjAwLjAwMVoiLCJldmFsdWF0aW9uX2lkIjoiZGVjX2ExMGVmYzU3LTM2YWYtNGFmNi05NjhlLTk0NGQ2MTVhMDQxNiIsImV2aWRlbmNlX2lkIjoiZXZkX281cXlnbnZoVmZpTTVGOHdTTDlpbHFnV3dTZyIsIm1pc3Npb24iOnsiYXV0aG9yaXR5X2hhc2giOiJzaGEtMjU2OlFkZGlDOVNsOGR1MXZvbkhiT2ZMZVZiVG9DMy1uN0pUV29JTC1YOERjRTAiLCJpZCI6Im1zbl92NVZ3ckdybk9RSWEwWWVCMkhZczVjUkYiLCJpc3N1ZXIiOiJodHRwczovL3c3LWlzc3Vlci50ZXN0IiwicG9saWN5X3ZpZXdfaWQiOiJzaGEtMjU2OmgzNlJtLVY5ZkVqZ3VVc2lMcWxLeUFCdXYyQUt1RW83a2Y2blg1Zko0RFUifSwicGFyYW1ldGVyX2RpZ2VzdCI6InNoYS0yNTY6Zy1oOWJtQWRpLXItRmUyZks4TlppWmViODdOYmtNVGRPbzh1QW5iaFo3ayIsInJlc291cmNlIjp7ImlkIjoiaW52LXc3IiwidHlwZSI6Imludm9pY2UifSwic2VxdWVuY2UiOjAsInN1YmplY3QiOnsiaWQiOiJhbGljZSJ9fQ.MHpxzEPaDZ9FJ_YIh4KIbferhoMcZMxhSMMKho-77z2VCvTNhgz1Oqy6lz3QPT3ztd50fly-1h7uhOVMRAnSnQ"
+            }
+          }
+        }
+      },
+      "outcome": {
+        "ok": false,
+        "denial_reason": "stale_state"
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "worker": "A",
+          "permit": false,
+          "reason": "stale_state",
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 4,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "worker": "A",
+          "result": {
+            "ok": false,
+            "denial_reason": "stale_state"
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B2-observation-only--1",
+      "stage": "issuance_without_explicit_state_expiry",
+      "ageMs": 299999,
+      "expectedPermit": true,
+      "deadlineHelper": {
+        "kind": "bounded",
+        "validUntilMs": 1792728300000,
+        "validUntil": "2026-10-23T04:05:00.000Z",
+        "source": "state_view"
+      },
+      "decision": {
+        "decision": true,
+        "context": {
+          "decision_id": "dec_60c5540d-1282-463c-8172-ee9802814e26",
+          "evaluation_id": "dec_60c5540d-1282-463c-8172-ee9802814e26",
+          "policy_view_id": "sha-256:aJouXdmqrCv2r-ba0cp9UpUZHX69xc6oSr0Ec_OnW2I",
+          "action_class": "consequential_read",
+          "class_source": "deployment",
+          "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+          "conditions": {
+            "valid_until": "2026-10-23T04:05:00.000Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "decision_evidence": {
+            "evidence_id": "evd_Rxrafkr5NadtCcPEXNiazLpHzCY",
+            "evaluation_id": "dec_60c5540d-1282-463c-8172-ee9802814e26",
+            "mission": {
+              "id": "msn_k_YJSkdU1m70BcoXj3gl94Cq",
+              "issuer": "https://w7-issuer.test",
+              "policy_view_id": "sha-256:aJouXdmqrCv2r-ba0cp9UpUZHX69xc6oSr0Ec_OnW2I",
+              "authority_hash": "sha-256:QddiC9Sl8du1vonHbOfLeVbToC3-n7JTWoIL-X8DcE0"
+            },
+            "subject": {
+              "id": "alice"
+            },
+            "resource": {
+              "type": "invoice",
+              "id": "inv-w7"
+            },
+            "action": {
+              "name": "payments:invoice.read"
+            },
+            "audience": "http://localhost:4403/mcp",
+            "action_class": "consequential_read",
+            "class_source": "deployment",
+            "capability_source": {
+              "tool_id": "mcp://payments.demo/tools/get_invoice",
+              "source_uri": "http://localhost:4403/.well-known/mcp",
+              "source_digest": "sha-256:ftWlgCR8ftgIfladSFUxiklpJSgxnWMxU8bPav7Emf0",
+              "operation_ref": "get_invoice"
+            },
+            "actor": {
+              "client_id": "ap-agent",
+              "client_instance_id": "w7-subagent",
+              "act": [
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-orchestrator",
+                  "sub_profile": "ai_agent client_instance"
+                },
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-subagent",
+                  "sub_profile": "ai_agent client_instance"
+                }
+              ]
+            },
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k",
+            "conditions": {
+              "valid_until": "2026-10-23T04:05:00.000Z"
+            },
+            "decision": "permit",
+            "contributing_constraints": [
+              "mission_resource_access"
+            ],
+            "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+            "sequence": 0,
+            "emitter": {
+              "id": "http://localhost:4403/mcp",
+              "role": "pdp"
+            },
+            "evaluated_at": "2026-10-23T04:04:59.999Z",
+            "evidence_envelope": {
+              "format": "jws-compact",
+              "value": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVwaGVtZXJhbC1wZHAiLCJ0eXAiOiJhcHBsaWNhdGlvbi9taXNzaW9uLXJ1bnRpbWUtZXZpZGVuY2UrandzIiwiY3R5IjoiYXBwbGljYXRpb24vbWlzc2lvbi1kZWNpc2lvbi1ldmlkZW5jZStqc29uIn0.eyJhY3Rpb24iOnsibmFtZSI6InBheW1lbnRzOmludm9pY2UucmVhZCJ9LCJhY3Rpb25fY2xhc3MiOiJjb25zZXF1ZW50aWFsX3JlYWQiLCJhY3RvciI6eyJhY3QiOlt7ImlzcyI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJzdWIiOiJ3Ny1vcmNoZXN0cmF0b3IiLCJzdWJfcHJvZmlsZSI6ImFpX2FnZW50IGNsaWVudF9pbnN0YW5jZSJ9LHsiaXNzIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInN1YiI6Inc3LXN1YmFnZW50Iiwic3ViX3Byb2ZpbGUiOiJhaV9hZ2VudCBjbGllbnRfaW5zdGFuY2UifV0sImNsaWVudF9pZCI6ImFwLWFnZW50IiwiY2xpZW50X2luc3RhbmNlX2lkIjoidzctc3ViYWdlbnQifSwiYXVkaWVuY2UiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwiY2FwYWJpbGl0eV9zb3VyY2UiOnsib3BlcmF0aW9uX3JlZiI6ImdldF9pbnZvaWNlIiwic291cmNlX2RpZ2VzdCI6InNoYS0yNTY6ZnRXbGdDUjhmdGdJZmxhZFNGVXhpa2xwSlNneG5XTXhVOGJQYXY3RW1mMCIsInNvdXJjZV91cmkiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvLndlbGwta25vd24vbWNwIiwidG9vbF9pZCI6Im1jcDovL3BheW1lbnRzLmRlbW8vdG9vbHMvZ2V0X2ludm9pY2UifSwiY2xhc3Nfc291cmNlIjoiZGVwbG95bWVudCIsImNvbmRpdGlvbnMiOnsidmFsaWRfdW50aWwiOiIyMDI2LTEwLTIzVDA0OjA1OjAwLjAwMFoifSwiY29udHJpYnV0aW5nX2NvbnN0cmFpbnRzIjpbIm1pc3Npb25fcmVzb3VyY2VfYWNjZXNzIl0sImRlY2lzaW9uIjoicGVybWl0IiwiZW1pdHRlciI6eyJpZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDQwMy9tY3AiLCJyb2xlIjoicGRwIn0sImVudHJ5X2RpZ2VzdCI6InNoYS0yNTY6T1gwNGJQLWZTd25fMlNhSTROZWg0OHBRTUVnR0NOZzJ1UDdBVVNqNjB4TSIsImV2YWx1YXRlZF9hdCI6IjIwMjYtMTAtMjNUMDQ6MDQ6NTkuOTk5WiIsImV2YWx1YXRpb25faWQiOiJkZWNfNjBjNTU0MGQtMTI4Mi00NjNjLTgxNzItZWU5ODAyODE0ZTI2IiwiZXZpZGVuY2VfaWQiOiJldmRfUnhyYWZrcjVOYWR0Q2NQRVhOaWF6THBIekNZIiwibWlzc2lvbiI6eyJhdXRob3JpdHlfaGFzaCI6InNoYS0yNTY6UWRkaUM5U2w4ZHUxdm9uSGJPZkxlVmJUb0MzLW43SlRXb0lMLVg4RGNFMCIsImlkIjoibXNuX2tfWUpTa2RVMW03MEJjb1hqM2dsOTRDcSIsImlzc3VlciI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJwb2xpY3lfdmlld19pZCI6InNoYS0yNTY6YUpvdVhkbXFyQ3Yyci1iYTBjcDlVcFVaSFg2OXhjNm9TcjBFY19PblcySSJ9LCJwYXJhbWV0ZXJfZGlnZXN0Ijoic2hhLTI1NjpnLWg5Ym1BZGktci1GZTJmSzhOWmlaZWI4N05ia01UZE9vOHVBbmJoWjdrIiwicmVzb3VyY2UiOnsiaWQiOiJpbnYtdzciLCJ0eXBlIjoiaW52b2ljZSJ9LCJzZXF1ZW5jZSI6MCwic3ViamVjdCI6eyJpZCI6ImFsaWNlIn19.zER4VxOehefTz-DBCy8DQ3Jb3aqb9CBKy_hg-Vg68saK8wKMVajISCRvr3YQid-hKv6dySiQID6_LXH4deziCA"
+            }
+          }
+        }
+      },
+      "outcome": {
+        "ok": true,
+        "result": {
+          "id": "inv-w7",
+          "vendor_id": "acme",
+          "amount": "1.00",
+          "currency": "USD",
+          "payee_account": "fixture-only",
+          "status": "payable",
+          "version": 1
+        }
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:04:59.999Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:05:00.000Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "fresh",
+            "freshness_at": "2026-10-23T04:00:00.000Z"
+          }
+        },
+        {
+          "order": 4,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:04:59.999Z",
+          "worker": "A",
+          "result": {
+            "ok": true,
+            "result": {
+              "id": "inv-w7",
+              "vendor_id": "acme",
+              "amount": "1.00",
+              "currency": "USD",
+              "payee_account": "fixture-only",
+              "status": "payable",
+              "version": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B2-observation-only-0",
+      "stage": "issuance_without_explicit_state_expiry",
+      "ageMs": 300000,
+      "expectedPermit": false,
+      "deadlineHelper": {
+        "kind": "elapsed",
+        "source": "state_view"
+      },
+      "decision": {
+        "decision": false,
+        "context": {
+          "decision_id": "dec_3c8655a8-1912-4f12-9069-46f2997f4e81",
+          "evaluation_id": "dec_3c8655a8-1912-4f12-9069-46f2997f4e81",
+          "policy_view_id": "sha-256:R9cO3HCvSBfMW75Jaba49_gx9SCcpZCWPQWfAK8nM-8",
+          "action_class": "consequential_read",
+          "class_source": "deployment",
+          "denial_reason": "stale_state",
+          "reason": "stale_state",
+          "decision_evidence": {
+            "evidence_id": "evd_RG1KmHFTm6cNK6fodsF91Qozh38",
+            "evaluation_id": "dec_3c8655a8-1912-4f12-9069-46f2997f4e81",
+            "mission": {
+              "id": "msn_OUpvBtdf0i-EivxpVBjn5uhh",
+              "issuer": "https://w7-issuer.test",
+              "policy_view_id": "sha-256:R9cO3HCvSBfMW75Jaba49_gx9SCcpZCWPQWfAK8nM-8",
+              "authority_hash": "sha-256:QddiC9Sl8du1vonHbOfLeVbToC3-n7JTWoIL-X8DcE0"
+            },
+            "subject": {
+              "id": "alice"
+            },
+            "resource": {
+              "type": "invoice",
+              "id": "inv-w7"
+            },
+            "action": {
+              "name": "payments:invoice.read"
+            },
+            "audience": "http://localhost:4403/mcp",
+            "action_class": "consequential_read",
+            "class_source": "deployment",
+            "capability_source": {
+              "tool_id": "mcp://payments.demo/tools/get_invoice",
+              "source_uri": "http://localhost:4403/.well-known/mcp",
+              "source_digest": "sha-256:ftWlgCR8ftgIfladSFUxiklpJSgxnWMxU8bPav7Emf0",
+              "operation_ref": "get_invoice"
+            },
+            "actor": {
+              "client_id": "ap-agent",
+              "client_instance_id": "w7-subagent",
+              "act": [
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-orchestrator",
+                  "sub_profile": "ai_agent client_instance"
+                },
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-subagent",
+                  "sub_profile": "ai_agent client_instance"
+                }
+              ]
+            },
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k",
+            "decision": "deny",
+            "denial_reason": "stale_state",
+            "contributing_constraints": [
+              "mission_resource_access"
+            ],
+            "sequence": 0,
+            "emitter": {
+              "id": "http://localhost:4403/mcp",
+              "role": "pdp"
+            },
+            "evaluated_at": "2026-10-23T04:05:00.000Z",
+            "evidence_envelope": {
+              "format": "jws-compact",
+              "value": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVwaGVtZXJhbC1wZHAiLCJ0eXAiOiJhcHBsaWNhdGlvbi9taXNzaW9uLXJ1bnRpbWUtZXZpZGVuY2UrandzIiwiY3R5IjoiYXBwbGljYXRpb24vbWlzc2lvbi1kZWNpc2lvbi1ldmlkZW5jZStqc29uIn0.eyJhY3Rpb24iOnsibmFtZSI6InBheW1lbnRzOmludm9pY2UucmVhZCJ9LCJhY3Rpb25fY2xhc3MiOiJjb25zZXF1ZW50aWFsX3JlYWQiLCJhY3RvciI6eyJhY3QiOlt7ImlzcyI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJzdWIiOiJ3Ny1vcmNoZXN0cmF0b3IiLCJzdWJfcHJvZmlsZSI6ImFpX2FnZW50IGNsaWVudF9pbnN0YW5jZSJ9LHsiaXNzIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInN1YiI6Inc3LXN1YmFnZW50Iiwic3ViX3Byb2ZpbGUiOiJhaV9hZ2VudCBjbGllbnRfaW5zdGFuY2UifV0sImNsaWVudF9pZCI6ImFwLWFnZW50IiwiY2xpZW50X2luc3RhbmNlX2lkIjoidzctc3ViYWdlbnQifSwiYXVkaWVuY2UiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwiY2FwYWJpbGl0eV9zb3VyY2UiOnsib3BlcmF0aW9uX3JlZiI6ImdldF9pbnZvaWNlIiwic291cmNlX2RpZ2VzdCI6InNoYS0yNTY6ZnRXbGdDUjhmdGdJZmxhZFNGVXhpa2xwSlNneG5XTXhVOGJQYXY3RW1mMCIsInNvdXJjZV91cmkiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvLndlbGwta25vd24vbWNwIiwidG9vbF9pZCI6Im1jcDovL3BheW1lbnRzLmRlbW8vdG9vbHMvZ2V0X2ludm9pY2UifSwiY2xhc3Nfc291cmNlIjoiZGVwbG95bWVudCIsImNvbnRyaWJ1dGluZ19jb25zdHJhaW50cyI6WyJtaXNzaW9uX3Jlc291cmNlX2FjY2VzcyJdLCJkZWNpc2lvbiI6ImRlbnkiLCJkZW5pYWxfcmVhc29uIjoic3RhbGVfc3RhdGUiLCJlbWl0dGVyIjp7ImlkIjoiaHR0cDovL2xvY2FsaG9zdDo0NDAzL21jcCIsInJvbGUiOiJwZHAifSwiZXZhbHVhdGVkX2F0IjoiMjAyNi0xMC0yM1QwNDowNTowMC4wMDBaIiwiZXZhbHVhdGlvbl9pZCI6ImRlY18zYzg2NTVhOC0xOTEyLTRmMTItOTA2OS00NmYyOTk3ZjRlODEiLCJldmlkZW5jZV9pZCI6ImV2ZF9SRzFLbUhGVG02Y05LNmZvZHNGOTFRb3poMzgiLCJtaXNzaW9uIjp7ImF1dGhvcml0eV9oYXNoIjoic2hhLTI1NjpRZGRpQzlTbDhkdTF2b25IYk9mTGVWYlRvQzMtbjdKVFdvSUwtWDhEY0UwIiwiaWQiOiJtc25fT1VwdkJ0ZGYwaS1FaXZ4cFZCam41dWhoIiwiaXNzdWVyIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInBvbGljeV92aWV3X2lkIjoic2hhLTI1NjpSOWNPM0hDdlNCZk1XNzVKYWJhNDlfZ3g5U0NjcFpDV1BRV2ZBSzhuTS04In0sInBhcmFtZXRlcl9kaWdlc3QiOiJzaGEtMjU2OmctaDlibUFkaS1yLUZlMmZLOE5aaVplYjg3TmJrTVRkT284dUFuYmhaN2siLCJyZXNvdXJjZSI6eyJpZCI6Imludi13NyIsInR5cGUiOiJpbnZvaWNlIn0sInNlcXVlbmNlIjowLCJzdWJqZWN0Ijp7ImlkIjoiYWxpY2UifX0.bCXfseJZyZzo1XCXUMemBVjQslGAcoxigoMpTShzgO2k4WxGRIj0ldpOr5n5ZKTo2M-B3yqYeZBaorcyoobF1Q"
+            }
+          }
+        }
+      },
+      "outcome": {
+        "ok": false,
+        "denial_reason": "stale_state"
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:05:00.000Z",
+          "worker": "A",
+          "permit": false,
+          "reason": "stale_state",
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "fresh",
+            "freshness_at": "2026-10-23T04:00:00.000Z"
+          }
+        },
+        {
+          "order": 4,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:05:00.000Z",
+          "worker": "A",
+          "result": {
+            "ok": false,
+            "denial_reason": "stale_state"
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B2-observation-only-1",
+      "stage": "issuance_without_explicit_state_expiry",
+      "ageMs": 300001,
+      "expectedPermit": false,
+      "deadlineHelper": {
+        "kind": "elapsed",
+        "source": "state_view"
+      },
+      "decision": {
+        "decision": false,
+        "context": {
+          "decision_id": "dec_035c7445-2dba-4069-8722-88c9d569fa85",
+          "evaluation_id": "dec_035c7445-2dba-4069-8722-88c9d569fa85",
+          "policy_view_id": "sha-256:xyoj2xhbdz_gnsY2h3ihDQWN-itsHDK1ZObEkwJ4HV0",
+          "action_class": "consequential_read",
+          "class_source": "deployment",
+          "denial_reason": "stale_state",
+          "reason": "stale_state",
+          "decision_evidence": {
+            "evidence_id": "evd_y3TgE197WAtFdmkGhXyEh5ZNHA4",
+            "evaluation_id": "dec_035c7445-2dba-4069-8722-88c9d569fa85",
+            "mission": {
+              "id": "msn_qWVnc79lh-uCPqvTXLPKq3WH",
+              "issuer": "https://w7-issuer.test",
+              "policy_view_id": "sha-256:xyoj2xhbdz_gnsY2h3ihDQWN-itsHDK1ZObEkwJ4HV0",
+              "authority_hash": "sha-256:QddiC9Sl8du1vonHbOfLeVbToC3-n7JTWoIL-X8DcE0"
+            },
+            "subject": {
+              "id": "alice"
+            },
+            "resource": {
+              "type": "invoice",
+              "id": "inv-w7"
+            },
+            "action": {
+              "name": "payments:invoice.read"
+            },
+            "audience": "http://localhost:4403/mcp",
+            "action_class": "consequential_read",
+            "class_source": "deployment",
+            "capability_source": {
+              "tool_id": "mcp://payments.demo/tools/get_invoice",
+              "source_uri": "http://localhost:4403/.well-known/mcp",
+              "source_digest": "sha-256:ftWlgCR8ftgIfladSFUxiklpJSgxnWMxU8bPav7Emf0",
+              "operation_ref": "get_invoice"
+            },
+            "actor": {
+              "client_id": "ap-agent",
+              "client_instance_id": "w7-subagent",
+              "act": [
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-orchestrator",
+                  "sub_profile": "ai_agent client_instance"
+                },
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-subagent",
+                  "sub_profile": "ai_agent client_instance"
+                }
+              ]
+            },
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k",
+            "decision": "deny",
+            "denial_reason": "stale_state",
+            "sequence": 0,
+            "emitter": {
+              "id": "http://localhost:4403/mcp",
+              "role": "pdp"
+            },
+            "evaluated_at": "2026-10-23T04:05:00.001Z",
+            "evidence_envelope": {
+              "format": "jws-compact",
+              "value": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVwaGVtZXJhbC1wZHAiLCJ0eXAiOiJhcHBsaWNhdGlvbi9taXNzaW9uLXJ1bnRpbWUtZXZpZGVuY2UrandzIiwiY3R5IjoiYXBwbGljYXRpb24vbWlzc2lvbi1kZWNpc2lvbi1ldmlkZW5jZStqc29uIn0.eyJhY3Rpb24iOnsibmFtZSI6InBheW1lbnRzOmludm9pY2UucmVhZCJ9LCJhY3Rpb25fY2xhc3MiOiJjb25zZXF1ZW50aWFsX3JlYWQiLCJhY3RvciI6eyJhY3QiOlt7ImlzcyI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJzdWIiOiJ3Ny1vcmNoZXN0cmF0b3IiLCJzdWJfcHJvZmlsZSI6ImFpX2FnZW50IGNsaWVudF9pbnN0YW5jZSJ9LHsiaXNzIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInN1YiI6Inc3LXN1YmFnZW50Iiwic3ViX3Byb2ZpbGUiOiJhaV9hZ2VudCBjbGllbnRfaW5zdGFuY2UifV0sImNsaWVudF9pZCI6ImFwLWFnZW50IiwiY2xpZW50X2luc3RhbmNlX2lkIjoidzctc3ViYWdlbnQifSwiYXVkaWVuY2UiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwiY2FwYWJpbGl0eV9zb3VyY2UiOnsib3BlcmF0aW9uX3JlZiI6ImdldF9pbnZvaWNlIiwic291cmNlX2RpZ2VzdCI6InNoYS0yNTY6ZnRXbGdDUjhmdGdJZmxhZFNGVXhpa2xwSlNneG5XTXhVOGJQYXY3RW1mMCIsInNvdXJjZV91cmkiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvLndlbGwta25vd24vbWNwIiwidG9vbF9pZCI6Im1jcDovL3BheW1lbnRzLmRlbW8vdG9vbHMvZ2V0X2ludm9pY2UifSwiY2xhc3Nfc291cmNlIjoiZGVwbG95bWVudCIsImRlY2lzaW9uIjoiZGVueSIsImRlbmlhbF9yZWFzb24iOiJzdGFsZV9zdGF0ZSIsImVtaXR0ZXIiOnsiaWQiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwicm9sZSI6InBkcCJ9LCJldmFsdWF0ZWRfYXQiOiIyMDI2LTEwLTIzVDA0OjA1OjAwLjAwMVoiLCJldmFsdWF0aW9uX2lkIjoiZGVjXzAzNWM3NDQ1LTJkYmEtNDA2OS04NzIyLTg4YzlkNTY5ZmE4NSIsImV2aWRlbmNlX2lkIjoiZXZkX3kzVGdFMTk3V0F0RmRta0doWHlFaDVaTkhBNCIsIm1pc3Npb24iOnsiYXV0aG9yaXR5X2hhc2giOiJzaGEtMjU2OlFkZGlDOVNsOGR1MXZvbkhiT2ZMZVZiVG9DMy1uN0pUV29JTC1YOERjRTAiLCJpZCI6Im1zbl9xV1ZuYzc5bGgtdUNQcXZUWExQS3EzV0giLCJpc3N1ZXIiOiJodHRwczovL3c3LWlzc3Vlci50ZXN0IiwicG9saWN5X3ZpZXdfaWQiOiJzaGEtMjU2Onh5b2oyeGhiZHpfZ25zWTJoM2loRFFXTi1pdHNIREsxWk9iRWt3SjRIVjAifSwicGFyYW1ldGVyX2RpZ2VzdCI6InNoYS0yNTY6Zy1oOWJtQWRpLXItRmUyZks4TlppWmViODdOYmtNVGRPbzh1QW5iaFo3ayIsInJlc291cmNlIjp7ImlkIjoiaW52LXc3IiwidHlwZSI6Imludm9pY2UifSwic2VxdWVuY2UiOjAsInN1YmplY3QiOnsiaWQiOiJhbGljZSJ9fQ.JXQM4e6FUQ2PzJ_WJE2tvlK8QxTkfdXlB6tfI-qRpwFDcOkUZjuikEqK7BIznAfxpQkmk9GoalrWvN-gn-fxJQ"
+            }
+          }
+        }
+      },
+      "outcome": {
+        "ok": false,
+        "denial_reason": "stale_state"
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "worker": "A",
+          "permit": false,
+          "reason": "stale_state",
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "fresh",
+            "freshness_at": "2026-10-23T04:00:00.000Z"
+          }
+        },
+        {
+          "order": 4,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "worker": "A",
+          "result": {
+            "ok": false,
+            "denial_reason": "stale_state"
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B3-use--1",
+      "stage": "permit_admission",
+      "validUntilMs": 1792728300000,
+      "admissionAtMs": 1792728299999,
+      "expectedAdmission": true,
+      "outcome": {
+        "ok": true,
+        "result": {
+          "id": "inv-w7",
+          "vendor_id": "acme",
+          "amount": "1.00",
+          "currency": "USD",
+          "payee_account": "fixture-only",
+          "status": "payable",
+          "version": 1
+        }
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:05:00.000Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 4,
+          "stage": "held_decision_released",
+          "logicalTime": "2026-10-23T04:04:59.999Z",
+          "worker": "A"
+        },
+        {
+          "order": 5,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:04:59.999Z",
+          "worker": "A",
+          "result": {
+            "ok": true,
+            "result": {
+              "id": "inv-w7",
+              "vendor_id": "acme",
+              "amount": "1.00",
+              "currency": "USD",
+              "payee_account": "fixture-only",
+              "status": "payable",
+              "version": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B3-use-0",
+      "stage": "permit_admission",
+      "validUntilMs": 1792728300000,
+      "admissionAtMs": 1792728300000,
+      "expectedAdmission": true,
+      "outcome": {
+        "ok": true,
+        "result": {
+          "id": "inv-w7",
+          "vendor_id": "acme",
+          "amount": "1.00",
+          "currency": "USD",
+          "payee_account": "fixture-only",
+          "status": "payable",
+          "version": 1
+        }
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:05:00.000Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 4,
+          "stage": "held_decision_released",
+          "logicalTime": "2026-10-23T04:05:00.000Z",
+          "worker": "A"
+        },
+        {
+          "order": 5,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:05:00.000Z",
+          "worker": "A",
+          "result": {
+            "ok": true,
+            "result": {
+              "id": "inv-w7",
+              "vendor_id": "acme",
+              "amount": "1.00",
+              "currency": "USD",
+              "payee_account": "fixture-only",
+              "status": "payable",
+              "version": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B3-use-1",
+      "stage": "permit_admission",
+      "validUntilMs": 1792728300000,
+      "admissionAtMs": 1792728300001,
+      "expectedAdmission": false,
+      "outcome": {
+        "ok": false,
+        "refusal_reason": "permit_expired"
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:05:00.000Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 4,
+          "stage": "held_decision_released",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "worker": "A"
+        },
+        {
+          "order": 5,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "worker": "A",
+          "result": {
+            "ok": false,
+            "refusal_reason": "permit_expired"
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B4-combined--1--1",
+      "stage": "combined_envelope",
+      "originalAsOfMs": 1792728000000,
+      "revokedAtMs": 1792728000001,
+      "issueAtMs": 1792728299999,
+      "validUntilMs": 1792728599999,
+      "admissionAtMs": 1792728599999,
+      "elapsedSinceAsOfMs": 599999,
+      "elapsedSinceRevocationMs": 599998,
+      "expectedAdmission": true,
+      "outcome": {
+        "ok": true,
+        "result": {
+          "id": "inv-w7",
+          "vendor_id": "acme",
+          "amount": "1.00",
+          "currency": "USD",
+          "payee_account": "fixture-only",
+          "status": "payable",
+          "version": 1
+        }
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "issuer_revocation_committed",
+          "logicalTime": "2026-10-23T04:00:00.001Z",
+          "state": "terminated",
+          "version": 2
+        },
+        {
+          "order": 4,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:04:59.999Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:09:59.999Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 5,
+          "stage": "held_decision_released",
+          "logicalTime": "2026-10-23T04:09:59.999Z",
+          "worker": "A"
+        },
+        {
+          "order": 6,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:09:59.999Z",
+          "worker": "A",
+          "result": {
+            "ok": true,
+            "result": {
+              "id": "inv-w7",
+              "vendor_id": "acme",
+              "amount": "1.00",
+              "currency": "USD",
+              "payee_account": "fixture-only",
+              "status": "payable",
+              "version": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B4-combined--1-0",
+      "stage": "combined_envelope",
+      "originalAsOfMs": 1792728000000,
+      "revokedAtMs": 1792728000001,
+      "issueAtMs": 1792728299999,
+      "validUntilMs": 1792728599999,
+      "admissionAtMs": 1792728600000,
+      "elapsedSinceAsOfMs": 600000,
+      "elapsedSinceRevocationMs": 599999,
+      "expectedAdmission": false,
+      "outcome": {
+        "ok": false,
+        "refusal_reason": "permit_expired"
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "issuer_revocation_committed",
+          "logicalTime": "2026-10-23T04:00:00.001Z",
+          "state": "terminated",
+          "version": 2
+        },
+        {
+          "order": 4,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:04:59.999Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:09:59.999Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 5,
+          "stage": "held_decision_released",
+          "logicalTime": "2026-10-23T04:10:00.000Z",
+          "worker": "A"
+        },
+        {
+          "order": 6,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:10:00.000Z",
+          "worker": "A",
+          "result": {
+            "ok": false,
+            "refusal_reason": "permit_expired"
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B4-combined--1-1",
+      "stage": "combined_envelope",
+      "originalAsOfMs": 1792728000000,
+      "revokedAtMs": 1792728000001,
+      "issueAtMs": 1792728299999,
+      "validUntilMs": 1792728599999,
+      "admissionAtMs": 1792728600001,
+      "elapsedSinceAsOfMs": 600001,
+      "elapsedSinceRevocationMs": 600000,
+      "expectedAdmission": false,
+      "outcome": {
+        "ok": false,
+        "refusal_reason": "permit_expired"
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "issuer_revocation_committed",
+          "logicalTime": "2026-10-23T04:00:00.001Z",
+          "state": "terminated",
+          "version": 2
+        },
+        {
+          "order": 4,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:04:59.999Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:09:59.999Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 5,
+          "stage": "held_decision_released",
+          "logicalTime": "2026-10-23T04:10:00.001Z",
+          "worker": "A"
+        },
+        {
+          "order": 6,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:10:00.001Z",
+          "worker": "A",
+          "result": {
+            "ok": false,
+            "refusal_reason": "permit_expired"
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B4-combined-0--1",
+      "stage": "combined_envelope",
+      "originalAsOfMs": 1792728000000,
+      "revokedAtMs": 1792728000001,
+      "issueAtMs": 1792728300000,
+      "validUntilMs": 1792728600000,
+      "admissionAtMs": 1792728599999,
+      "elapsedSinceAsOfMs": 599999,
+      "elapsedSinceRevocationMs": 599998,
+      "expectedAdmission": true,
+      "outcome": {
+        "ok": true,
+        "result": {
+          "id": "inv-w7",
+          "vendor_id": "acme",
+          "amount": "1.00",
+          "currency": "USD",
+          "payee_account": "fixture-only",
+          "status": "payable",
+          "version": 1
+        }
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "issuer_revocation_committed",
+          "logicalTime": "2026-10-23T04:00:00.001Z",
+          "state": "terminated",
+          "version": 2
+        },
+        {
+          "order": 4,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:05:00.000Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:10:00.000Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 5,
+          "stage": "held_decision_released",
+          "logicalTime": "2026-10-23T04:09:59.999Z",
+          "worker": "A"
+        },
+        {
+          "order": 6,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:09:59.999Z",
+          "worker": "A",
+          "result": {
+            "ok": true,
+            "result": {
+              "id": "inv-w7",
+              "vendor_id": "acme",
+              "amount": "1.00",
+              "currency": "USD",
+              "payee_account": "fixture-only",
+              "status": "payable",
+              "version": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B4-combined-0-0",
+      "stage": "combined_envelope",
+      "originalAsOfMs": 1792728000000,
+      "revokedAtMs": 1792728000001,
+      "issueAtMs": 1792728300000,
+      "validUntilMs": 1792728600000,
+      "admissionAtMs": 1792728600000,
+      "elapsedSinceAsOfMs": 600000,
+      "elapsedSinceRevocationMs": 599999,
+      "expectedAdmission": true,
+      "outcome": {
+        "ok": true,
+        "result": {
+          "id": "inv-w7",
+          "vendor_id": "acme",
+          "amount": "1.00",
+          "currency": "USD",
+          "payee_account": "fixture-only",
+          "status": "payable",
+          "version": 1
+        }
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "issuer_revocation_committed",
+          "logicalTime": "2026-10-23T04:00:00.001Z",
+          "state": "terminated",
+          "version": 2
+        },
+        {
+          "order": 4,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:05:00.000Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:10:00.000Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 5,
+          "stage": "held_decision_released",
+          "logicalTime": "2026-10-23T04:10:00.000Z",
+          "worker": "A"
+        },
+        {
+          "order": 6,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:10:00.000Z",
+          "worker": "A",
+          "result": {
+            "ok": true,
+            "result": {
+              "id": "inv-w7",
+              "vendor_id": "acme",
+              "amount": "1.00",
+              "currency": "USD",
+              "payee_account": "fixture-only",
+              "status": "payable",
+              "version": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B4-combined-0-1",
+      "stage": "combined_envelope",
+      "originalAsOfMs": 1792728000000,
+      "revokedAtMs": 1792728000001,
+      "issueAtMs": 1792728300000,
+      "validUntilMs": 1792728600000,
+      "admissionAtMs": 1792728600001,
+      "elapsedSinceAsOfMs": 600001,
+      "elapsedSinceRevocationMs": 600000,
+      "expectedAdmission": false,
+      "outcome": {
+        "ok": false,
+        "refusal_reason": "permit_expired"
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "issuer_revocation_committed",
+          "logicalTime": "2026-10-23T04:00:00.001Z",
+          "state": "terminated",
+          "version": 2
+        },
+        {
+          "order": 4,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:05:00.000Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:10:00.000Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 5,
+          "stage": "held_decision_released",
+          "logicalTime": "2026-10-23T04:10:00.001Z",
+          "worker": "A"
+        },
+        {
+          "order": 6,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:10:00.001Z",
+          "worker": "A",
+          "result": {
+            "ok": false,
+            "refusal_reason": "permit_expired"
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B5-cache-revalidate",
+      "stage": "test_adapter_admission_recheck",
+      "adapter": "cache-revalidate",
+      "expectedAdmission": true,
+      "originalDecision": {
+        "decision": true,
+        "context": {
+          "decision_id": "dec_af1210f0-9440-4b09-a59d-b41d366fd9df",
+          "evaluation_id": "dec_af1210f0-9440-4b09-a59d-b41d366fd9df",
+          "policy_view_id": "sha-256:mnhsRrDUYHtlKWKhQ6NLpO2eJMxrgb0Zmb_RD_Yg_NA",
+          "action_class": "consequential_read",
+          "class_source": "deployment",
+          "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+          "conditions": {
+            "valid_until": "2026-10-23T04:06:40.000Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "decision_evidence": {
+            "evidence_id": "evd_cijLF_dO_ACUnqAj1D5cIbi8w8A",
+            "evaluation_id": "dec_af1210f0-9440-4b09-a59d-b41d366fd9df",
+            "mission": {
+              "id": "msn_ZMUkeRnokNolueXOUEN16dUf",
+              "issuer": "https://w7-issuer.test",
+              "policy_view_id": "sha-256:mnhsRrDUYHtlKWKhQ6NLpO2eJMxrgb0Zmb_RD_Yg_NA",
+              "authority_hash": "sha-256:QddiC9Sl8du1vonHbOfLeVbToC3-n7JTWoIL-X8DcE0"
+            },
+            "subject": {
+              "id": "alice"
+            },
+            "resource": {
+              "type": "invoice",
+              "id": "inv-w7"
+            },
+            "action": {
+              "name": "payments:invoice.read"
+            },
+            "audience": "http://localhost:4403/mcp",
+            "action_class": "consequential_read",
+            "class_source": "deployment",
+            "capability_source": {
+              "tool_id": "mcp://payments.demo/tools/get_invoice",
+              "source_uri": "http://localhost:4403/.well-known/mcp",
+              "source_digest": "sha-256:ftWlgCR8ftgIfladSFUxiklpJSgxnWMxU8bPav7Emf0",
+              "operation_ref": "get_invoice"
+            },
+            "actor": {
+              "client_id": "ap-agent",
+              "client_instance_id": "w7-subagent",
+              "act": [
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-orchestrator",
+                  "sub_profile": "ai_agent client_instance"
+                },
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-subagent",
+                  "sub_profile": "ai_agent client_instance"
+                }
+              ]
+            },
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k",
+            "conditions": {
+              "valid_until": "2026-10-23T04:06:40.000Z"
+            },
+            "decision": "permit",
+            "contributing_constraints": [
+              "mission_resource_access"
+            ],
+            "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+            "sequence": 0,
+            "emitter": {
+              "id": "http://localhost:4403/mcp",
+              "role": "pdp"
+            },
+            "evaluated_at": "2026-10-23T04:01:40.000Z",
+            "evidence_envelope": {
+              "format": "jws-compact",
+              "value": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVwaGVtZXJhbC1wZHAiLCJ0eXAiOiJhcHBsaWNhdGlvbi9taXNzaW9uLXJ1bnRpbWUtZXZpZGVuY2UrandzIiwiY3R5IjoiYXBwbGljYXRpb24vbWlzc2lvbi1kZWNpc2lvbi1ldmlkZW5jZStqc29uIn0.eyJhY3Rpb24iOnsibmFtZSI6InBheW1lbnRzOmludm9pY2UucmVhZCJ9LCJhY3Rpb25fY2xhc3MiOiJjb25zZXF1ZW50aWFsX3JlYWQiLCJhY3RvciI6eyJhY3QiOlt7ImlzcyI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJzdWIiOiJ3Ny1vcmNoZXN0cmF0b3IiLCJzdWJfcHJvZmlsZSI6ImFpX2FnZW50IGNsaWVudF9pbnN0YW5jZSJ9LHsiaXNzIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInN1YiI6Inc3LXN1YmFnZW50Iiwic3ViX3Byb2ZpbGUiOiJhaV9hZ2VudCBjbGllbnRfaW5zdGFuY2UifV0sImNsaWVudF9pZCI6ImFwLWFnZW50IiwiY2xpZW50X2luc3RhbmNlX2lkIjoidzctc3ViYWdlbnQifSwiYXVkaWVuY2UiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwiY2FwYWJpbGl0eV9zb3VyY2UiOnsib3BlcmF0aW9uX3JlZiI6ImdldF9pbnZvaWNlIiwic291cmNlX2RpZ2VzdCI6InNoYS0yNTY6ZnRXbGdDUjhmdGdJZmxhZFNGVXhpa2xwSlNneG5XTXhVOGJQYXY3RW1mMCIsInNvdXJjZV91cmkiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvLndlbGwta25vd24vbWNwIiwidG9vbF9pZCI6Im1jcDovL3BheW1lbnRzLmRlbW8vdG9vbHMvZ2V0X2ludm9pY2UifSwiY2xhc3Nfc291cmNlIjoiZGVwbG95bWVudCIsImNvbmRpdGlvbnMiOnsidmFsaWRfdW50aWwiOiIyMDI2LTEwLTIzVDA0OjA2OjQwLjAwMFoifSwiY29udHJpYnV0aW5nX2NvbnN0cmFpbnRzIjpbIm1pc3Npb25fcmVzb3VyY2VfYWNjZXNzIl0sImRlY2lzaW9uIjoicGVybWl0IiwiZW1pdHRlciI6eyJpZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDQwMy9tY3AiLCJyb2xlIjoicGRwIn0sImVudHJ5X2RpZ2VzdCI6InNoYS0yNTY6T1gwNGJQLWZTd25fMlNhSTROZWg0OHBRTUVnR0NOZzJ1UDdBVVNqNjB4TSIsImV2YWx1YXRlZF9hdCI6IjIwMjYtMTAtMjNUMDQ6MDE6NDAuMDAwWiIsImV2YWx1YXRpb25faWQiOiJkZWNfYWYxMjEwZjAtOTQ0MC00YjA5LWE1OWQtYjQxZDM2NmZkOWRmIiwiZXZpZGVuY2VfaWQiOiJldmRfY2lqTEZfZE9fQUNVbnFBajFENWNJYmk4dzhBIiwibWlzc2lvbiI6eyJhdXRob3JpdHlfaGFzaCI6InNoYS0yNTY6UWRkaUM5U2w4ZHUxdm9uSGJPZkxlVmJUb0MzLW43SlRXb0lMLVg4RGNFMCIsImlkIjoibXNuX1pNVWtlUm5va05vbHVlWE9VRU4xNmRVZiIsImlzc3VlciI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJwb2xpY3lfdmlld19pZCI6InNoYS0yNTY6bW5oc1JyRFVZSHRsS1dLaFE2TkxwTzJlSk14cmdiMFptYl9SRF9ZZ19OQSJ9LCJwYXJhbWV0ZXJfZGlnZXN0Ijoic2hhLTI1NjpnLWg5Ym1BZGktci1GZTJmSzhOWmlaZWI4N05ia01UZE9vOHVBbmJoWjdrIiwicmVzb3VyY2UiOnsiaWQiOiJpbnYtdzciLCJ0eXBlIjoiaW52b2ljZSJ9LCJzZXF1ZW5jZSI6MCwic3ViamVjdCI6eyJpZCI6ImFsaWNlIn19.7EJK7IBkhqW33hcf-6kSmC44FKsVh_OnxUI3HMqsKW8Vc07DAUwYYRat_iHzkdfY4t71b8M0Gf2Gl3ae2e05mw"
+            }
+          }
+        }
+      },
+      "admissionDecision": {
+        "decision": true,
+        "context": {
+          "decision_id": "dec_6a27d087-9528-4405-8066-8a67d8607382",
+          "evaluation_id": "dec_6a27d087-9528-4405-8066-8a67d8607382",
+          "policy_view_id": "sha-256:mnhsRrDUYHtlKWKhQ6NLpO2eJMxrgb0Zmb_RD_Yg_NA",
+          "action_class": "consequential_read",
+          "class_source": "deployment",
+          "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+          "conditions": {
+            "valid_until": "2026-10-23T04:07:30.000Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "decision_evidence": {
+            "evidence_id": "evd_vw8DZmojYRJRUHZGXfhBJCCfTbc",
+            "evaluation_id": "dec_6a27d087-9528-4405-8066-8a67d8607382",
+            "mission": {
+              "id": "msn_ZMUkeRnokNolueXOUEN16dUf",
+              "issuer": "https://w7-issuer.test",
+              "policy_view_id": "sha-256:mnhsRrDUYHtlKWKhQ6NLpO2eJMxrgb0Zmb_RD_Yg_NA",
+              "authority_hash": "sha-256:QddiC9Sl8du1vonHbOfLeVbToC3-n7JTWoIL-X8DcE0"
+            },
+            "subject": {
+              "id": "alice"
+            },
+            "resource": {
+              "type": "invoice",
+              "id": "inv-w7"
+            },
+            "action": {
+              "name": "payments:invoice.read"
+            },
+            "audience": "http://localhost:4403/mcp",
+            "action_class": "consequential_read",
+            "class_source": "deployment",
+            "capability_source": {
+              "tool_id": "mcp://payments.demo/tools/get_invoice",
+              "source_uri": "http://localhost:4403/.well-known/mcp",
+              "source_digest": "sha-256:ftWlgCR8ftgIfladSFUxiklpJSgxnWMxU8bPav7Emf0",
+              "operation_ref": "get_invoice"
+            },
+            "actor": {
+              "client_id": "ap-agent",
+              "client_instance_id": "w7-subagent",
+              "act": [
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-orchestrator",
+                  "sub_profile": "ai_agent client_instance"
+                },
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-subagent",
+                  "sub_profile": "ai_agent client_instance"
+                }
+              ]
+            },
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k",
+            "conditions": {
+              "valid_until": "2026-10-23T04:07:30.000Z"
+            },
+            "decision": "permit",
+            "contributing_constraints": [
+              "mission_resource_access"
+            ],
+            "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+            "sequence": 1,
+            "emitter": {
+              "id": "http://localhost:4403/mcp",
+              "role": "pdp"
+            },
+            "evaluated_at": "2026-10-23T04:02:30.000Z",
+            "evidence_envelope": {
+              "format": "jws-compact",
+              "value": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVwaGVtZXJhbC1wZHAiLCJ0eXAiOiJhcHBsaWNhdGlvbi9taXNzaW9uLXJ1bnRpbWUtZXZpZGVuY2UrandzIiwiY3R5IjoiYXBwbGljYXRpb24vbWlzc2lvbi1kZWNpc2lvbi1ldmlkZW5jZStqc29uIn0.eyJhY3Rpb24iOnsibmFtZSI6InBheW1lbnRzOmludm9pY2UucmVhZCJ9LCJhY3Rpb25fY2xhc3MiOiJjb25zZXF1ZW50aWFsX3JlYWQiLCJhY3RvciI6eyJhY3QiOlt7ImlzcyI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJzdWIiOiJ3Ny1vcmNoZXN0cmF0b3IiLCJzdWJfcHJvZmlsZSI6ImFpX2FnZW50IGNsaWVudF9pbnN0YW5jZSJ9LHsiaXNzIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInN1YiI6Inc3LXN1YmFnZW50Iiwic3ViX3Byb2ZpbGUiOiJhaV9hZ2VudCBjbGllbnRfaW5zdGFuY2UifV0sImNsaWVudF9pZCI6ImFwLWFnZW50IiwiY2xpZW50X2luc3RhbmNlX2lkIjoidzctc3ViYWdlbnQifSwiYXVkaWVuY2UiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwiY2FwYWJpbGl0eV9zb3VyY2UiOnsib3BlcmF0aW9uX3JlZiI6ImdldF9pbnZvaWNlIiwic291cmNlX2RpZ2VzdCI6InNoYS0yNTY6ZnRXbGdDUjhmdGdJZmxhZFNGVXhpa2xwSlNneG5XTXhVOGJQYXY3RW1mMCIsInNvdXJjZV91cmkiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvLndlbGwta25vd24vbWNwIiwidG9vbF9pZCI6Im1jcDovL3BheW1lbnRzLmRlbW8vdG9vbHMvZ2V0X2ludm9pY2UifSwiY2xhc3Nfc291cmNlIjoiZGVwbG95bWVudCIsImNvbmRpdGlvbnMiOnsidmFsaWRfdW50aWwiOiIyMDI2LTEwLTIzVDA0OjA3OjMwLjAwMFoifSwiY29udHJpYnV0aW5nX2NvbnN0cmFpbnRzIjpbIm1pc3Npb25fcmVzb3VyY2VfYWNjZXNzIl0sImRlY2lzaW9uIjoicGVybWl0IiwiZW1pdHRlciI6eyJpZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDQwMy9tY3AiLCJyb2xlIjoicGRwIn0sImVudHJ5X2RpZ2VzdCI6InNoYS0yNTY6T1gwNGJQLWZTd25fMlNhSTROZWg0OHBRTUVnR0NOZzJ1UDdBVVNqNjB4TSIsImV2YWx1YXRlZF9hdCI6IjIwMjYtMTAtMjNUMDQ6MDI6MzAuMDAwWiIsImV2YWx1YXRpb25faWQiOiJkZWNfNmEyN2QwODctOTUyOC00NDA1LTgwNjYtOGE2N2Q4NjA3MzgyIiwiZXZpZGVuY2VfaWQiOiJldmRfdnc4RFptb2pZUkpSVUhaR1hmaEJKQ0NmVGJjIiwibWlzc2lvbiI6eyJhdXRob3JpdHlfaGFzaCI6InNoYS0yNTY6UWRkaUM5U2w4ZHUxdm9uSGJPZkxlVmJUb0MzLW43SlRXb0lMLVg4RGNFMCIsImlkIjoibXNuX1pNVWtlUm5va05vbHVlWE9VRU4xNmRVZiIsImlzc3VlciI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJwb2xpY3lfdmlld19pZCI6InNoYS0yNTY6bW5oc1JyRFVZSHRsS1dLaFE2TkxwTzJlSk14cmdiMFptYl9SRF9ZZ19OQSJ9LCJwYXJhbWV0ZXJfZGlnZXN0Ijoic2hhLTI1NjpnLWg5Ym1BZGktci1GZTJmSzhOWmlaZWI4N05ia01UZE9vOHVBbmJoWjdrIiwicmVzb3VyY2UiOnsiaWQiOiJpbnYtdzciLCJ0eXBlIjoiaW52b2ljZSJ9LCJzZXF1ZW5jZSI6MSwic3ViamVjdCI6eyJpZCI6ImFsaWNlIn19.-8tTd3g9a0n95TET9qhItA65x83eXtAoiX5WBIi88nazCxeRaAv1iFjdQfpQDUXtT4Rp3rVtRrVzdGy8Z7TSWg"
+            }
+          }
+        }
+      },
+      "outcome": {
+        "ok": true,
+        "result": {
+          "id": "inv-w7",
+          "vendor_id": "acme",
+          "amount": "1.00",
+          "currency": "USD",
+          "payee_account": "fixture-only",
+          "status": "payable",
+          "version": 1
+        }
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:01:40.000Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:06:40.000Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 4,
+          "stage": "issuer_revocation_committed",
+          "logicalTime": "2026-10-23T04:02:05.000Z",
+          "state": "terminated",
+          "version": 2
+        },
+        {
+          "order": 5,
+          "stage": "held_decision_released",
+          "logicalTime": "2026-10-23T04:02:30.000Z",
+          "worker": "A"
+        },
+        {
+          "order": 6,
+          "stage": "admission_adapter_read",
+          "logicalTime": "2026-10-23T04:02:30.000Z",
+          "adapter": "cache-revalidate",
+          "state": "active",
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 7,
+          "stage": "admission_adapter_pdp_decision",
+          "logicalTime": "2026-10-23T04:02:30.000Z",
+          "permit": true
+        },
+        {
+          "order": 8,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:02:30.000Z",
+          "worker": "A",
+          "result": {
+            "ok": true,
+            "result": {
+              "id": "inv-w7",
+              "vendor_id": "acme",
+              "amount": "1.00",
+              "currency": "USD",
+              "payee_account": "fixture-only",
+              "status": "payable",
+              "version": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B5-source-revalidate",
+      "stage": "test_adapter_admission_recheck",
+      "adapter": "source-revalidate",
+      "expectedAdmission": false,
+      "originalDecision": {
+        "decision": true,
+        "context": {
+          "decision_id": "dec_0281bb8a-0f2d-4fe1-a677-7b232e7a57f6",
+          "evaluation_id": "dec_0281bb8a-0f2d-4fe1-a677-7b232e7a57f6",
+          "policy_view_id": "sha-256:kpdxd3mYnfNhIFMGhuupRlA8WMwIzOiPcr8rMh8ynA8",
+          "action_class": "consequential_read",
+          "class_source": "deployment",
+          "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+          "conditions": {
+            "valid_until": "2026-10-23T04:06:40.000Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "decision_evidence": {
+            "evidence_id": "evd_52UvZ-55f5OFT3a7h_5Xyd1nV7E",
+            "evaluation_id": "dec_0281bb8a-0f2d-4fe1-a677-7b232e7a57f6",
+            "mission": {
+              "id": "msn_FDM2Mvchm9VbFozYWaZ7e3sP",
+              "issuer": "https://w7-issuer.test",
+              "policy_view_id": "sha-256:kpdxd3mYnfNhIFMGhuupRlA8WMwIzOiPcr8rMh8ynA8",
+              "authority_hash": "sha-256:QddiC9Sl8du1vonHbOfLeVbToC3-n7JTWoIL-X8DcE0"
+            },
+            "subject": {
+              "id": "alice"
+            },
+            "resource": {
+              "type": "invoice",
+              "id": "inv-w7"
+            },
+            "action": {
+              "name": "payments:invoice.read"
+            },
+            "audience": "http://localhost:4403/mcp",
+            "action_class": "consequential_read",
+            "class_source": "deployment",
+            "capability_source": {
+              "tool_id": "mcp://payments.demo/tools/get_invoice",
+              "source_uri": "http://localhost:4403/.well-known/mcp",
+              "source_digest": "sha-256:ftWlgCR8ftgIfladSFUxiklpJSgxnWMxU8bPav7Emf0",
+              "operation_ref": "get_invoice"
+            },
+            "actor": {
+              "client_id": "ap-agent",
+              "client_instance_id": "w7-subagent",
+              "act": [
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-orchestrator",
+                  "sub_profile": "ai_agent client_instance"
+                },
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-subagent",
+                  "sub_profile": "ai_agent client_instance"
+                }
+              ]
+            },
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k",
+            "conditions": {
+              "valid_until": "2026-10-23T04:06:40.000Z"
+            },
+            "decision": "permit",
+            "contributing_constraints": [
+              "mission_resource_access"
+            ],
+            "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+            "sequence": 0,
+            "emitter": {
+              "id": "http://localhost:4403/mcp",
+              "role": "pdp"
+            },
+            "evaluated_at": "2026-10-23T04:01:40.000Z",
+            "evidence_envelope": {
+              "format": "jws-compact",
+              "value": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVwaGVtZXJhbC1wZHAiLCJ0eXAiOiJhcHBsaWNhdGlvbi9taXNzaW9uLXJ1bnRpbWUtZXZpZGVuY2UrandzIiwiY3R5IjoiYXBwbGljYXRpb24vbWlzc2lvbi1kZWNpc2lvbi1ldmlkZW5jZStqc29uIn0.eyJhY3Rpb24iOnsibmFtZSI6InBheW1lbnRzOmludm9pY2UucmVhZCJ9LCJhY3Rpb25fY2xhc3MiOiJjb25zZXF1ZW50aWFsX3JlYWQiLCJhY3RvciI6eyJhY3QiOlt7ImlzcyI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJzdWIiOiJ3Ny1vcmNoZXN0cmF0b3IiLCJzdWJfcHJvZmlsZSI6ImFpX2FnZW50IGNsaWVudF9pbnN0YW5jZSJ9LHsiaXNzIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInN1YiI6Inc3LXN1YmFnZW50Iiwic3ViX3Byb2ZpbGUiOiJhaV9hZ2VudCBjbGllbnRfaW5zdGFuY2UifV0sImNsaWVudF9pZCI6ImFwLWFnZW50IiwiY2xpZW50X2luc3RhbmNlX2lkIjoidzctc3ViYWdlbnQifSwiYXVkaWVuY2UiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwiY2FwYWJpbGl0eV9zb3VyY2UiOnsib3BlcmF0aW9uX3JlZiI6ImdldF9pbnZvaWNlIiwic291cmNlX2RpZ2VzdCI6InNoYS0yNTY6ZnRXbGdDUjhmdGdJZmxhZFNGVXhpa2xwSlNneG5XTXhVOGJQYXY3RW1mMCIsInNvdXJjZV91cmkiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvLndlbGwta25vd24vbWNwIiwidG9vbF9pZCI6Im1jcDovL3BheW1lbnRzLmRlbW8vdG9vbHMvZ2V0X2ludm9pY2UifSwiY2xhc3Nfc291cmNlIjoiZGVwbG95bWVudCIsImNvbmRpdGlvbnMiOnsidmFsaWRfdW50aWwiOiIyMDI2LTEwLTIzVDA0OjA2OjQwLjAwMFoifSwiY29udHJpYnV0aW5nX2NvbnN0cmFpbnRzIjpbIm1pc3Npb25fcmVzb3VyY2VfYWNjZXNzIl0sImRlY2lzaW9uIjoicGVybWl0IiwiZW1pdHRlciI6eyJpZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDQwMy9tY3AiLCJyb2xlIjoicGRwIn0sImVudHJ5X2RpZ2VzdCI6InNoYS0yNTY6T1gwNGJQLWZTd25fMlNhSTROZWg0OHBRTUVnR0NOZzJ1UDdBVVNqNjB4TSIsImV2YWx1YXRlZF9hdCI6IjIwMjYtMTAtMjNUMDQ6MDE6NDAuMDAwWiIsImV2YWx1YXRpb25faWQiOiJkZWNfMDI4MWJiOGEtMGYyZC00ZmUxLWE2NzctN2IyMzJlN2E1N2Y2IiwiZXZpZGVuY2VfaWQiOiJldmRfNTJVdlotNTVmNU9GVDNhN2hfNVh5ZDFuVjdFIiwibWlzc2lvbiI6eyJhdXRob3JpdHlfaGFzaCI6InNoYS0yNTY6UWRkaUM5U2w4ZHUxdm9uSGJPZkxlVmJUb0MzLW43SlRXb0lMLVg4RGNFMCIsImlkIjoibXNuX0ZETTJNdmNobTlWYkZvellXYVo3ZTNzUCIsImlzc3VlciI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJwb2xpY3lfdmlld19pZCI6InNoYS0yNTY6a3BkeGQzbVluZk5oSUZNR2h1dXBSbEE4V013SXpPaVBjcjhyTWg4eW5BOCJ9LCJwYXJhbWV0ZXJfZGlnZXN0Ijoic2hhLTI1NjpnLWg5Ym1BZGktci1GZTJmSzhOWmlaZWI4N05ia01UZE9vOHVBbmJoWjdrIiwicmVzb3VyY2UiOnsiaWQiOiJpbnYtdzciLCJ0eXBlIjoiaW52b2ljZSJ9LCJzZXF1ZW5jZSI6MCwic3ViamVjdCI6eyJpZCI6ImFsaWNlIn19.kkf-Va7kj_gmpqaRvFHTdVCEBQLJR6-z1YDLrj8Ao5HlAxhhaYR4m-3iLqEBR-34_H4yilk_9ZMBbd7Y2iiisQ"
+            }
+          }
+        }
+      },
+      "admissionDecision": {
+        "decision": false,
+        "context": {
+          "decision_id": "dec_bda41738-2b76-4368-a645-9996af89e883",
+          "evaluation_id": "dec_bda41738-2b76-4368-a645-9996af89e883",
+          "policy_view_id": "sha-256:K6lEQiWXbfOHDDCBi33a3WlVN7ajZmuWwhUfWwmIpF0",
+          "action_class": "consequential_read",
+          "class_source": "deployment",
+          "denial_reason": "mission_inactive",
+          "reason": "mission_inactive",
+          "decision_evidence": {
+            "evidence_id": "evd_kORlSrViAZ5FU68EGauX0fRhNsw",
+            "evaluation_id": "dec_bda41738-2b76-4368-a645-9996af89e883",
+            "mission": {
+              "id": "msn_FDM2Mvchm9VbFozYWaZ7e3sP",
+              "issuer": "https://w7-issuer.test",
+              "policy_view_id": "sha-256:K6lEQiWXbfOHDDCBi33a3WlVN7ajZmuWwhUfWwmIpF0",
+              "authority_hash": "sha-256:QddiC9Sl8du1vonHbOfLeVbToC3-n7JTWoIL-X8DcE0"
+            },
+            "subject": {
+              "id": "alice"
+            },
+            "resource": {
+              "type": "invoice",
+              "id": "inv-w7"
+            },
+            "action": {
+              "name": "payments:invoice.read"
+            },
+            "audience": "http://localhost:4403/mcp",
+            "action_class": "consequential_read",
+            "class_source": "deployment",
+            "capability_source": {
+              "tool_id": "mcp://payments.demo/tools/get_invoice",
+              "source_uri": "http://localhost:4403/.well-known/mcp",
+              "source_digest": "sha-256:ftWlgCR8ftgIfladSFUxiklpJSgxnWMxU8bPav7Emf0",
+              "operation_ref": "get_invoice"
+            },
+            "actor": {
+              "client_id": "ap-agent",
+              "client_instance_id": "w7-subagent",
+              "act": [
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-orchestrator",
+                  "sub_profile": "ai_agent client_instance"
+                },
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-subagent",
+                  "sub_profile": "ai_agent client_instance"
+                }
+              ]
+            },
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k",
+            "decision": "deny",
+            "denial_reason": "mission_inactive",
+            "sequence": 1,
+            "emitter": {
+              "id": "http://localhost:4403/mcp",
+              "role": "pdp"
+            },
+            "evaluated_at": "2026-10-23T04:02:30.000Z",
+            "evidence_envelope": {
+              "format": "jws-compact",
+              "value": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVwaGVtZXJhbC1wZHAiLCJ0eXAiOiJhcHBsaWNhdGlvbi9taXNzaW9uLXJ1bnRpbWUtZXZpZGVuY2UrandzIiwiY3R5IjoiYXBwbGljYXRpb24vbWlzc2lvbi1kZWNpc2lvbi1ldmlkZW5jZStqc29uIn0.eyJhY3Rpb24iOnsibmFtZSI6InBheW1lbnRzOmludm9pY2UucmVhZCJ9LCJhY3Rpb25fY2xhc3MiOiJjb25zZXF1ZW50aWFsX3JlYWQiLCJhY3RvciI6eyJhY3QiOlt7ImlzcyI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJzdWIiOiJ3Ny1vcmNoZXN0cmF0b3IiLCJzdWJfcHJvZmlsZSI6ImFpX2FnZW50IGNsaWVudF9pbnN0YW5jZSJ9LHsiaXNzIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInN1YiI6Inc3LXN1YmFnZW50Iiwic3ViX3Byb2ZpbGUiOiJhaV9hZ2VudCBjbGllbnRfaW5zdGFuY2UifV0sImNsaWVudF9pZCI6ImFwLWFnZW50IiwiY2xpZW50X2luc3RhbmNlX2lkIjoidzctc3ViYWdlbnQifSwiYXVkaWVuY2UiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwiY2FwYWJpbGl0eV9zb3VyY2UiOnsib3BlcmF0aW9uX3JlZiI6ImdldF9pbnZvaWNlIiwic291cmNlX2RpZ2VzdCI6InNoYS0yNTY6ZnRXbGdDUjhmdGdJZmxhZFNGVXhpa2xwSlNneG5XTXhVOGJQYXY3RW1mMCIsInNvdXJjZV91cmkiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvLndlbGwta25vd24vbWNwIiwidG9vbF9pZCI6Im1jcDovL3BheW1lbnRzLmRlbW8vdG9vbHMvZ2V0X2ludm9pY2UifSwiY2xhc3Nfc291cmNlIjoiZGVwbG95bWVudCIsImRlY2lzaW9uIjoiZGVueSIsImRlbmlhbF9yZWFzb24iOiJtaXNzaW9uX2luYWN0aXZlIiwiZW1pdHRlciI6eyJpZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDQwMy9tY3AiLCJyb2xlIjoicGRwIn0sImV2YWx1YXRlZF9hdCI6IjIwMjYtMTAtMjNUMDQ6MDI6MzAuMDAwWiIsImV2YWx1YXRpb25faWQiOiJkZWNfYmRhNDE3MzgtMmI3Ni00MzY4LWE2NDUtOTk5NmFmODllODgzIiwiZXZpZGVuY2VfaWQiOiJldmRfa09SbFNyVmlBWjVGVTY4RUdhdVgwZlJoTnN3IiwibWlzc2lvbiI6eyJhdXRob3JpdHlfaGFzaCI6InNoYS0yNTY6UWRkaUM5U2w4ZHUxdm9uSGJPZkxlVmJUb0MzLW43SlRXb0lMLVg4RGNFMCIsImlkIjoibXNuX0ZETTJNdmNobTlWYkZvellXYVo3ZTNzUCIsImlzc3VlciI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJwb2xpY3lfdmlld19pZCI6InNoYS0yNTY6SzZsRVFpV1hiZk9IRERDQmkzM2EzV2xWTjdhalptdVd3aFVmV3dtSXBGMCJ9LCJwYXJhbWV0ZXJfZGlnZXN0Ijoic2hhLTI1NjpnLWg5Ym1BZGktci1GZTJmSzhOWmlaZWI4N05ia01UZE9vOHVBbmJoWjdrIiwicmVzb3VyY2UiOnsiaWQiOiJpbnYtdzciLCJ0eXBlIjoiaW52b2ljZSJ9LCJzZXF1ZW5jZSI6MSwic3ViamVjdCI6eyJpZCI6ImFsaWNlIn19.-VIuTfYijWKU1fJgrtlUtfEZIk0AY8kFNSwDB7FIx1efemXTnWEOJpYeBNYUwGFBW4SDc-n-oAjzSRlK1MbyhQ"
+            }
+          }
+        }
+      },
+      "outcome": {
+        "ok": false,
+        "denial_reason": "mission_inactive"
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:01:40.000Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:06:40.000Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 4,
+          "stage": "issuer_revocation_committed",
+          "logicalTime": "2026-10-23T04:02:05.000Z",
+          "state": "terminated",
+          "version": 2
+        },
+        {
+          "order": 5,
+          "stage": "held_decision_released",
+          "logicalTime": "2026-10-23T04:02:30.000Z",
+          "worker": "A"
+        },
+        {
+          "order": 6,
+          "stage": "admission_adapter_read",
+          "logicalTime": "2026-10-23T04:02:30.000Z",
+          "adapter": "source-revalidate",
+          "state": "terminated",
+          "observation": {
+            "state": "terminated",
+            "version": 2,
+            "mode": "fresh",
+            "freshness_at": "2026-10-23T04:02:30.000Z"
+          }
+        },
+        {
+          "order": 7,
+          "stage": "admission_adapter_pdp_decision",
+          "logicalTime": "2026-10-23T04:02:30.000Z",
+          "permit": false,
+          "reason": "mission_inactive"
+        },
+        {
+          "order": 8,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:02:30.000Z",
+          "worker": "A",
+          "result": {
+            "ok": false,
+            "denial_reason": "mission_inactive"
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B6-cache-read-only",
+      "stage": "test_adapter_cache_age",
+      "adapter": "cache-read-only",
+      "expectedAdmission": true,
+      "originalDecision": {
+        "decision": true,
+        "context": {
+          "decision_id": "dec_4cbcaf93-fdce-498f-8c9b-2725415609b3",
+          "evaluation_id": "dec_4cbcaf93-fdce-498f-8c9b-2725415609b3",
+          "policy_view_id": "sha-256:dusReLr-GvtZcx_3TeLitJUAMO0A8V5ZiYUbvnV7fSA",
+          "action_class": "consequential_read",
+          "class_source": "deployment",
+          "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+          "conditions": {
+            "valid_until": "2026-10-23T04:09:59.999Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "decision_evidence": {
+            "evidence_id": "evd_f6ozGkaR3SovjAsWuw7Ahlk-ETM",
+            "evaluation_id": "dec_4cbcaf93-fdce-498f-8c9b-2725415609b3",
+            "mission": {
+              "id": "msn_ynaBdR-StJT7i_aoeqP8May1",
+              "issuer": "https://w7-issuer.test",
+              "policy_view_id": "sha-256:dusReLr-GvtZcx_3TeLitJUAMO0A8V5ZiYUbvnV7fSA",
+              "authority_hash": "sha-256:QddiC9Sl8du1vonHbOfLeVbToC3-n7JTWoIL-X8DcE0"
+            },
+            "subject": {
+              "id": "alice"
+            },
+            "resource": {
+              "type": "invoice",
+              "id": "inv-w7"
+            },
+            "action": {
+              "name": "payments:invoice.read"
+            },
+            "audience": "http://localhost:4403/mcp",
+            "action_class": "consequential_read",
+            "class_source": "deployment",
+            "capability_source": {
+              "tool_id": "mcp://payments.demo/tools/get_invoice",
+              "source_uri": "http://localhost:4403/.well-known/mcp",
+              "source_digest": "sha-256:ftWlgCR8ftgIfladSFUxiklpJSgxnWMxU8bPav7Emf0",
+              "operation_ref": "get_invoice"
+            },
+            "actor": {
+              "client_id": "ap-agent",
+              "client_instance_id": "w7-subagent",
+              "act": [
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-orchestrator",
+                  "sub_profile": "ai_agent client_instance"
+                },
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-subagent",
+                  "sub_profile": "ai_agent client_instance"
+                }
+              ]
+            },
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k",
+            "conditions": {
+              "valid_until": "2026-10-23T04:09:59.999Z"
+            },
+            "decision": "permit",
+            "contributing_constraints": [
+              "mission_resource_access"
+            ],
+            "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+            "sequence": 0,
+            "emitter": {
+              "id": "http://localhost:4403/mcp",
+              "role": "pdp"
+            },
+            "evaluated_at": "2026-10-23T04:04:59.999Z",
+            "evidence_envelope": {
+              "format": "jws-compact",
+              "value": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVwaGVtZXJhbC1wZHAiLCJ0eXAiOiJhcHBsaWNhdGlvbi9taXNzaW9uLXJ1bnRpbWUtZXZpZGVuY2UrandzIiwiY3R5IjoiYXBwbGljYXRpb24vbWlzc2lvbi1kZWNpc2lvbi1ldmlkZW5jZStqc29uIn0.eyJhY3Rpb24iOnsibmFtZSI6InBheW1lbnRzOmludm9pY2UucmVhZCJ9LCJhY3Rpb25fY2xhc3MiOiJjb25zZXF1ZW50aWFsX3JlYWQiLCJhY3RvciI6eyJhY3QiOlt7ImlzcyI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJzdWIiOiJ3Ny1vcmNoZXN0cmF0b3IiLCJzdWJfcHJvZmlsZSI6ImFpX2FnZW50IGNsaWVudF9pbnN0YW5jZSJ9LHsiaXNzIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInN1YiI6Inc3LXN1YmFnZW50Iiwic3ViX3Byb2ZpbGUiOiJhaV9hZ2VudCBjbGllbnRfaW5zdGFuY2UifV0sImNsaWVudF9pZCI6ImFwLWFnZW50IiwiY2xpZW50X2luc3RhbmNlX2lkIjoidzctc3ViYWdlbnQifSwiYXVkaWVuY2UiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwiY2FwYWJpbGl0eV9zb3VyY2UiOnsib3BlcmF0aW9uX3JlZiI6ImdldF9pbnZvaWNlIiwic291cmNlX2RpZ2VzdCI6InNoYS0yNTY6ZnRXbGdDUjhmdGdJZmxhZFNGVXhpa2xwSlNneG5XTXhVOGJQYXY3RW1mMCIsInNvdXJjZV91cmkiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvLndlbGwta25vd24vbWNwIiwidG9vbF9pZCI6Im1jcDovL3BheW1lbnRzLmRlbW8vdG9vbHMvZ2V0X2ludm9pY2UifSwiY2xhc3Nfc291cmNlIjoiZGVwbG95bWVudCIsImNvbmRpdGlvbnMiOnsidmFsaWRfdW50aWwiOiIyMDI2LTEwLTIzVDA0OjA5OjU5Ljk5OVoifSwiY29udHJpYnV0aW5nX2NvbnN0cmFpbnRzIjpbIm1pc3Npb25fcmVzb3VyY2VfYWNjZXNzIl0sImRlY2lzaW9uIjoicGVybWl0IiwiZW1pdHRlciI6eyJpZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDQwMy9tY3AiLCJyb2xlIjoicGRwIn0sImVudHJ5X2RpZ2VzdCI6InNoYS0yNTY6T1gwNGJQLWZTd25fMlNhSTROZWg0OHBRTUVnR0NOZzJ1UDdBVVNqNjB4TSIsImV2YWx1YXRlZF9hdCI6IjIwMjYtMTAtMjNUMDQ6MDQ6NTkuOTk5WiIsImV2YWx1YXRpb25faWQiOiJkZWNfNGNiY2FmOTMtZmRjZS00OThmLThjOWItMjcyNTQxNTYwOWIzIiwiZXZpZGVuY2VfaWQiOiJldmRfZjZvekdrYVIzU292akFzV3V3N0FobGstRVRNIiwibWlzc2lvbiI6eyJhdXRob3JpdHlfaGFzaCI6InNoYS0yNTY6UWRkaUM5U2w4ZHUxdm9uSGJPZkxlVmJUb0MzLW43SlRXb0lMLVg4RGNFMCIsImlkIjoibXNuX3luYUJkUi1TdEpUN2lfYW9lcVA4TWF5MSIsImlzc3VlciI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJwb2xpY3lfdmlld19pZCI6InNoYS0yNTY6ZHVzUmVMci1HdnRaY3hfM1RlTGl0SlVBTU8wQThWNVppWVVidm5WN2ZTQSJ9LCJwYXJhbWV0ZXJfZGlnZXN0Ijoic2hhLTI1NjpnLWg5Ym1BZGktci1GZTJmSzhOWmlaZWI4N05ia01UZE9vOHVBbmJoWjdrIiwicmVzb3VyY2UiOnsiaWQiOiJpbnYtdzciLCJ0eXBlIjoiaW52b2ljZSJ9LCJzZXF1ZW5jZSI6MCwic3ViamVjdCI6eyJpZCI6ImFsaWNlIn19.3bgwSQQ4dMC5PUPYQSYvnyMa4pLocZ04962X0eMy-O8tM50wzZ1KZzLF_EC7cD0qaJ_IAxSgdiNYgANH7EIN1A"
+            }
+          }
+        }
+      },
+      "outcome": {
+        "ok": true,
+        "result": {
+          "id": "inv-w7",
+          "vendor_id": "acme",
+          "amount": "1.00",
+          "currency": "USD",
+          "payee_account": "fixture-only",
+          "status": "payable",
+          "version": 1
+        }
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "issuer_revocation_committed",
+          "logicalTime": "2026-10-23T04:00:00.001Z",
+          "state": "terminated",
+          "version": 2
+        },
+        {
+          "order": 4,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:04:59.999Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:09:59.999Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 5,
+          "stage": "held_decision_released",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "worker": "A"
+        },
+        {
+          "order": 6,
+          "stage": "admission_adapter_read",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "adapter": "cache-read-only",
+          "state": "active",
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 7,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "worker": "A",
+          "result": {
+            "ok": true,
+            "result": {
+              "id": "inv-w7",
+              "vendor_id": "acme",
+              "amount": "1.00",
+              "currency": "USD",
+              "payee_account": "fixture-only",
+              "status": "payable",
+              "version": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B6-cache-revalidate",
+      "stage": "test_adapter_cache_age",
+      "adapter": "cache-revalidate",
+      "expectedAdmission": false,
+      "originalDecision": {
+        "decision": true,
+        "context": {
+          "decision_id": "dec_f843930b-c938-4f2b-ac89-a19277b61f77",
+          "evaluation_id": "dec_f843930b-c938-4f2b-ac89-a19277b61f77",
+          "policy_view_id": "sha-256:LXb5r7TROO5kD4vwROTYXx9oz8RyX5RZOkQ3VR7E9yc",
+          "action_class": "consequential_read",
+          "class_source": "deployment",
+          "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+          "conditions": {
+            "valid_until": "2026-10-23T04:09:59.999Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "decision_evidence": {
+            "evidence_id": "evd_4cy0Iai1Ievsj19-ZsrOEJAtBxI",
+            "evaluation_id": "dec_f843930b-c938-4f2b-ac89-a19277b61f77",
+            "mission": {
+              "id": "msn_DN-_i57Ou-AhnVMHPCtd5N1-",
+              "issuer": "https://w7-issuer.test",
+              "policy_view_id": "sha-256:LXb5r7TROO5kD4vwROTYXx9oz8RyX5RZOkQ3VR7E9yc",
+              "authority_hash": "sha-256:QddiC9Sl8du1vonHbOfLeVbToC3-n7JTWoIL-X8DcE0"
+            },
+            "subject": {
+              "id": "alice"
+            },
+            "resource": {
+              "type": "invoice",
+              "id": "inv-w7"
+            },
+            "action": {
+              "name": "payments:invoice.read"
+            },
+            "audience": "http://localhost:4403/mcp",
+            "action_class": "consequential_read",
+            "class_source": "deployment",
+            "capability_source": {
+              "tool_id": "mcp://payments.demo/tools/get_invoice",
+              "source_uri": "http://localhost:4403/.well-known/mcp",
+              "source_digest": "sha-256:ftWlgCR8ftgIfladSFUxiklpJSgxnWMxU8bPav7Emf0",
+              "operation_ref": "get_invoice"
+            },
+            "actor": {
+              "client_id": "ap-agent",
+              "client_instance_id": "w7-subagent",
+              "act": [
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-orchestrator",
+                  "sub_profile": "ai_agent client_instance"
+                },
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-subagent",
+                  "sub_profile": "ai_agent client_instance"
+                }
+              ]
+            },
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k",
+            "conditions": {
+              "valid_until": "2026-10-23T04:09:59.999Z"
+            },
+            "decision": "permit",
+            "contributing_constraints": [
+              "mission_resource_access"
+            ],
+            "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+            "sequence": 0,
+            "emitter": {
+              "id": "http://localhost:4403/mcp",
+              "role": "pdp"
+            },
+            "evaluated_at": "2026-10-23T04:04:59.999Z",
+            "evidence_envelope": {
+              "format": "jws-compact",
+              "value": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVwaGVtZXJhbC1wZHAiLCJ0eXAiOiJhcHBsaWNhdGlvbi9taXNzaW9uLXJ1bnRpbWUtZXZpZGVuY2UrandzIiwiY3R5IjoiYXBwbGljYXRpb24vbWlzc2lvbi1kZWNpc2lvbi1ldmlkZW5jZStqc29uIn0.eyJhY3Rpb24iOnsibmFtZSI6InBheW1lbnRzOmludm9pY2UucmVhZCJ9LCJhY3Rpb25fY2xhc3MiOiJjb25zZXF1ZW50aWFsX3JlYWQiLCJhY3RvciI6eyJhY3QiOlt7ImlzcyI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJzdWIiOiJ3Ny1vcmNoZXN0cmF0b3IiLCJzdWJfcHJvZmlsZSI6ImFpX2FnZW50IGNsaWVudF9pbnN0YW5jZSJ9LHsiaXNzIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInN1YiI6Inc3LXN1YmFnZW50Iiwic3ViX3Byb2ZpbGUiOiJhaV9hZ2VudCBjbGllbnRfaW5zdGFuY2UifV0sImNsaWVudF9pZCI6ImFwLWFnZW50IiwiY2xpZW50X2luc3RhbmNlX2lkIjoidzctc3ViYWdlbnQifSwiYXVkaWVuY2UiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwiY2FwYWJpbGl0eV9zb3VyY2UiOnsib3BlcmF0aW9uX3JlZiI6ImdldF9pbnZvaWNlIiwic291cmNlX2RpZ2VzdCI6InNoYS0yNTY6ZnRXbGdDUjhmdGdJZmxhZFNGVXhpa2xwSlNneG5XTXhVOGJQYXY3RW1mMCIsInNvdXJjZV91cmkiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvLndlbGwta25vd24vbWNwIiwidG9vbF9pZCI6Im1jcDovL3BheW1lbnRzLmRlbW8vdG9vbHMvZ2V0X2ludm9pY2UifSwiY2xhc3Nfc291cmNlIjoiZGVwbG95bWVudCIsImNvbmRpdGlvbnMiOnsidmFsaWRfdW50aWwiOiIyMDI2LTEwLTIzVDA0OjA5OjU5Ljk5OVoifSwiY29udHJpYnV0aW5nX2NvbnN0cmFpbnRzIjpbIm1pc3Npb25fcmVzb3VyY2VfYWNjZXNzIl0sImRlY2lzaW9uIjoicGVybWl0IiwiZW1pdHRlciI6eyJpZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDQwMy9tY3AiLCJyb2xlIjoicGRwIn0sImVudHJ5X2RpZ2VzdCI6InNoYS0yNTY6T1gwNGJQLWZTd25fMlNhSTROZWg0OHBRTUVnR0NOZzJ1UDdBVVNqNjB4TSIsImV2YWx1YXRlZF9hdCI6IjIwMjYtMTAtMjNUMDQ6MDQ6NTkuOTk5WiIsImV2YWx1YXRpb25faWQiOiJkZWNfZjg0MzkzMGItYzkzOC00ZjJiLWFjODktYTE5Mjc3YjYxZjc3IiwiZXZpZGVuY2VfaWQiOiJldmRfNGN5MElhaTFJZXZzajE5LVpzck9FSkF0QnhJIiwibWlzc2lvbiI6eyJhdXRob3JpdHlfaGFzaCI6InNoYS0yNTY6UWRkaUM5U2w4ZHUxdm9uSGJPZkxlVmJUb0MzLW43SlRXb0lMLVg4RGNFMCIsImlkIjoibXNuX0ROLV9pNTdPdS1BaG5WTUhQQ3RkNU4xLSIsImlzc3VlciI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJwb2xpY3lfdmlld19pZCI6InNoYS0yNTY6TFhiNXI3VFJPTzVrRDR2d1JPVFlYeDlvejhSeVg1UlpPa1EzVlI3RTl5YyJ9LCJwYXJhbWV0ZXJfZGlnZXN0Ijoic2hhLTI1NjpnLWg5Ym1BZGktci1GZTJmSzhOWmlaZWI4N05ia01UZE9vOHVBbmJoWjdrIiwicmVzb3VyY2UiOnsiaWQiOiJpbnYtdzciLCJ0eXBlIjoiaW52b2ljZSJ9LCJzZXF1ZW5jZSI6MCwic3ViamVjdCI6eyJpZCI6ImFsaWNlIn19.I-1cyn-SLqiPvy6qq0bEMNCk3R5pUXiAiQAcvWQug9b2UtoOgatmomhhkAzx3cNxqM01mfNBpVfxo2oI6IjsbQ"
+            }
+          }
+        }
+      },
+      "admissionDecision": {
+        "decision": false,
+        "context": {
+          "decision_id": "dec_553179ef-2db3-4335-8ca4-6002679feaea",
+          "evaluation_id": "dec_553179ef-2db3-4335-8ca4-6002679feaea",
+          "policy_view_id": "sha-256:LXb5r7TROO5kD4vwROTYXx9oz8RyX5RZOkQ3VR7E9yc",
+          "action_class": "consequential_read",
+          "class_source": "deployment",
+          "denial_reason": "stale_state",
+          "reason": "stale_state",
+          "decision_evidence": {
+            "evidence_id": "evd_WAYuQfa1Ws5l706B-NT5fX-_VkQ",
+            "evaluation_id": "dec_553179ef-2db3-4335-8ca4-6002679feaea",
+            "mission": {
+              "id": "msn_DN-_i57Ou-AhnVMHPCtd5N1-",
+              "issuer": "https://w7-issuer.test",
+              "policy_view_id": "sha-256:LXb5r7TROO5kD4vwROTYXx9oz8RyX5RZOkQ3VR7E9yc",
+              "authority_hash": "sha-256:QddiC9Sl8du1vonHbOfLeVbToC3-n7JTWoIL-X8DcE0"
+            },
+            "subject": {
+              "id": "alice"
+            },
+            "resource": {
+              "type": "invoice",
+              "id": "inv-w7"
+            },
+            "action": {
+              "name": "payments:invoice.read"
+            },
+            "audience": "http://localhost:4403/mcp",
+            "action_class": "consequential_read",
+            "class_source": "deployment",
+            "capability_source": {
+              "tool_id": "mcp://payments.demo/tools/get_invoice",
+              "source_uri": "http://localhost:4403/.well-known/mcp",
+              "source_digest": "sha-256:ftWlgCR8ftgIfladSFUxiklpJSgxnWMxU8bPav7Emf0",
+              "operation_ref": "get_invoice"
+            },
+            "actor": {
+              "client_id": "ap-agent",
+              "client_instance_id": "w7-subagent",
+              "act": [
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-orchestrator",
+                  "sub_profile": "ai_agent client_instance"
+                },
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-subagent",
+                  "sub_profile": "ai_agent client_instance"
+                }
+              ]
+            },
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k",
+            "decision": "deny",
+            "denial_reason": "stale_state",
+            "sequence": 1,
+            "emitter": {
+              "id": "http://localhost:4403/mcp",
+              "role": "pdp"
+            },
+            "evaluated_at": "2026-10-23T04:05:00.001Z",
+            "evidence_envelope": {
+              "format": "jws-compact",
+              "value": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVwaGVtZXJhbC1wZHAiLCJ0eXAiOiJhcHBsaWNhdGlvbi9taXNzaW9uLXJ1bnRpbWUtZXZpZGVuY2UrandzIiwiY3R5IjoiYXBwbGljYXRpb24vbWlzc2lvbi1kZWNpc2lvbi1ldmlkZW5jZStqc29uIn0.eyJhY3Rpb24iOnsibmFtZSI6InBheW1lbnRzOmludm9pY2UucmVhZCJ9LCJhY3Rpb25fY2xhc3MiOiJjb25zZXF1ZW50aWFsX3JlYWQiLCJhY3RvciI6eyJhY3QiOlt7ImlzcyI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJzdWIiOiJ3Ny1vcmNoZXN0cmF0b3IiLCJzdWJfcHJvZmlsZSI6ImFpX2FnZW50IGNsaWVudF9pbnN0YW5jZSJ9LHsiaXNzIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInN1YiI6Inc3LXN1YmFnZW50Iiwic3ViX3Byb2ZpbGUiOiJhaV9hZ2VudCBjbGllbnRfaW5zdGFuY2UifV0sImNsaWVudF9pZCI6ImFwLWFnZW50IiwiY2xpZW50X2luc3RhbmNlX2lkIjoidzctc3ViYWdlbnQifSwiYXVkaWVuY2UiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwiY2FwYWJpbGl0eV9zb3VyY2UiOnsib3BlcmF0aW9uX3JlZiI6ImdldF9pbnZvaWNlIiwic291cmNlX2RpZ2VzdCI6InNoYS0yNTY6ZnRXbGdDUjhmdGdJZmxhZFNGVXhpa2xwSlNneG5XTXhVOGJQYXY3RW1mMCIsInNvdXJjZV91cmkiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvLndlbGwta25vd24vbWNwIiwidG9vbF9pZCI6Im1jcDovL3BheW1lbnRzLmRlbW8vdG9vbHMvZ2V0X2ludm9pY2UifSwiY2xhc3Nfc291cmNlIjoiZGVwbG95bWVudCIsImRlY2lzaW9uIjoiZGVueSIsImRlbmlhbF9yZWFzb24iOiJzdGFsZV9zdGF0ZSIsImVtaXR0ZXIiOnsiaWQiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwicm9sZSI6InBkcCJ9LCJldmFsdWF0ZWRfYXQiOiIyMDI2LTEwLTIzVDA0OjA1OjAwLjAwMVoiLCJldmFsdWF0aW9uX2lkIjoiZGVjXzU1MzE3OWVmLTJkYjMtNDMzNS04Y2E0LTYwMDI2NzlmZWFlYSIsImV2aWRlbmNlX2lkIjoiZXZkX1dBWXVRZmExV3M1bDcwNkItTlQ1ZlgtX1ZrUSIsIm1pc3Npb24iOnsiYXV0aG9yaXR5X2hhc2giOiJzaGEtMjU2OlFkZGlDOVNsOGR1MXZvbkhiT2ZMZVZiVG9DMy1uN0pUV29JTC1YOERjRTAiLCJpZCI6Im1zbl9ETi1faTU3T3UtQWhuVk1IUEN0ZDVOMS0iLCJpc3N1ZXIiOiJodHRwczovL3c3LWlzc3Vlci50ZXN0IiwicG9saWN5X3ZpZXdfaWQiOiJzaGEtMjU2OkxYYjVyN1RST081a0Q0dndST1RZWHg5b3o4UnlYNVJaT2tRM1ZSN0U5eWMifSwicGFyYW1ldGVyX2RpZ2VzdCI6InNoYS0yNTY6Zy1oOWJtQWRpLXItRmUyZks4TlppWmViODdOYmtNVGRPbzh1QW5iaFo3ayIsInJlc291cmNlIjp7ImlkIjoiaW52LXc3IiwidHlwZSI6Imludm9pY2UifSwic2VxdWVuY2UiOjEsInN1YmplY3QiOnsiaWQiOiJhbGljZSJ9fQ.EyjxL6FeeFPRLZaEccyt3wAiyUV0gH8-gNIjlXjcDhS6Q8HJzdcXk7rb2RUyWDFMkzIGTBp0cDw3COK1PoKarg"
+            }
+          }
+        }
+      },
+      "outcome": {
+        "ok": false,
+        "denial_reason": "stale_state"
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "issuer_revocation_committed",
+          "logicalTime": "2026-10-23T04:00:00.001Z",
+          "state": "terminated",
+          "version": 2
+        },
+        {
+          "order": 4,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:04:59.999Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:09:59.999Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 5,
+          "stage": "held_decision_released",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "worker": "A"
+        },
+        {
+          "order": 6,
+          "stage": "admission_adapter_read",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "adapter": "cache-revalidate",
+          "state": "active",
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 7,
+          "stage": "admission_adapter_pdp_decision",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "permit": false,
+          "reason": "stale_state"
+        },
+        {
+          "order": 8,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "worker": "A",
+          "result": {
+            "ok": false,
+            "denial_reason": "stale_state"
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B7-observation-only-delay-control",
+      "stage": "observation_only_deadline_after_FGA",
+      "evaluationStartedAtMs": 1792728299999,
+      "decisionCompletedAtMs": 1792728300001,
+      "sourceAgeAtCompletionMs": 300001,
+      "decision": {
+        "decision": false,
+        "context": {
+          "decision_id": "dec_3ab6936a-7fc6-45c8-b436-522a6d657fc7",
+          "evaluation_id": "dec_3ab6936a-7fc6-45c8-b436-522a6d657fc7",
+          "policy_view_id": "sha-256:xL61yZNDdMFYyWuHhdaD4ooSXAF0kKpSkVMIt3O7ROU",
+          "action_class": "consequential_read",
+          "class_source": "deployment",
+          "denial_reason": "stale_state",
+          "reason": "stale_state",
+          "decision_evidence": {
+            "evidence_id": "evd_1LEomsf2CmZBeaDmJSxRKruGCrk",
+            "evaluation_id": "dec_3ab6936a-7fc6-45c8-b436-522a6d657fc7",
+            "mission": {
+              "id": "msn_HhIpabzq8eJlgWzDc27s8Gfw",
+              "issuer": "https://w7-issuer.test",
+              "policy_view_id": "sha-256:xL61yZNDdMFYyWuHhdaD4ooSXAF0kKpSkVMIt3O7ROU",
+              "authority_hash": "sha-256:QddiC9Sl8du1vonHbOfLeVbToC3-n7JTWoIL-X8DcE0"
+            },
+            "subject": {
+              "id": "alice"
+            },
+            "resource": {
+              "type": "invoice",
+              "id": "inv-w7"
+            },
+            "action": {
+              "name": "payments:invoice.read"
+            },
+            "audience": "http://localhost:4403/mcp",
+            "action_class": "consequential_read",
+            "class_source": "deployment",
+            "capability_source": {
+              "tool_id": "mcp://payments.demo/tools/get_invoice",
+              "source_uri": "http://localhost:4403/.well-known/mcp",
+              "source_digest": "sha-256:ftWlgCR8ftgIfladSFUxiklpJSgxnWMxU8bPav7Emf0",
+              "operation_ref": "get_invoice"
+            },
+            "actor": {
+              "client_id": "ap-agent",
+              "client_instance_id": "w7-subagent",
+              "act": [
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-orchestrator",
+                  "sub_profile": "ai_agent client_instance"
+                },
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-subagent",
+                  "sub_profile": "ai_agent client_instance"
+                }
+              ]
+            },
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k",
+            "decision": "deny",
+            "denial_reason": "stale_state",
+            "contributing_constraints": [
+              "mission_resource_access"
+            ],
+            "sequence": 0,
+            "emitter": {
+              "id": "http://localhost:4403/mcp",
+              "role": "pdp"
+            },
+            "evaluated_at": "2026-10-23T04:05:00.001Z",
+            "evidence_envelope": {
+              "format": "jws-compact",
+              "value": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVwaGVtZXJhbC1wZHAiLCJ0eXAiOiJhcHBsaWNhdGlvbi9taXNzaW9uLXJ1bnRpbWUtZXZpZGVuY2UrandzIiwiY3R5IjoiYXBwbGljYXRpb24vbWlzc2lvbi1kZWNpc2lvbi1ldmlkZW5jZStqc29uIn0.eyJhY3Rpb24iOnsibmFtZSI6InBheW1lbnRzOmludm9pY2UucmVhZCJ9LCJhY3Rpb25fY2xhc3MiOiJjb25zZXF1ZW50aWFsX3JlYWQiLCJhY3RvciI6eyJhY3QiOlt7ImlzcyI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJzdWIiOiJ3Ny1vcmNoZXN0cmF0b3IiLCJzdWJfcHJvZmlsZSI6ImFpX2FnZW50IGNsaWVudF9pbnN0YW5jZSJ9LHsiaXNzIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInN1YiI6Inc3LXN1YmFnZW50Iiwic3ViX3Byb2ZpbGUiOiJhaV9hZ2VudCBjbGllbnRfaW5zdGFuY2UifV0sImNsaWVudF9pZCI6ImFwLWFnZW50IiwiY2xpZW50X2luc3RhbmNlX2lkIjoidzctc3ViYWdlbnQifSwiYXVkaWVuY2UiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwiY2FwYWJpbGl0eV9zb3VyY2UiOnsib3BlcmF0aW9uX3JlZiI6ImdldF9pbnZvaWNlIiwic291cmNlX2RpZ2VzdCI6InNoYS0yNTY6ZnRXbGdDUjhmdGdJZmxhZFNGVXhpa2xwSlNneG5XTXhVOGJQYXY3RW1mMCIsInNvdXJjZV91cmkiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvLndlbGwta25vd24vbWNwIiwidG9vbF9pZCI6Im1jcDovL3BheW1lbnRzLmRlbW8vdG9vbHMvZ2V0X2ludm9pY2UifSwiY2xhc3Nfc291cmNlIjoiZGVwbG95bWVudCIsImNvbnRyaWJ1dGluZ19jb25zdHJhaW50cyI6WyJtaXNzaW9uX3Jlc291cmNlX2FjY2VzcyJdLCJkZWNpc2lvbiI6ImRlbnkiLCJkZW5pYWxfcmVhc29uIjoic3RhbGVfc3RhdGUiLCJlbWl0dGVyIjp7ImlkIjoiaHR0cDovL2xvY2FsaG9zdDo0NDAzL21jcCIsInJvbGUiOiJwZHAifSwiZXZhbHVhdGVkX2F0IjoiMjAyNi0xMC0yM1QwNDowNTowMC4wMDFaIiwiZXZhbHVhdGlvbl9pZCI6ImRlY18zYWI2OTM2YS03ZmM2LTQ1YzgtYjQzNi01MjJhNmQ2NTdmYzciLCJldmlkZW5jZV9pZCI6ImV2ZF8xTEVvbXNmMkNtWkJlYURtSlN4UktydUdDcmsiLCJtaXNzaW9uIjp7ImF1dGhvcml0eV9oYXNoIjoic2hhLTI1NjpRZGRpQzlTbDhkdTF2b25IYk9mTGVWYlRvQzMtbjdKVFdvSUwtWDhEY0UwIiwiaWQiOiJtc25fSGhJcGFienE4ZUpsZ1d6RGMyN3M4R2Z3IiwiaXNzdWVyIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInBvbGljeV92aWV3X2lkIjoic2hhLTI1Njp4TDYxeVpORGRNRll5V3VIaGRhRDRvb1NYQUYwa0twU2tWTUl0M083Uk9VIn0sInBhcmFtZXRlcl9kaWdlc3QiOiJzaGEtMjU2OmctaDlibUFkaS1yLUZlMmZLOE5aaVplYjg3TmJrTVRkT284dUFuYmhaN2siLCJyZXNvdXJjZSI6eyJpZCI6Imludi13NyIsInR5cGUiOiJpbnZvaWNlIn0sInNlcXVlbmNlIjowLCJzdWJqZWN0Ijp7ImlkIjoiYWxpY2UifX0.9vtCj1Qs9oRHOvp5ilZhBJlfhpAddWp0oIUG57tc7KqSoe9HJKNSezz6nET7nvy_jKMNez6RhyHihsgxBbIoOA"
+            }
+          }
+        }
+      },
+      "outcome": {
+        "ok": false,
+        "denial_reason": "stale_state"
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "fga_clock_advanced",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "advanceMs": 2
+        },
+        {
+          "order": 4,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "worker": "A",
+          "permit": false,
+          "reason": "stale_state",
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "fresh",
+            "freshness_at": "2026-10-23T04:00:00.000Z"
+          }
+        },
+        {
+          "order": 5,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "worker": "A",
+          "result": {
+            "ok": false,
+            "denial_reason": "stale_state"
+          }
+        }
+      ]
+    },
+    {
+      "caseId": "B7-age-check-to-issuance-gap",
+      "stage": "characterization_not_S_at_issuance_enforcement",
+      "evaluationStartedAtMs": 1792728299999,
+      "decisionCompletedAtMs": 1792728300001,
+      "sourceAgeAtCompletionMs": 300001,
+      "validUntilMs": 1792728600001,
+      "decision": {
+        "decision": true,
+        "context": {
+          "decision_id": "dec_89178c06-ef73-47b2-b8cf-ecf82d9198e0",
+          "evaluation_id": "dec_89178c06-ef73-47b2-b8cf-ecf82d9198e0",
+          "policy_view_id": "sha-256:qztX9CYbXyjyalyePyGrVaemrx5bt1hHhFlVtW7UC7I",
+          "action_class": "consequential_read",
+          "class_source": "deployment",
+          "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+          "conditions": {
+            "valid_until": "2026-10-23T04:10:00.001Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "decision_evidence": {
+            "evidence_id": "evd_Hx2gZyG7dip5VQKmWU9nxuuvbJk",
+            "evaluation_id": "dec_89178c06-ef73-47b2-b8cf-ecf82d9198e0",
+            "mission": {
+              "id": "msn_IyVRI2Q-UkndW7q9tZ1qg1--",
+              "issuer": "https://w7-issuer.test",
+              "policy_view_id": "sha-256:qztX9CYbXyjyalyePyGrVaemrx5bt1hHhFlVtW7UC7I",
+              "authority_hash": "sha-256:QddiC9Sl8du1vonHbOfLeVbToC3-n7JTWoIL-X8DcE0"
+            },
+            "subject": {
+              "id": "alice"
+            },
+            "resource": {
+              "type": "invoice",
+              "id": "inv-w7"
+            },
+            "action": {
+              "name": "payments:invoice.read"
+            },
+            "audience": "http://localhost:4403/mcp",
+            "action_class": "consequential_read",
+            "class_source": "deployment",
+            "capability_source": {
+              "tool_id": "mcp://payments.demo/tools/get_invoice",
+              "source_uri": "http://localhost:4403/.well-known/mcp",
+              "source_digest": "sha-256:ftWlgCR8ftgIfladSFUxiklpJSgxnWMxU8bPav7Emf0",
+              "operation_ref": "get_invoice"
+            },
+            "actor": {
+              "client_id": "ap-agent",
+              "client_instance_id": "w7-subagent",
+              "act": [
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-orchestrator",
+                  "sub_profile": "ai_agent client_instance"
+                },
+                {
+                  "iss": "https://w7-issuer.test",
+                  "sub": "w7-subagent",
+                  "sub_profile": "ai_agent client_instance"
+                }
+              ]
+            },
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k",
+            "conditions": {
+              "valid_until": "2026-10-23T04:10:00.001Z"
+            },
+            "decision": "permit",
+            "contributing_constraints": [
+              "mission_resource_access"
+            ],
+            "entry_digest": "sha-256:OX04bP-fSwn_2SaI4Neh48pQMEgGCNg2uP7AUSj60xM",
+            "sequence": 0,
+            "emitter": {
+              "id": "http://localhost:4403/mcp",
+              "role": "pdp"
+            },
+            "evaluated_at": "2026-10-23T04:05:00.001Z",
+            "evidence_envelope": {
+              "format": "jws-compact",
+              "value": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImVwaGVtZXJhbC1wZHAiLCJ0eXAiOiJhcHBsaWNhdGlvbi9taXNzaW9uLXJ1bnRpbWUtZXZpZGVuY2UrandzIiwiY3R5IjoiYXBwbGljYXRpb24vbWlzc2lvbi1kZWNpc2lvbi1ldmlkZW5jZStqc29uIn0.eyJhY3Rpb24iOnsibmFtZSI6InBheW1lbnRzOmludm9pY2UucmVhZCJ9LCJhY3Rpb25fY2xhc3MiOiJjb25zZXF1ZW50aWFsX3JlYWQiLCJhY3RvciI6eyJhY3QiOlt7ImlzcyI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJzdWIiOiJ3Ny1vcmNoZXN0cmF0b3IiLCJzdWJfcHJvZmlsZSI6ImFpX2FnZW50IGNsaWVudF9pbnN0YW5jZSJ9LHsiaXNzIjoiaHR0cHM6Ly93Ny1pc3N1ZXIudGVzdCIsInN1YiI6Inc3LXN1YmFnZW50Iiwic3ViX3Byb2ZpbGUiOiJhaV9hZ2VudCBjbGllbnRfaW5zdGFuY2UifV0sImNsaWVudF9pZCI6ImFwLWFnZW50IiwiY2xpZW50X2luc3RhbmNlX2lkIjoidzctc3ViYWdlbnQifSwiYXVkaWVuY2UiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvbWNwIiwiY2FwYWJpbGl0eV9zb3VyY2UiOnsib3BlcmF0aW9uX3JlZiI6ImdldF9pbnZvaWNlIiwic291cmNlX2RpZ2VzdCI6InNoYS0yNTY6ZnRXbGdDUjhmdGdJZmxhZFNGVXhpa2xwSlNneG5XTXhVOGJQYXY3RW1mMCIsInNvdXJjZV91cmkiOiJodHRwOi8vbG9jYWxob3N0OjQ0MDMvLndlbGwta25vd24vbWNwIiwidG9vbF9pZCI6Im1jcDovL3BheW1lbnRzLmRlbW8vdG9vbHMvZ2V0X2ludm9pY2UifSwiY2xhc3Nfc291cmNlIjoiZGVwbG95bWVudCIsImNvbmRpdGlvbnMiOnsidmFsaWRfdW50aWwiOiIyMDI2LTEwLTIzVDA0OjEwOjAwLjAwMVoifSwiY29udHJpYnV0aW5nX2NvbnN0cmFpbnRzIjpbIm1pc3Npb25fcmVzb3VyY2VfYWNjZXNzIl0sImRlY2lzaW9uIjoicGVybWl0IiwiZW1pdHRlciI6eyJpZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDQwMy9tY3AiLCJyb2xlIjoicGRwIn0sImVudHJ5X2RpZ2VzdCI6InNoYS0yNTY6T1gwNGJQLWZTd25fMlNhSTROZWg0OHBRTUVnR0NOZzJ1UDdBVVNqNjB4TSIsImV2YWx1YXRlZF9hdCI6IjIwMjYtMTAtMjNUMDQ6MDU6MDAuMDAxWiIsImV2YWx1YXRpb25faWQiOiJkZWNfODkxNzhjMDYtZWY3My00N2IyLWI4Y2YtZWNmODJkOTE5OGUwIiwiZXZpZGVuY2VfaWQiOiJldmRfSHgyZ1p5RzdkaXA1VlFLbVdVOW54dXV2YkprIiwibWlzc2lvbiI6eyJhdXRob3JpdHlfaGFzaCI6InNoYS0yNTY6UWRkaUM5U2w4ZHUxdm9uSGJPZkxlVmJUb0MzLW43SlRXb0lMLVg4RGNFMCIsImlkIjoibXNuX0l5VlJJMlEtVWtuZFc3cTl0WjFxZzEtLSIsImlzc3VlciI6Imh0dHBzOi8vdzctaXNzdWVyLnRlc3QiLCJwb2xpY3lfdmlld19pZCI6InNoYS0yNTY6cXp0WDlDWWJYeWp5YWx5ZVB5R3JWYWVtcng1YnQxaEhoRmxWdFc3VUM3SSJ9LCJwYXJhbWV0ZXJfZGlnZXN0Ijoic2hhLTI1NjpnLWg5Ym1BZGktci1GZTJmSzhOWmlaZWI4N05ia01UZE9vOHVBbmJoWjdrIiwicmVzb3VyY2UiOnsiaWQiOiJpbnYtdzciLCJ0eXBlIjoiaW52b2ljZSJ9LCJzZXF1ZW5jZSI6MCwic3ViamVjdCI6eyJpZCI6ImFsaWNlIn19.8O573PDzsz_krHWdVZZzIam-U0d9ZU6-l0ze38CJ2g-UYXAuBF3CVNtteLa4eTR6gKVMDdF3779IJ8w7Zf_KsA"
+            }
+          }
+        }
+      },
+      "outcome": {
+        "ok": true,
+        "result": {
+          "id": "inv-w7",
+          "vendor_id": "acme",
+          "amount": "1.00",
+          "currency": "USD",
+          "payee_account": "fixture-only",
+          "status": "payable",
+          "version": 1
+        }
+      },
+      "trace": [
+        {
+          "order": 1,
+          "stage": "mission_approved",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "version": 1
+        },
+        {
+          "order": 2,
+          "stage": "receiver_verified_and_applied",
+          "logicalTime": "2026-10-23T04:00:00.000Z",
+          "worker": "A",
+          "outcome": {
+            "status": "applied",
+            "state": "active",
+            "version": 1,
+            "rematerialize": false
+          },
+          "cachedState": "active"
+        },
+        {
+          "order": 3,
+          "stage": "fga_clock_advanced",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "advanceMs": 2
+        },
+        {
+          "order": 4,
+          "stage": "pdp_decision",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "worker": "A",
+          "permit": true,
+          "conditions": {
+            "valid_until": "2026-10-23T04:10:00.001Z",
+            "parameter_digest": "sha-256:g-h9bmAdi-r-Fe2fK8NZiZeb87NbkMTdOo8uAnbhZ7k"
+          },
+          "observation": {
+            "state": "active",
+            "version": 1,
+            "mode": "event_driven",
+            "freshness_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_issued_at": "2026-10-23T04:00:00.000Z",
+            "mission_status_expires_at": "2027-01-01T00:00:00Z"
+          }
+        },
+        {
+          "order": 5,
+          "stage": "tool_call_returned",
+          "logicalTime": "2026-10-23T04:05:00.001Z",
+          "worker": "A",
+          "result": {
+            "ok": true,
+            "result": {
+              "id": "inv-w7",
+              "vendor_id": "acme",
+              "amount": "1.00",
+              "currency": "USD",
+              "payee_account": "fixture-only",
+              "status": "payable",
+              "version": 1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
